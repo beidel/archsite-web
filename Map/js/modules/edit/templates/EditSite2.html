@@ -1,0 +1,177 @@
+<div id="es_ContainerNode" data-dojo-attach-point="es_ContainerNode" class="editWidget">
+	<div id="es_view_1" data-dojo-attach-point="es_view_1" class="viewPane" >
+        <div id="es_v1_toolbar">
+            <div data-menu="addsite" class='editToolButton btnAddSiteIcon' title='Add Site'></div>
+            <div data-menu="addrevisit" class='editToolButton btnRevisitIcon' title='Add Revisit'></div>
+            <div data-menu="editsites" class='editToolButton btnEditSiteIcon hidePage' title='Edit Sites'></div>
+            <div data-menu="approvesites" class='editToolButton btnApproveIcon hidePage' title='Approve Sites'></div>
+            <div data-menu="addshape" class='editToolButton btnAddShapefile' title='Add Shapefile'></div>
+		</div>
+        <div class="padContainer">
+        <div class="cfgMenu" id="cfgMenu">
+            <span tabindex="0" data-layer="unsubmitted" class="mapButton buttonLeft buttonSelected" title="Draft">Draft</span><span tabindex="0" data-layer="submitted" class="mapButton buttonRight" title="Waiting Approval">Waiting Approval</span> 
+        </div>
+        <div class="Pad ">
+        <div class="clear"></div>
+            <div id="siteList" class="cfgPanel" data-layer="unsubmitted" style="display: block;">
+                <div data-bind="foreach: userSites" id="gridDiv" style="margin-top: 5px;">
+                    <div class="siteItem" data-bind="foreach: userSites">
+                    <div style="float:left">
+                    <div class='itemDesc'><span class='titleText' data-bind="text: parent"></span></div><div class='subText' style='clear:left'  data-bind="text: siteName"></div>
+                    </div>
+                    <div>
+                        <span class='deleteButton' title='Delete Site'></span>
+                        <span class='editButton' title='Edit Site'></span>
+                        <span class='zoomButton' title='Zoom to Site'></span>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <div class="cfgPanel" data-layer="submitted" style="display: none;">
+                <div data-bind="foreach: waitSites" id="gridSubmitted" style="margin-top: 5px;">
+                    <div class="siteItem" data-bind="">
+                    <div style="float:left">
+                    <div class='itemDesc'><span class='titleText' data-bind="text: parent"></span></div><div class='subText' style='clear:left'  data-bind="text: siteName"></div>
+                    </div>
+                    <div>
+                        <span class='zoomButton' title='Zoom to Site'></span>
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        </div>
+
+	</div>
+	<div id="es_view_2" data-dojo-attach-point="es_view_2" class="viewPane hidePage">
+        <div id="es_v2_toolbar">
+            <div data-menu="save" class='editToolButton btnSaveIcon' title='Save'></div>
+            <div data-menu="publish" class='editToolButton btnSciaaIcon' title='Send to SCIAA'></div>
+            <div data-menu="cancel" class='editToolButton btnCancelIcon' title='Cancel'></div>
+		</div>
+                
+        <div id="editForm"></div>
+            
+	</div>
+    <div id="es_view_3" data-dojo-attach-point="es_view_3" class="viewPane hidePage">
+        <div id="loadingOverlay" class="loadingOverlay pageOverlay">
+            <div id="loadingMessage" class="loadingMessage">Loading...</div>
+        </div>
+    </div>
+    <div id="es_view_4" data-dojo-attach-point="es_view_4" class="viewPane hidePage">
+        <span>Are you sure you want to delete this draft site?</span>
+        <div>
+            <div id="es_v4_btnDeleteSite" class='toolbarButton' title='Delete'>Delete</div>
+            <div id="es_v4_btnCancel" class='toolbarButton' title='Cancel'>Cancel</div>
+        </div>
+    </div>
+    <div id="es_view_5" data-dojo-attach-point="es_view_5" class="viewPane hidePage">
+        <div id="es_v5_btnGeoSearch" class='toolbarButton' title='Select Site by Point'>Select Site by Point</div>
+        <div id="es_v5_btnCancel" class='toolbarButton' title='Cancel'>Cancel</div>
+
+        <div><label>Search by Site Number: </label><input data-dojo-type="dijit/form/TextBox" id="attrSearch" name="attrSearch" data-dojo-attach-event='onKeyUp: attributeSearch' data-dojo-props="placeHolder:'Enter Site Number'" />
+        </div>
+        <div id="v_5_pg_1" data-dojo-type="dijit/layout/ContentPane" data-dojo-attach-point="v_5_pg_1" style="overflow: auto; width: 325px; height: 300px;">
+            <div data-dojo-attach-point="searchList" id="searchList" style="margin-top: 30px; margin-left: 5px;"></div>
+        </div>
+        
+    </div>
+    <div id="es_view_6" data-dojo-attach-point="es_view_6" class="viewPane hidePage">
+        <div>
+        <div id="es_v6_btnBackForm" class='toolbarButton right' title='Back to Form'>Back to Form</div>
+  </div>
+        <div class="errorTitle">Validation Errors</div>
+        
+        <div id="v_6_errors" data-dojo-type="dijit/layout/ContentPane" data-dojo-attach-point="v_6_errors" style="overflow: auto; width: 325px; height: 300px;">
+            
+        </div>
+    </div>
+    <div id="es_view_7" data-dojo-attach-point="es_view_7" class="viewPane hidePage">
+        
+        <span id="v_7_message"></span>
+        <br />
+        <div id="v_7_btn" class='toolbarButton' title='Back to Form'>Back to Form</div>
+    </div>
+    <div id="es_view_8" data-dojo-attach-point="es_view_8" class="viewPane hidePage">
+        <span>Are you sure you want to publish this site to SCIAA?  Once you publish, you will be unable to make additional changes.</span>
+        <div>
+            <div id="v_8_btnYes" class='toolbarButton' title='Yes'>Yes</div>
+            <div id="v_8_btnNo" class='toolbarButton' title='No'>No</div>
+        </div>
+    </div>
+    <div id="es_view_9" data-dojo-attach-point="es_view_9" class="viewPane hidePage">
+        <div id="es_v9_toolbar">
+            <div data-menu="addsite" class='editToolButton btnAddSiteIcon' title='Add Site'></div>
+            <div data-menu="addrevisit" class='editToolButton btnRevisitIcon' title='Add Revisit'></div>
+            <div data-menu="editsites" class='editToolButton btnEditSiteIcon' title='Edit Sites'></div>
+            <div data-menu="approvesites" class='editToolButton btnApproveIcon' title='Approve Sites'></div>
+		</div>
+
+        <div class="padContainer">
+        <div class="cfgMenu">
+            <span tabindex="0" data-layer="waiting" class="mapButton buttonLeft buttonSelected" title="Waiting">Approval List</span> 
+        </div>
+        <div class="Pad ">
+        <div class="clear"></div>
+
+            <div class="cfgPanel" data-layer="waiting" style="display: block;">
+                <div data-dojo-attach-point="es_v_9_waitDiv" id="es_v_9_waitDiv" style="margin-top: 5px; margin-left: 0px;"></div>
+
+            </div>
+
+        </div>
+            <div id="es_v9_btnCommit" class='toolbarButton' title="Commit Changes">Commit Changes</div>
+        </div>
+    </div>
+    <div id="es_view_10" data-dojo-attach-point="es_view_10" class="viewPane hidePage">
+        <div id='es_v10_btnBack' class='toolbarButton' title='Back'>Back</div>
+
+        <div style="margin: 15px 2px;">
+
+        <label>Date Entered in DB: </label><input data-dojo-type="dijit/form/DateTextBox" id="SITEENTEREDINDBDATE" name="SITEENTEREDINDBDATE" style="margin:5px;width:150px;" /><br />
+        
+        <div id='es_v10_btnSiteform' class='toolbarButton' title='Site Form'>Site Form</div><br />
+
+        <label>Site Number: </label><input data-dojo-type="dijit/form/TextBox" id="SITENUMBER" name="SITENUMBER" class="formSpace"  /><br />
+        <label>Site ID: </label><input data-dojo-type="dijit/form/TextBox" id="SITEID" name="SITEID" class="formSpace"  /><br />
+
+        <label>Comments: </label><br /><textarea data-dojo-type="dijit/form/SimpleTextarea" rows="4" cols="50" id="es_v10_APPCOMMENTS" name="es_v10_APPCOMMENTS" style="width:200px;height:60px;margin:5px;"></textarea><br />
+
+        <div id='es_v10_btnApprove' class='toolbarButton' title='Approve'>Approve</div>
+        <div id='es_v10_btnReject' class='toolbarButton' title='Reject'>Reject</div>
+        </div>
+
+    </div>
+    <div id="es_view_11" data-dojo-attach-point="es_view_11" class="viewPane hidePage">
+        <span id="v_11_msg"></span>
+        <div>
+            <div id="v_11_btnCreate" class='toolbarButton' title='Create New'>Create New</div>
+            <div id="v_11_btnCancel" class='toolbarButton' title='Cancel'>Cancel</div>
+        </div>
+        <div class="padContainer">
+        <div class="Pad ">
+            <div class="cfgPanel" style="display: block;">
+                <div data-dojo-attach-point="v_11_revistList" id="v_11_revistList" style="margin-top: 5px;"></div>
+
+            </div>
+
+        </div>
+        </div>
+    </div>
+    <div id="es_view_12" data-dojo-attach-point="es_view_12" class="viewPane hidePage">
+        <form enctype="multipart/form-data" method="post" id="uploadForm">
+        <div>
+        <label>
+             <span><strong>Add File</strong></span>
+                 <input type="file" name="file" id="inFile" />
+        </label>
+        </div>
+        </form>
+        <span class="file-upload-status" style="opacity:1;" id="upload-status"></span>
+        <div id="fileInfo">&nbsp;</div>   
+
+        <div id='es_v12_btnBack' class='toolbarButton' title='Back'>Back</div>
+
+    </div>
+</div>

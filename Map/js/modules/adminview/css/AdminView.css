@@ -1,0 +1,730 @@
+﻿.adminWidget
+{
+    height: 625px;
+    width: 350px;
+    margin: 2px;
+    top: 5px; 
+    background-color: #FFFFFF;
+    bottom: 5px;
+}
+
+.adminWidget .required {
+    font-weight: bold;
+    color: #bb292d;
+}
+
+.adminWidget .groupHeading {
+    font-weight: bold;
+}
+
+.adminWidget .formSpace {
+    margin:5px;
+}
+
+.adminWidget .formSpaceTop {
+    margin-top:10px;
+}
+
+#av_pgContainer textarea {
+    width:200px;
+    height:60px;
+}
+
+.adminWidget .siteItem {
+    border-radius:0px;
+    background-color: #FFF;
+    border-color: #CCC;
+    height: 40px;
+    padding: 5px 0px;
+
+}
+
+.adminWidget .siteItem:hover
+{
+    background-color: #c3d7e5;
+}
+
+.adminWidget .middleItem
+{
+    border-bottom:1px solid #CCC;
+}
+
+.adminWidget #av_DataRecovered 
+{
+    width: 100%;
+    border: 1px solid #bb292d;
+    padding: 5px;
+}
+
+.adminWidget #pgContainer .relatedTables {
+    margin-bottom: 8px;
+    width: 100%;
+    border: 1px solid #bb292d;
+    padding: 5px 1px;
+}
+
+.adminWidget #pgContainer th {
+    background-color: #bb292d;
+    color: #fff;
+    font-weight: bold;
+    text-align: left;
+}
+
+.adminWidget th .hCenterColumn{
+    text-align: center;
+}
+
+.adminWidget .menuColumn {
+    width: 67px;
+    min-width:67px;
+}
+
+.adminWidget .numColumn {
+    min-width:20px;
+    width: 20px;
+}
+
+.adminWidget .numDblColumn {
+    min-width:35px;
+    width: 35px;
+}
+
+.adminWidget .fillColumn {
+    min-width:100px;
+    width: 100%;
+}
+
+.adminWidget .commentColumn {
+    min-width:55px;
+    width: 55px;
+}
+
+.adminWidget .deleteColumn {
+    min-width:20px;
+    width: 20px;
+}
+
+.adminWidget .smallCloseButton
+{
+        width: 18px;
+        height: 18px;
+        display: block;
+        overflow: hidden;
+        cursor: pointer;
+        background: url(../images/SmallButtonSprite.png) no-repeat -224px -3px;
+}
+
+.adminWidget .siteItem .editButton
+{
+        width: 25px;
+        height: 30px;
+        display: block;
+        float: right;
+        overflow: hidden;
+        cursor: pointer;
+        background: url(../images/SmallButtonSprite.png) no-repeat -24px 3px;
+}
+
+.adminWidget .editToolButton 
+{
+    margin-left: 2px;
+    margin-right: 2px;
+    padding: 2px;
+    width: 34px;
+    height: 34px;
+    background-color: #666;
+    background-color: rgba(102,102,102,0.80);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.adminWidget .editToolButton:hover
+{
+    background-color: #333;
+    background-color: rgba(102,102,102,0.90);
+}
+
+.adminWidget .editToolButton:active
+{
+    background-color: #ccc;
+    background-color: rgba(102,102,102,0.60);
+}
+
+.adminWidget .editToolButtonSelected
+{
+    background-color: #bb292d;
+    background-color: rgba(187,41,45,0.80);
+}
+
+.adminWidget .addItemButton, .addItemButton:visited {
+    font-family: "Open Sans",sans-serif;
+    font-size:0.6em;
+    background-color: rgba(102,102,102,0.80);
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 9px;
+    line-height: 12px;
+    height: 12px;
+    margin: 2px 0;
+    padding: 2px 5px;
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: bold;
+    white-space: nowrap;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    border: 1px solid #ccc;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+}
+
+.adminWidget .addItemButton:hover, .addItemButton:focus, .addItemSelected {
+    background-color: rgba(187,41,45,0.80);   
+}
+
+.adminWidget .geoToolButton 
+{
+    margin-top: 7px;
+    margin-left: 2px;
+    margin-right: 2px;
+    padding: 2px;
+    width: 22px;
+    height: 22px;
+    background-color: #fff;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
+    border: 2px solid #666;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.adminWidget .geoToolButton:hover
+{
+    background-color: #333;
+    background-color: #ff6666;
+}
+
+.adminWidget .geoToolButton:active
+{
+    background-color: #ccc;
+    background-color: rgba(102,102,102,0.60);
+}
+
+.adminWidget .geoToolButtonSelected
+{
+    background-color: #bb292d;
+    background-color: rgba(187,41,45,0.80);
+}
+
+.adminWidget .btnAddSiteIcon {
+    float: left;
+    background-image: url(../images/btnAddSite.png);
+}
+
+.adminWidget .btnRevisitIcon {
+    float: left;
+    background-image: url(../images/btnAddRevisit.png);
+}
+
+.adminWidget .btnAddShapefile {
+    float: left;
+    background-image: url(../images/btnShapeupload.png);
+}
+
+.adminWidget .btnEditSiteIcon {
+    float: left;
+    background-image: url(../images/btnEditSite.png);
+}
+
+.adminWidget .btnApproveIcon {
+    float: left;
+    background-image: url(../images/btnApprove.png);
+}
+
+.adminWidget .btnSaveIcon {
+    float: left;
+    background-image: url(../images/btnSave.png);
+}
+
+.adminWidget .btnSciaaIcon {
+    float: left;
+    background-image: url(../images/btnSciaa.png);
+}
+
+.adminWidget .btnCancelIcon {
+    float: left;
+    background-image: url(../images/btnCancel.png);
+}
+
+.adminWidget .btnGeoNew
+{
+        float: left;
+    background-image: url(../images/btnGeoNew.png);
+}
+
+.adminWidget .btnGeoEdit
+{
+        float: left;
+    background-image: url(../images/btnGeoEdit.png);
+}
+
+.adminWidget .btnGeoSave
+{
+        float: left;
+    background-image: url(../images/btnGeoSave.png);
+}
+
+.adminWidget .btnGeoCancel
+{
+        float: left;
+    background-image: url(../images/btnGeoCancel.png);
+}
+
+.adminWidget .iconValidSite
+{
+        margin: 7px 0px;
+        padding: 7px 0px;
+        vertical-align: middle;
+        width: 25px;
+        height: 30px;
+        display: inline-block;
+        overflow: hidden;
+        background: url(../images/SmallButtonSprite.png) no-repeat -152px 4px;
+}
+
+.adminWidget .iconInvalidSite
+{
+        margin: 7px 0px;
+        padding: 7px 0px;
+        vertical-align: middle;
+        width: 25px;
+        height: 30px;
+        display: inline-block;
+        overflow: hidden;
+        background: url(../images/SmallButtonSprite.png) no-repeat 0px 4px;
+}
+
+.cfgPanel
+{
+    border:1px solid;
+    padding: 2px 0px;
+    border-radius:0px;
+    background-color: #FFF;
+    border-color: #CCC;
+}
+
+.siteItem .itemDesc
+{
+    float:left;
+    margin-left:auto; 
+    margin-right: 36px;
+
+}
+
+.siteItem .titleText
+{
+    font-family:"Arial", sans-serif;
+    font-size:1.6em;
+    color: #808080;
+    cursor: default;
+}
+
+.siteItem .subText
+{
+    font-family:"Arial", sans-serif;
+    font-size:0.9em;
+    color: #808080;
+    cursor: default;
+}
+
+.containerBoundary
+{
+    border:2px solid;
+    border-radius:15px;
+    border-color: darkgray;
+}
+
+
+.deleteButton {
+    width: 25px;
+    height: 30px;
+    display: block;
+    float: right;
+    overflow: hidden;
+    cursor: pointer;
+    background: url(../images/SmallButtonSprite.png) no-repeat -126px 3px;
+}
+.zoomButton {
+    width: 25px;
+    height: 30px;
+    display: block;
+    float: right;
+    overflow: hidden;
+    cursor: pointer;
+    background: url(../images/SmallButtonSprite.png) no-repeat -50px 3px;
+}
+fieldset {
+    padding-top: 15px;
+    display: block; 
+    padding: 3px 3px; 
+    border: solid #666 1px;
+    bottom: 10px;
+}
+legend {
+    font-weight: bold;
+    color: #666;
+}
+#av_view_1 {
+    font-size: 12px;
+    line-height: 16px;
+    zoom: 1;
+    -moz-border-radius-bottomleft: 2px;
+    -webkit-border-bottom-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+    -moz-border-radius-bottomright: 2px;
+    -webkit-border-bottom-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+    position: relative;
+    background: #fff;
+    padding: 0;
+    bottom: 10px;
+}
+#av_view_1 .padContainer {
+    position: absolute; 
+    top: 35px; 
+    bottom: 10px;
+    width:100%;
+    padding: 10px;
+    word-wrap: break-word;
+}
+
+#av_view_1 .padContainer .buttons {
+    margin: 20px 0 0 0;
+    text-align: right;
+}
+
+#av_view_1 .padContainer .buttons {
+    text-align: left;
+}
+
+#av_view_1 .Pad {
+    border: 1px solid #e5e5e5;
+    background: #fff;
+    padding: 10px;
+    position: relative;
+    top: -1px;
+}
+
+#av_view_9 {
+    font-size: 12px;
+    line-height: 16px;
+    zoom: 1;
+    -moz-border-radius-bottomleft: 2px;
+    -webkit-border-bottom-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+    -moz-border-radius-bottomright: 2px;
+    -webkit-border-bottom-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+    position: relative;
+    background: #fff;
+    padding: 0;
+    bottom: 10px;
+}
+#av_view_9 .padContainer {
+    
+    position: absolute; 
+    top: 35px; 
+    bottom: 10px;
+    width:100%;padding: 10px;
+    word-wrap: break-word;
+}
+
+#av_view_9 .padContainer .buttons {
+    margin: 20px 0 0 0;
+    text-align: right;
+}
+
+#av_view_9 .padContainer .buttons {
+    text-align: left;
+}
+
+#av_view_9 .Pad {
+    border: 1px solid #e5e5e5;
+    background: #fff;
+    padding: 10px;
+    position: relative;
+    top: -1px;
+}
+
+#pgContainer
+{
+    position: absolute;
+    top: 45px;
+    left: 5px; 
+    right: 5px; 
+    bottom: 50px;
+}
+
+.siteForm
+{
+    position: absolute;
+    height: 500px;
+    left: 0px; 
+    right: 0px;
+}
+
+.formPage
+{
+    position: absolute;
+    background-color: #FFF;
+    left: 10px; 
+    right: 10px; 
+    height: 425px;
+    overflow: auto; 
+    border: 1px solid #e5e5e5;
+}
+
+.attachForm
+{
+    position: absolute;
+    top: 590px;
+    left: 0px; 
+    right: 0px;
+}
+
+#pgContainer
+{
+    overflow:auto;
+    position:absolute;
+    top: 45px;
+    left: 0px;
+    right: 0px;
+    bottom: 5px;
+}
+
+.hidePage
+{
+    visibility: hidden;
+    display: none;
+
+}
+
+.navBar
+{
+    position: absolute;
+    top: 460px;
+    left: 0px; 
+    right: 0px;
+    text-align: center;
+}
+
+.toolbarButton .hideSite
+{
+    visibility: hidden;
+}
+
+.adminWidget right {
+    float: right; 
+}
+
+.adminWidget .errorTitle {
+    margin: 10px 0px 5px;
+    font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+    font-size:1.4em;
+    font-weight: bold;
+    color:#bb292d; 
+    text-shadow: 1px 1px 2px rgba(102,102,102,0.60);
+}
+
+.adminWidget .viewPane 
+{
+    position: absolute; 
+    top: 0px; 
+    bottom: 5px;  
+    width:100%;
+}
+
+.adminWidget .dijitSelect .dijitArrowButton {
+    background-color: #fff;
+}
+
+.adminWidget .dijitButtonContents {
+    border: 0px;
+}
+
+.adminWidget .dijitButtonText {
+    font-family: "Open Sans",sans-serif;
+    font-size: 0.9em;
+}
+
+.dijitMenuItemLabel {
+    font-family: "Open Sans",sans-serif;
+    font-size: 0.9em;
+}
+
+.dijitSelect .dijitArrowButton {
+    padding: 0;
+    background-color: #ffffff;
+}
+
+.dijitSelectHover {
+    background-color: #ffffff;
+}
+
+ .dijitSelectHover .dijitArrowButton {
+        background-color: #ffffff;
+    }
+
+ .claro .dijitMenu .dijitMenuItemHover td, .claro .dijitMenu .dijitMenuItemSelected td, .claro .dijitMenuItemHover, .claro .dijitComboBoxMenu .dijitMenuItemHover, .claro .dijitMenuItemSelected {
+    border-color: #bb292d;
+    background-color: #E27E81;
+    background-image: url("images/standardGradient.png");
+    background-repeat: repeat-x;
+    background-image: -moz-linear-gradient(rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0) 100%);
+    background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0) 100%);
+    background-image: -o-linear-gradient(rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0) 100%);
+    background-image: linear-gradient(rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0) 100%);
+    _background-image: none;
+}
+
+ .claro .dijitMenu .dijitMenuItemSelected td, .claro .dijitComboBoxMenu .dijitMenuItemSelected {
+        color: #000000;
+        border-color: #bb292d;
+    background-color: #E27E81;
+    }
+
+.adminWidget .dijitSelectFocused .dijitArrowButton {
+    background-color: #ffffff;
+    background-repeat: no-repeat;
+    background-image: none;
+    padding: 0px;
+}
+
+<!-- Checkboxes -->
+.adminWidget .dijitToggleButton .dijitCheckBoxIcon {
+	background-image: url('../images/checkmarkNoBorder.png');
+}
+.adminWidget .dj_ie6 .dijitToggleButton .dijitCheckBoxIcon {
+	background-image: url('../images/checkmarkNoBorder.gif');
+}
+.adminWidget .dijitCheckBox,
+.adminWidget .dijitCheckBoxIcon			{
+	background-image: url('../images/CheckboxStates.png'); 
+	background-repeat: no-repeat;
+	width: 15px;
+	height: 16px;
+	margin: 0 2px 0 0;
+	padding: 0;
+}
+.adminWidget .dj_ie6 .dijitCheckBox,
+.adminWidget .dj_ie6 .dijitCheckBoxIcon			{
+	background-image: url('images/checkboxAndRadioButtons_IE6.png'); 
+}
+.adminWidget .dijitCheckBox,
+.adminWidget .dijitToggleButton .dijitCheckBoxIcon {
+	
+	background-position: -19px;
+}
+.adminWidget .dijitCheckBoxChecked,
+.adminWidget .dijitToggleButtonChecked .dijitCheckBoxIcon {
+	
+	background-position: -0px;
+}
+.adminWidget .dijitCheckBoxDisabled {
+	
+	background-position: -75px;
+}
+.adminWidget .dijitCheckBoxCheckedDisabled {
+	
+	background-position: -60px;
+}
+.adminWidget .dijitCheckBoxHover {
+	
+	background-position: -19px;
+}
+.adminWidget .dijitCheckBoxCheckedHover {
+	
+	background-position: -0px;
+}
+
+
+   /*File upload form styling */
+    .field { 
+	   padding:4px 4px;
+	}
+    .file-upload {
+    	overflow: hidden;
+    	display: inline-block;
+    	position: relative;	
+    	vertical-align: middle;
+    	text-align: center;
+    	border: 2px solid #666666;
+    	background: #444444;
+    	-moz-border-radius: 6px;
+    	-webkit-border-radius: 6px;
+    	border-radius: 6px;
+      color: #fff;
+      text-shadow: 0px 2px 3px #555;
+      cursor:pointer;
+      }
+    	
+    .file-upload:hover { 
+    	background-color: #454545;
+    	}
+
+    
+    .file-upload input {
+    	position: absolute;
+    	top: 0;
+    	left: 0;
+    	margin: 0;
+    	font-size: 70px;
+    	opacity: 0;
+    	filter: alpha(opacity=0);
+      z-index:2;
+    	}
+    
+    .file-upload strong { 
+    	font: normal 1.75em arial,sans-serif; 
+    	}	
+    	
+    .file-upload span {
+    	position: absolute;
+    	top: 0;
+    	left: 0;
+    	display: inline-block;
+
+    	padding-top: .45em;
+    	}
+
+    .file-upload { height: 3em; }
+    .file-upload,
+    .file-upload span {	width: 10em; }	
+
+	.
+     .file-upload-status {
+    	vertical-align: middle;
+    	padding: 5px 11px;
+    	font-size: 12px;
+    	color: #888;
+    	background: #F8F8F8;
+    	}

@@ -1,0 +1,545 @@
+<div id="es_ContainerNode" data-dojo-attach-point="es_ContainerNode" class="editWidget">
+	<div id="es_view_1" data-dojo-attach-point="es_view_1" class="viewPane" >
+        <div id="es_v1_toolbar">
+            <div data-menu="addsite" class='editToolButton btnAddSiteIcon' title='Add Site'></div>
+            <div data-menu="addrevisit" class='editToolButton btnRevisitIcon' title='Add Revisit'></div>
+            <div data-menu="editsites" class='editToolButton btnEditSiteIcon hidePage' title='Edit Sites'></div>
+            <div data-menu="approvesites" class='editToolButton btnApproveIcon hidePage' title='Approve Sites'></div>
+            <div data-menu="addshape" class='editToolButton btnAddShapefile' title='Add Shapefile'></div>
+		</div>
+        <div class="padContainer">
+        <div class="cfgMenu" id="cfgMenu">
+            <span tabindex="0" data-layer="unsubmitted" class="mapButton buttonLeft buttonSelected" title="Draft">Draft</span><span tabindex="0" data-layer="submitted" class="mapButton buttonRight" title="Waiting Approval">Waiting Approval</span> 
+        </div>
+        <div class="Pad ">
+        <div class="clear"></div>
+
+            <div class="cfgPanel" data-layer="unsubmitted" style="display: block;">
+                <div data-dojo-attach-point="gridDiv" id="gridDiv" style="margin-top: 5px;"></div>
+
+            </div>
+            <div class="cfgPanel" data-layer="submitted" style="display: none;">
+                <div data-dojo-attach-point="gridSubmitted" id="gridSubmitted" style="margin-top: 5p;x"></div>
+            </div>
+
+        </div>
+        </div>
+
+	</div>
+	<div id="es_view_2" data-dojo-attach-point="es_view_2" class="viewPane hidePage">
+        <div id="es_v2_toolbar">
+            <div data-menu="save" class='editToolButton btnSaveIcon' title='Save'></div>
+            <div data-menu="publish" class='editToolButton btnSciaaIcon' title='Send to SCIAA'></div>
+            <div data-menu="cancel" class='editToolButton btnCancelIcon' title='Cancel'></div>
+		</div>
+                
+        <div id="pgContainer">
+       
+       <div class='toolPanel'><span class="header">Draw Site</span> 
+            <div style="margin-left: 5px; width: 100%">
+                <div id="es_v2_btnGeo" class='geoToolButton btnGeoNew' title='Add New Site Boundary'></div>
+                <div id="es_v2_btnSaveGeo" class='geoToolButton btnGeoSave hidePage' title='Save Site Boundary'></div>
+                <div id="es_v2_btnCancel" class='geoToolButton btnGeoCancel hidePage' title='Cancel Site Boundary'></div>
+                <div id="es_v2_iconSave" class="iconInvalidSite" title="Please define a valid site"></div>
+                <div class="clear"></div>
+            </div>
+        </div>
+           
+   
+        <div class='toolPanel siteForm'><span class="header">Site Form</span>
+        <div id="pg_1" data-dojo-type="dijit/layout/ContentPane" data-dojo-attach-point="pg_1" class="formPage">
+
+               <label>County: </label><select data-dojo-type="dijit/form/Select" data-dojo-props="maxHeight:150" id="COUNTY" name="COUNTY" class="formSpace" style="width: 105px;">
+                    <option value="ABBEVILLE">ABBEVILLE</option>
+                    <option value="AIKEN">AIKEN</option>
+                    <option value="ALLENDALE">ALLENDALE</option>
+                    <option value="ANDERSON">ANDERSON</option>
+                    <option value="BAMBERG">BAMBERG</option>
+                    <option value="BARNWELL">BARNWELL</option>
+                    <option value="BEAUFORT">BEAUFORT</option>
+                    <option value="BERKELEY">BERKELEY</option>
+                    <option value="CALHOUN">CALHOUN</option>
+                    <option value="CHARLESTON">CHARLESTON</option>
+                    <option value="CHEROKEE">CHEROKEE</option>
+                    <option value="CHESTER">CHESTER</option>
+                    <option value="CHESTERFIELD">CHESTERFIELD</option>
+                    <option value="CLARENDON">CLARENDON</option>
+                    <option value="COLLETON">COLLETON</option>
+                    <option value="DARLINGTON">DARLINGTON</option>
+                    <option value="DILLON">DILLON</option>
+                    <option value="DORCHESTER">DORCHESTER</option>
+                    <option value="EDGEFIELD">EDGEFIELD</option>
+                    <option value="FAIRFIELD">FAIRFIELD</option>
+                    <option value="FLORENCE">FLORENCE</option>
+                    <option value="GEORGETOWN">GEORGETOWN</option>
+                    <option value="GREENVILLE">GREENVILLE</option>
+                    <option value="GREENWOOD">GREENWOOD</option>
+                    <option value="HAMPTON">HAMPTON</option>
+                    <option value="HORRY">HORRY</option>
+                    <option value="JASPER">JASPER</option>
+                    <option value="KERSHAW">KERSHAW</option>
+                    <option value="LANCASTER">LANCASTER</option>
+                    <option value="LAURENS">LAURENS</option>
+                    <option value="LEE">LEE</option>
+                    <option value="LEXINGTON">LEXINGTON</option>
+                    <option value="MARION">MARION</option>
+                    <option value="MARLBORO">MARLBORO</option>
+                    <option value="MCCORMICK">MCCORMICK</option>
+                    <option value="NEWBERRY">NEWBERRY</option>
+                    <option value="OCONEE">OCONEE</option>
+                    <option value="ORANGEBURG">ORANGEBURG</option>
+                    <option value="PICKENS">PICKENS</option>
+                    <option value="RICHLAND">RICHLAND</option>
+                    <option value="SALUDA">SALUDA</option>
+                    <option value="SPARTANBURG">SPARTANBURG</option>
+                    <option value="SUMTER">SUMTER</option>
+                    <option value="UNION">UNION</option>
+                    <option value="WILLIAMSBURG">WILLIAMSBURG</option>
+                    <option value="YORK">YORK</option>
+                </select><br />
+
+            <label>Recorded By: </label><input data-dojo-type="dijit/form/TextBox" id="RECORDEDBY" name="RECORDEDBY" class="formSpace" /><br />
+            <label>Affiliation: </label><input data-dojo-type="dijit/form/TextBox" id="AFFILIATION" name="AFFILIATION" class="formSpace"  /><br />
+            <label>Date: </label><input data-dojo-type="dijit/form/DateTextBox" id="RECORDEDDATE" name="RECORDEDDATE" class="formSpace" style="width:150px;" /><br />
+
+            <label>Site name: </label><input data-dojo-type="dijit/form/TextBox" id="SITENAME" name="SITENAME" class="formSpace"  /><br />
+            <label class="required">Project: </label><input data-dojo-type="dijit/form/TextBox" id="PROJECT" name="PROJECT" class="formSpace" style="width: 200px"/><br />
+            <label>USGS Quadrangle: </label><input data-dojo-type="dijit/form/TextBox" id="USGSQUADRANGLE" name="USGSQUADRANGLE" class="formSpace"  /><br />
+            <label>UTM Zone: </label><input data-dojo-type="dijit/form/NumberTextBox" id="UTMZONE" name="UTMZONE" class="formSpace" style="width:35px;" /><br />
+            <label class="required">Easting: </label><input data-dojo-type="dijit/form/NumberTextBox" id="GPSEASTING" name="GPSEASTING" class="formSpace" style="width:100px;" /><br />
+            <label class="required">Northing: </label><input data-dojo-type="dijit/form/NumberTextBox" id="GPSNORTHING" name="GPSNORTHING" class="formSpace" style="width:100px;" /><br />
+            <label>Other map reference: </label><br />
+            <textarea data-dojo-type="dijit/form/SimpleTextarea" id="OTHERMAPREFNOTES" name="OTHERMAPREFNOTES" rows="4" cols="50" class="formSpace" ></textarea><br />
+      
+            <label class="groupHeading">Descriptive site type: </label><br />
+            <label>Prehistoric:</label><br /><textarea data-dojo-type="dijit/form/SimpleTextarea" rows="4" cols="50" id="DST_PREHISTORIC" name="DST_PREHISTORIC" ></textarea><br />
+            <label>Historic:</label><br /><textarea data-dojo-type="dijit/form/SimpleTextarea" rows="4" cols="50" id="DST_HISTORIC" name="DST_HISTORIC"  ></textarea><br />
+            
+
+            <span class="required formSpaceTop">Descriptive site type (see handbook)</span><br />
+            <div id="es_chks_dst">
+            <input id="AI_SURVEY" name="AI_SURVEY" data-dojo-type="dijit/form/CheckBox" value="Y" style="margin:2px;" /> <label for="AI_SURVEY">Survey</label><br />
+            <input id="AI_TESTING" name="AI_TESTING" data-dojo-type="dijit/form/CheckBox" value="Y" style="margin:2px;" /> <label for="AI_TESTING">Testing</label><br />
+            <input id="AI_EXCAVATION" name="AI_EXCAVATION" data-dojo-type="dijit/form/CheckBox" value="Y" style="margin:2px;" /> <label for="AI_EXCAVATION">Excavation</label><br />
+            </div>
+                <label>Property Owner: </label><input data-dojo-type="dijit/form/TextBox" id="PROPERTYOWNER" name="PROPERTYOWNER" class="formSpace" /><br />
+            <label>Phone Number: </label><input data-dojo-type="dijit/form/ValidationTextBox" id="PHONENUMBER" name="PHONENUMBER" class="formSpace" style="width:150px;" data-dojo-props="regExp:'[\\w]+', invalidMessage:'Invalid Non-Space Text.'" /><br />
+            <label>Address: </label><input data-dojo-type="dijit/form/TextBox" id="ADDRESS" name="ADDRESS" class="formSpace"  /><br />
+            <label>Other site designations: </label><br /><textarea data-dojo-type="dijit/form/SimpleTextarea" rows="4" cols="50" id="OTHERSITEDESIGNATIONS" name="OTHERSITEDESIGNATIONS" ></textarea><br />
+
+            <span class="required formSpaceTop">National Register of Historic Places recommendation: </span><br />
+            <div id="es_chks_nr">
+            <input id="NRHP_ELIGIBLE" name="NRHP_ELIGIBLE" data-dojo-type="dijit/form/CheckBox" value="Y" style="margin:2px;"/> <label for="NRHP_ELIGIBLE">Eligible</label><br />
+            <input id="NRHP_NONELIGIBLE" name="NRHP_NONELIGIBLE" data-dojo-type="dijit/form/CheckBox" value="Y" style="margin:2px;"/> <label for="NRHP_NONELIGIBLE">Not eligible</label><br />
+            <input id="NRHP_ADDWORK" name="NRHP_ADDWORK" data-dojo-type="dijit/form/CheckBox" value="Y" style="margin:2px;"/> <label for="NRHP_ADDWORK">Additional Work</label><br />
+                </div>
+            <label style="margin-top: 5px;">Level of significance: </label><br />
+            <input id="LOS_NATIONAL" name="LOS_NATIONAL" data-dojo-type="dijit/form/CheckBox" value="Y" style="margin:2px;"/> <label for="LOS_NATIONAL">National</label><br />
+            <input id="LOS_STATE" name="LOS_STATE" data-dojo-type="dijit/form/CheckBox" value="Y" style="margin:2px;"/> <label for="LOS_STATE">State</label><br />
+            <input id="LOS_LOCAL" name="LOS_LOCAL" data-dojo-type="dijit/form/CheckBox" value="Y" style="margin:2px;"/> <label for="LOS_LOCAL">Local</label><br />
+
+            <label>Justification: </label><br /><textarea data-dojo-type="dijit/form/SimpleTextarea" rows="4" cols="50" id="JUSTIFICATION" name="JUSTIFICATION" ></textarea>
+        </div>
+        <div id="pg_2" data-dojo-type="dijit/layout/ContentPane" data-dojo-attach-point="pg_2" class="formPage hidePage">
+                <label>General physiographic province: </label>
+                <select data-dojo-type="dijit/form/Select" id="PROVINCE" name="PROVINCE" class="formSpace" style="width: 135px;" >
+                    <option value="0">Lower Coastal Plain</option>
+                    <option value="1">Middle Coastal Plain</option>
+                    <option value="2" >Upper Coastal Plain</option>
+                    <option value="3">Piedmont</option>
+                    <option value="4">Blue Ridge Mountains</option>
+                </select><br />
+            
+
+            <label class="required">Landform Location: </label><input data-dojo-type="dijit/form/TextBox" id="LANDFORMLOCATION" name="LANDFORMLOCATION" class="formSpace" /><br />
+            <label>Site elevation (above MSEL): </label><input data-dojo-type="dijit/form/TextBox" id="SITEELEVATION" name="SITEELEVATION" class="formSpace" style="width:50px;" /><label>(in feet)</label><br />
+            <label>On site soil type: </label>
+                <select data-dojo-type="dijit/form/Select" id="SOILTYPE" name="SOILTYPE" class="formSpace" style="width: 100px;" >
+                    <option value="0">Clay</option>
+                    <option value="1">Clay/Loam</option>
+                    <option value="2">Silty/Clay</option>
+                    <option value="3">Sandy/Clay/Loam</option>
+                    <option value="4">Sandy/Loam</option>
+                    <option value="5">Sand</option>
+                    <option value="6">Silt</option>
+                    <option value="7">Silty/Loam</option>
+                    <option value="8">Sandy/Clay</option>
+                    <option value="9">Silty/Clay/Loam</option>
+                    <option value="10">Loam</option>
+                    <option value="11">Loam/Sand</option>
+                    <option value="12">Gravel</option>
+                    <option value="13">Organic</option>
+                    <option value="14">Other</option>
+                </select><br />
+            
+            <label>Soil Classification: </label><input data-dojo-type="dijit/form/TextBox" id="SOILCLASSIFICATION" name="SOILCLASSIFICATION" class="formSpace" style="width: 200px;" /><br />
+            <label>Major River System: </label><br />
+                <select data-dojo-type="dijit/form/Select" id="MAJORRIVER" name="MAJORRIVER" class="formSpace" style="width: 150px;" >
+                    <option value="0">Pee Dee</option>
+                    <option value="1">Santee</option>
+                    <option value="2" >Ashley-Combahee-Edisto</option>
+                    <option value="3">Savannah</option>
+                </select><br />
+            
+            <label class="required">Nearest River/stream: </label><input data-dojo-type="dijit/form/TextBox" id="NEARESTRIVERSTREAM" name="NEARESTRIVERSTREAM"  class="formSpace" /><br />
+
+            <span class="required formSpaceTop">Current vegetation: </span><br />
+            <div id="es_chks_cv">
+            <input id="CV_PINECONF" name="CV_PINECONF" data-dojo-type="dijit/form/CheckBox" value="Y" /> <label for="CV_PINECONF">Pine/coniferous</label><br />
+            <input id="CV_HARDWOOD" name="CV_HARDWOOD" data-dojo-type="dijit/form/CheckBox" value="Y" /> <label for="CV_HARDWOOD">Hardwood</label><br />
+            <input id="CV_MIXEDPINEHW" name="CV_MIXEDPINEHW" data-dojo-type="dijit/form/CheckBox" value="Y" /> <label for="CV_MIXEDPINEHW">Mixed pine/hardwood</label><br />
+            <input id="CV_OLDFIELD" name="CV_OLDFIELD" data-dojo-type="dijit/form/CheckBox" value="Y" /> <label for="CV_OLDFIELD">Old Field</label><br />
+            <input id="CV_GRASSPASTURE" name="CV_GRASSPASTURE" data-dojo-type="dijit/form/CheckBox" value="Y" /> <label for="CV_GRASSPASTURE">Grass Pasture</label><br />
+            <input id="CV_AGRICULTURE" name="CV_AGRICULTURE" data-dojo-type="dijit/form/CheckBox" value="Y" /> <label for="CV_AGRICULTURE">Agricultural/crops</label><br />
+            <input id="CV_WETLANDSFRESHWAT" name="CV_WETLANDSFRESHWAT" data-dojo-type="dijit/form/CheckBox" value="Y" /> <label for="CV_WETLANDSFRESHWAT">Wetlands/freshwater</label><br />
+            <input id="CV_WETLANDSSALTWAT" name="CV_WETLANDSSALTWAT" data-dojo-type="dijit/form/CheckBox" value="Y" /> <label for="CV_WETLANDSSALTWAT">Wetlands/saltwater</label><br />
+            <input id="CV_OTHER" name="CV_OTHER" data-dojo-type="dijit/form/CheckBox" value="Y" /> <label for="CV_OTHER">Other</label><br />
+            </div>
+                <label class="formSpaceTop">Comments: </label><br /><textarea data-dojo-type="dijit/form/SimpleTextarea" rows="4" cols="50" id="VEGCOMMENTS" name="VEGCOMMENTS" class="formSpace" ></textarea><br />
+            
+
+            <label>Description of Ground Cover: </label><br />
+                <select data-dojo-type="dijit/form/Select" id="COVERTYPE" name="COVERTYPE" class="formSpace" style="width: 75px;" >
+                    <option value="0">Absent</option>
+                    <option value="1">Light</option>
+                    <option value="2" >Moderate</option>
+                    <option value="3">Heavy</option>
+                </select><br />
+            
+       </div>
+        <div id="pg_3" data-dojo-type="dijit/layout/ContentPane" data-dojo-attach-point="pg_3" class="formPage hidePage">
+            <label>Estimated site dimensions: </label><input data-dojo-type="dijit/form/NumberTextBox" id="SITELENGTH" name="SITELENGTH" class="formSpace" style="width:75px;" /><br />
+            <label>meters by: </label><input data-dojo-type="dijit/form/NumberTextBox" id="SITEWIDTH" name="SITEWIDTH" class="formSpace" class="formSpace" style="width:75px;" /><label>meters</label><br />
+            <label class="required">Site depth: </label><input data-dojo-type="dijit/form/NumberTextBox" id="SITEDEPTH" name="SITEDEPTH" class="formSpace" style="width:75px;" /><label>cm.</label><br />
+            <label>Cultural Features: </label><br />
+            <textarea data-dojo-type="dijit/form/SimpleTextarea" rows="4" cols="50" id="CULTURALFEATURES" name="CULTURALFEATURES" class="formSpace" ></textarea><br />
+            
+            <label>Presence of: </label><br />
+            <input id="NH_MIDDEN" name="NH_MIDDEN" data-dojo-type="dijit/form/CheckBox" value="Y" /> <label for="NH_MIDDEN">Midden</label><br />
+            <input id="NH_FLORAL" name="NH_FLORAL" data-dojo-type="dijit/form/CheckBox" value="Y" /> <label for="NH_FLORAL">Floral Remains</label><br />
+            <input id="NH_FAUNA" name="NH_FAUNA" data-dojo-type="dijit/form/CheckBox" value="Y" /> <label for="NH_FAUNA">Faunal Remains</label><br />
+            <input id="NH_SHELL" name="NH_SHELL" data-dojo-type="dijit/form/CheckBox" value="Y" /> <label for="NH_SHELL">Shell</label><br />
+            <input id="NH_CHARCOAL" name="NH_CHARCOAL" data-dojo-type="dijit/form/CheckBox" value="Y" /> <label for="NH_CHARCOAL">Charcoal</label><br />
+            
+
+            <label>Human skeletal remains: </label>
+                <select data-dojo-type="dijit/form/Select" id="HUMANREMAINS" name="HUMANREMAINS" class="formSpace" style="width: 100px;" >
+                    <option value="0">Present</option>
+                    <option value="1">Absent</option>
+                    <option value="2" >Unknown</option>
+                </select><br />
+            <label>Human skeletal preservation: </label>
+                <select data-dojo-type="dijit/form/Select" id="HUMANREMAINSPRESERVATION" name="HUMANREMAINSPRESERVATION" class="formSpace" style="width: 100px;" >
+                    <option value="1">Good</option>
+                    <option value="0">Poor</option>
+                    <option value="2" >Unknown</option>
+                </select><br />
+           
+
+            <label class="required">General Site Description: </label><br /><textarea data-dojo-type="dijit/form/SimpleTextarea" rows="4" cols="50" id="GENERALSITEDESCRIPTION" name="GENERALSITEDESCRIPTION" class="formSpace"></textarea> <br />
+            <span class="formSpaceTop">Location Description: </span><br /><textarea data-dojo-type="dijit/form/SimpleTextarea" rows="4" cols="50" id="LOCATIONDESCRIPTION" name="LOCATIONDESCRIPTION" class="formSpace" ></textarea> <br />
+
+        </div>
+        <div id="pg_4" data-dojo-type="dijit/layout/ContentPane" data-dojo-attach-point="pg_4" class="formPage hidePage">
+            <label class="required">Archaeological Components: </label><br />
+            <div id="es_chks_ac">
+            <input id="ARC_PALEO" name="ARC_PALEO" data-dojo-type="dijit/form/CheckBox" value="Y" /> <label for="ARC_PALEO">Paleo Indian</label><br />
+            <input id="ARC_EARLYARCHAIC" name="ARC_EARLYARCHAIC" data-dojo-type="dijit/form/CheckBox" value="Y" /> <label for="ARC_EARLYARCHAIC">Early Archaic</label><br />
+           <input id="ARC_MIDDLEARCHAIC" name="ARC_MIDDLEARCHAIC" data-dojo-type="dijit/form/CheckBox" value="Y" /> <label for="ARC_MIDDLEARCHAIC">Middle Archaic</label><br />
+            <input id="ARC_LATEARCHAIC" name="ARC_LATEARCHAIC" data-dojo-type="dijit/form/CheckBox" value="Y" /> <label for="ARC_LATEARCHAIC">Late Archaic</label><br />
+            <input id="ARC_EARLYWOODLAND" name="ARC_EARLYWOODLAND" data-dojo-type="dijit/form/CheckBox" value="Y" /> <label for="ARC_EARLYWOODLAND">Early Woodland</label><br />
+            <input id="ARC_MIDDLEWOODLAND" name="ARC_MIDDLEWOODLAND" data-dojo-type="dijit/form/CheckBox" value="Y" /> <label for="ARC_MIDDLEWOODLAND">Middle Woodland</label><br />  
+                <input id="ARC_LATEWOODLAND" name="ARC_LATEWOODLAND" data-dojo-type="dijit/form/CheckBox" value="Y" /> <label for="ARC_LATEWOODLAND">Late Woodland</label><br />
+            <input id="ARC_MISSISSIPPIAN" name="ARC_MISSISSIPPIAN" data-dojo-type="dijit/form/CheckBox" value="Y" /> <label for="ARC_MISSISSIPPIAN">Mississippian</label><br />
+            <input id="ARC_UNKNOWNPREHISTORIC" name="ARC_UNKNOWNPREHISTORIC" data-dojo-type="dijit/form/CheckBox" value="Y" /> <label for="ARC_UNKNOWNPREHISTORIC">Unknown Prehistoric</label><br />
+            <input id="ARC_16CENTURY" name="ARC_16CENTURY" data-dojo-type="dijit/form/CheckBox" value="Y" /> <label for="ARC_16CENTURY">16th Century</label><br />
+                <input id="ARC_17CENTURY" name="ARC_17CENTURY" data-dojo-type="dijit/form/CheckBox" value="Y" /> <label for="ARC_17CENTURY">17th Century</label><br />
+            <input id="ARC_18CENTURY" name="ARC_18CENTURY" data-dojo-type="dijit/form/CheckBox" value="Y" /> <label for="ARC_18CENTURY">18th Century</label><br />
+            <input id="ARC_19CENTURY" name="ARC_19CENTURY" data-dojo-type="dijit/form/CheckBox" value="Y" /> <label for="ARC_19CENTURY">19th Century</label><br />
+            <input id="ARC_20CENTURY" name="ARC_20CENTURY" data-dojo-type="dijit/form/CheckBox" value="Y" /> <label for="ARC_20CENTURY">20th Century</label><br />
+            <input id="ARC_UNKNOWNHISTORIC" name="ARC_UNKNOWNHISTORIC" data-dojo-type="dijit/form/CheckBox" value="Y" /> <label for="ARC_UNKNOWNHISTORIC">Unknown Historic</label><br />
+            
+                
+                <!-- <input id="ARC_ANYWOODLAND" name="ARC_ANYWOODLAND" data-dojo-type="dijit/form/CheckBox" value="Y" /> <label for="ARC_ANYWOODLAND">Any Woodland Period</label><br />             
+                <input id="ARC_LATEPREHISTORIC" name="ARC_LATEPREHISTORIC" data-dojo-type="dijit/form/CheckBox" value="Y" /> <label for="ARC_LATEPREHISTORIC">Late Prehistoric</label><br />              
+                <input id="ARC_ANYARCHAIC" name="ARC_ANYARCHAIC" data-dojo-type="dijit/form/CheckBox" value="Y" /> <label for="ARC_ANYARCHAIC">Any Archaic</label><br />
+                <input id="ARC_ERAPREHISTORIC" name="ARC_ERAPREHISTORIC" data-dojo-type="dijit/form/CheckBox" value="Y" /> <label for="ARC_ERAPREHISTORIC">Contact Era Prehistoric</label><br />
+            -->
+                
+                     </div>
+        </div>
+        <div id="pg_5" data-dojo-type="dijit/layout/ContentPane" data-dojo-attach-point="pg_5" class="formPage hidePage">
+            <label class="groupHeading">Data Recovered</label><br />
+            <label>Total number of artifacts: </label><input data-dojo-type="dijit/form/NumberTextBox" id="TOTALARTIFACTS" name="TOTALARTIFACTS" class="formSpace" style="width:50px;" /><br />
+            <label class="groupHeading">List materials recovered: </label>
+            <div id="es_v2_pg5_btnAddItem" class='addItemButton' title='Add Item'>Add Item</div>
+            <br />
+            <table id="es_DataRecovered">
+                <tr>
+                    <th class="numColumn">Num.</th>
+                    <th class="fillColumn">Data Recovered</th>
+                    <th class="deleteColumn hCenterColumn"></th>
+                </tr>
+            </table>
+            <label class="groupHeading formSpaceTop">Data Recovery Methods</label><br />
+            <label>Ground surface visibility: </label><br />
+            <input id="VIS_0" name="VIS_0" data-dojo-type="dijit/form/CheckBox" value="Y" /> <label for="VIS_0">0%</label><br />
+            <input id="VIS_1_25" name="VIS_1_25" data-dojo-type="dijit/form/CheckBox" value="Y" /> <label for="VIS_1_25">1-25%</label><br />
+            <input id="VIS_26_50" name="VIS_26_50" data-dojo-type="dijit/form/CheckBox" value="Y" /> <label for="VIS_26_50">26-50%</label><br />
+            <input id="VIS_51_75" name="VIS_51_75" data-dojo-type="dijit/form/CheckBox" value="Y" /> <label for="VIS_51_75">51-75%</label><br />
+            <input id="VIS_76_100" name="VIS_76_100" data-dojo-type="dijit/form/CheckBox" value="Y" /> <label for="VIS_76_100">76-100%</label><br />
+           
+            <span class="formSpaceTop">Number of person hours spent collecting (total hours x total people): </span><input data-dojo-type="dijit/form/NumberTextBox" id="TOTALHOURSCOLLECTING" name="TOTALHOURSCOLLECTING" class="formSpace" style="width:35px;" /><br />
+
+            <span class="groupHeading formSpaceTop">Description of surface collection methods:</span><br />
+            <label>Collection Type:</label><br />
+            <input id="CT_GRID" name="CT_GRID" data-dojo-type="dijit/form/CheckBox" value="Y" /> <label for="CT_GRID">Grid Collection</label><br />
+            <input id="CT_CONTROLLED" name="CT_CONTROLLED" data-dojo-type="dijit/form/CheckBox" value="Y" /> <label for="CT_CONTROLLED">Controlled Sampling</label><br />
+            <input id="CT_GRAB" name="CT_GRAB" data-dojo-type="dijit/form/CheckBox" value="Y" /> <label for="CT_GRAB">Grab Collection</label><br />
+            <input id="CT_OTHER" name="CT_OTHER" data-dojo-type="dijit/form/CheckBox" value="Y" /> <label for="CT_OTHER">Other</label><br />
+            
+
+            <span class="formSpaceTop">Collection Comments: </span><br /><textarea data-dojo-type="dijit/form/SimpleTextarea" rows="4" cols="50" id="COLLECTIONCOMMENTS" name="COLLECTIONCOMMENTS" class="formSpace" ></textarea> <br />
+
+            <label>Collection Extent: </label><br />
+            <input id="COLEXT_COMPLETE" name="COLEXT_COMPLETE" data-dojo-type="dijit/form/CheckBox" value="Y" /> <label for="COLEXT_COMPLETE">Complete</label><br />
+            <input id="COLEXT_SELECTIVE" name="COLEXT_SELECTIVE" data-dojo-type="dijit/form/CheckBox" value="Y" /> <label for="COLEXT_SELECTIVE">Selective</label><br />
+            <input id="COLEXT_NO_COLLECT" name="COLEXT_NO_COLLECT" data-dojo-type="dijit/form/CheckBox" value="Y" /> <label for="COLEXT_NO_COLLECT">No Collection Made</label><br />       
+
+            <label>Description of testing methods: </label>
+                <select data-dojo-type="dijit/form/Select" id="TESTINGMETHOD" name="TESTINGMETHOD" class="formSpace" >
+                        <option value="0">Systematic</option>
+                        <option value="1">Nonsystematic</option>
+                </select><br />
+            
+
+            <span class="formSpaceTop">Testing Units: </span>
+            <div id="es_v2_pg5_btnTuAddItem" class='addItemButton' title='Add Unit'>Add Unit</div>
+            <br />
+            <table id="es_TestingUnits" class="relatedTables">
+                <tr>
+                    <th class="menuColumn">Test Type</th>
+                    <th class="numColumn">Num.</th>
+                    <th class="numDblColumn">Size <br />(cm/m)</th>
+                    <th class="numDblColumn">Max. Depth <br />(cm)</th>
+                    <th class="fillColumn">Comment</th>
+                    <th class="deleteColumn hCenterColumn"></th>
+                </tr>
+            </table>
+
+            <span class="formSpaceTop">Description of excavation units: </span>
+            <div id="es_v2_pg5_btnEuAddItem" class='addItemButton' title='Add Unit'>Add Unit</div>
+            <br />
+            <table id="es_ExcavUnits" class="relatedTables">
+                <tr>
+                    <th class="numColumn">Num.</th>
+                    <th class="numDblColumn">Size <br />(cm/m)</th>
+                    <th class="numDblColumn">Max. Depth <br />(cm)</th>
+                    <th class="commentColumn">Comment</th>
+                    <th class="deleteColumn hCenterColumn"></th>
+                </tr>
+            </table>
+
+        </div>
+        <div id="pg_6" data-dojo-type="dijit/layout/ContentPane" data-dojo-attach-point="pg_6" class="formPage hidePage">
+            <label>Present land use: </label><br />
+            <input id="LU_AGRICULTURE" name="LU_AGRICULTURE" data-dojo-type="dijit/form/CheckBox" value="Y" /> <label for="LU_AGRICULTURE">Agricultural</label><br />
+            <input id="LU_RESIDENTIALHD" name="LU_RESIDENTIALHD" data-dojo-type="dijit/form/CheckBox" value="Y" /> <label for="LU_RESIDENTIALHD">Residential, high density</label><br />
+            <input id="LU_FOREST" name="LU_FOREST" data-dojo-type="dijit/form/CheckBox" value="Y" /> <label for="LU_FOREST">Forest</label><br />
+            <input id="LU_COMMERCIAL" name="LU_COMMERCIAL" data-dojo-type="dijit/form/CheckBox" value="Y" /> <label for="LU_COMMERCIAL">Commercial</label><br />
+            <input id="LU_FALLOW" name="LU_FALLOW" data-dojo-type="dijit/form/CheckBox" value="Y" /> <label for="LU_FALLOW">Fallow</label><br />
+            <input id="LU_INDUSTRIAL" name="LU_INDUSTRIAL" data-dojo-type="dijit/form/CheckBox" value="Y" /> <label for="LU_INDUSTRIAL">Industrial</label><br />
+            <input id="LU_RESIDENTIALLD" name="LU_RESIDENTIALLD" data-dojo-type="dijit/form/CheckBox" value="Y" /> <label for="LU_RESIDENTIALLD">Residential, low density</label><br />
+            <input id="LU_OTHER" name="LU_OTHER" data-dojo-type="dijit/form/CheckBox" value="Y" /> <label for="LU_OTHER">Other</label><br />
+            
+
+            <span class="formSpaceTop">Land Use Comments: </span><br /><textarea data-dojo-type="dijit/form/SimpleTextarea" rows="4" cols="50" id="LANDUSECOMMENTS" name="LANDUSECOMMENTS" class="formSpace" ></textarea><br />
+
+            <label>Present condition of site:</label>
+                <select data-dojo-type="dijit/form/Select" id="SITEINTEGRITY" name="SITEINTEGRITY" class="formSpace" style="width: 75px;">
+                    <option value="0">Intact</option>
+                    <option value="1">Damaged</option>
+                    <option value="2">Unknown</option>
+                </select><br />
+            
+
+            <label>Extent of Damage:</label>
+             <select data-dojo-type="dijit/form/Select" id="DAMAGEEXTENT" name="DAMAGEEXTENT" class="formSpace"  style="width: 75px;">
+                    <option value="0">Light</option>
+                    <option value="1">Moderate</option>
+                    <option value="2">Heavy</option>
+             </select><br />
+            
+              
+            <span class="formSpace" >Nature of Damage: </span><br />
+            <input id="DAMAGE_EROSION" name="DAMAGE_EROSION" data-dojo-type="dijit/form/CheckBox" value="Y" /> <label for="DAMAGE_EROSION">Erosion</label><br />
+            <input id="DAMAGE_VANDALISM" name="DAMAGE_VANDALISM" data-dojo-type="dijit/form/CheckBox" value="Y" /> <label for="DAMAGE_VANDALISM">Vandalism</label><br />
+            <input id="DAMAGE_CULTIVATION" name="DAMAGE_CULTIVATION" data-dojo-type="dijit/form/CheckBox" value="Y" /> <label for="DAMAGE_CULTIVATION">Cultivation</label><br />
+            <input id="DAMAGE_INUNDATION" name="DAMAGE_INUNDATION" data-dojo-type="dijit/form/CheckBox" value="Y" /> <label for="DAMAGE_INUNDATION">Inundation</label><br />
+            <input id="DAMAGE_LOGGING" name="DAMAGE_LOGGING" data-dojo-type="dijit/form/CheckBox" value="Y" /> <label for="DAMAGE_LOGGING">Logging</label><br />
+            <input id="DAMAGE_OTHER" name="DAMAGE_OTHER" data-dojo-type="dijit/form/CheckBox" value="Y" /> <label for="DAMAGE_OTHER">Other</label><br />
+            <input id="DAMAGE_CONSTRUCTION" name="DAMAGE_CONSTRUCTION" data-dojo-type="dijit/form/CheckBox" value="Y" /> <label for="DAMAGE_CONSTRUCTION">Construction/Development</label><br />
+            
+
+            <span class="formSpaceTop">Nature of Damage Comments: </span><br /><textarea data-dojo-type="dijit/form/SimpleTextarea" rows="4" cols="50" id="DamageComments" name="DAMAGECOMMENTS" class="formSpace" ></textarea><br />
+
+            <label class="groupHeading">Potential impacts and threats to site:</label><br /><label>Potential Threat:</label>
+            <select data-dojo-type="dijit/form/Select" id="THREATPOTENTIAL" name="THREATPOTENTIAL" class="formSpace" style="width: 75px;">
+                    <option value="0">None</option>
+                    <option value="1">Low</option>
+                    <option value="2">Moderate</option>
+                    <option value="3">Heavy</option>
+             </select><br />
+                
+                
+            <span class="formSpaceTop" >Nature of Threat: </span><br />
+            <input id="THREAT_EROSION" name="THREAT_EROSION" data-dojo-type="dijit/form/CheckBox" value="Y" /> <label for="THREAT_EROSION">Erosion</label><br />
+            <input id="THREAT_VANDALISM" name="THREAT_VANDALISM" data-dojo-type="dijit/form/CheckBox" value="Y" /> <label for="THREAT_VANDALISM">Vandalism</label><br />
+            <input id="THREAT_CULTIVATION" name="THREAT_CULTIVATION" data-dojo-type="dijit/form/CheckBox" value="Y" /> <label for="THREAT_CULTIVATION">Cultivation</label><br />
+            <input id="THREAT_INUNDATION" name="THREAT_INUNDATION" data-dojo-type="dijit/form/CheckBox" value="Y" /> <label for="THREAT_INUNDATION">Inundation</label><br />
+            <input id="THREAT_LOGGING" name="THREAT_LOGGING" data-dojo-type="dijit/form/CheckBox" value="Y" /> <label for="THREAT_LOGGING">Logging</label><br />
+            <input id="THREAT_OTHER" name="THREAT_OTHER" data-dojo-type="dijit/form/CheckBox" value="Y" /> <label for="THREAT_OTHER">Other</label><br />
+            <input id="THREAT_CONSTRUCTION" name="THREAT_CONSTRUCTION" data-dojo-type="dijit/form/CheckBox" value="Y" /> <label for="THREAT_CONSTRUCTION">Construction/Development</label><br />
+            
+
+            <label>Nature of Threat Comments: </label><textarea data-dojo-type="dijit/form/SimpleTextarea" rows="4" cols="50" id="THREATCOMMENTS" name="THREATCOMMENTS" class="formSpace" ></textarea><br />
+
+            <label class="required" class="formSpace" >Recommendations for further work: </label><br />
+            <div id="es_chks_rfw">
+            <input id="REC_SURVEY" name="REC_SURVEY" data-dojo-type="dijit/form/CheckBox" value="Y" /> <label for="REC_SURVEY">Survey</label><br />
+            <input id="REC_TESTING" name="REC_TESTING" data-dojo-type="dijit/form/CheckBox" value="Y" /> <label for="REC_TESTING">Testing</label><br />
+            <input id="REC_EXCAVATION" name="REC_EXCAVATION" data-dojo-type="dijit/form/CheckBox" value="Y" /> <label for="REC_EXCAVATION">Excavation</label><br />
+            <input id="REC_ARCHIVAL" name="REC_ARCHIVAL" data-dojo-type="dijit/form/CheckBox" value="Y" /> <label for="REC_ARCHIVAL">Archival</label><br />
+            <input id="REC_NONE" name="REC_NONE" data-dojo-type="dijit/form/CheckBox" value="Y" /> <label for="REC_NONE">None</label><br />
+            <input id="REC_OTHER" name="REC_OTHER" data-dojo-type="dijit/form/CheckBox" value="Y" /> <label for="REC_OTHER">Other</label><br />
+            </div>
+                <span class="formSpaceTop">Comments: </span><br /><textarea data-dojo-type="dijit/form/SimpleTextarea" rows="4" cols="50" id="RECOMMENDCOMMENTS" name="RECOMMENDCOMMENTS" class="formSpace" ></textarea><br />
+            
+
+            <label>References: Historical/Archival Documentation</label><br />
+                <select data-dojo-type="dijit/form/Select" id="HISTORICALARCHIVALDOC" name="HISTORICALARCHIVALDOC" class="formSpace" style="width:75px;">
+                    <option value="0">Yes</option>
+                    <option value="1">No</option>
+                    <option value="2">Unknown</option>
+             </select><br />
+                
+            
+            <label>Comments: </label><textarea data-dojo-type="dijit/form/SimpleTextarea" rows="4" cols="50" id="HISTORICALARCHIVALDOCNOTES" name="HISTORICALARCHIVALDOCNOTES" class="formSpace" ></textarea><br />
+
+            <label>Archaeological Documentation</label>
+                <select data-dojo-type="dijit/form/Select" id="ARCHAEOLOGICALDOC" name="ARCHAEOLOGICALDOC" class="formSpace" style="width:75px;">
+                    <option value="0">Yes</option>
+                    <option value="1">No</option>
+                    <option value="2">Unknown</option>
+             </select><br />
+                
+
+            <label>Comments: </label><textarea data-dojo-type="dijit/form/SimpleTextarea" rows="4" cols="50" id="ARCHAEOLOGICALDOCNOTES" name="ARCHAEOLOGICALDOCNOTES" class="formSpace" ></textarea><br />
+
+            <label>Additional managment information/comments: </label><br /><textarea data-dojo-type="dijit/form/SimpleTextarea" rows="4" cols="50" id="MANAGEMENTCOMMENTS" name="MANAGEMENTCOMMENTS" class="formSpace" ></textarea><br />
+
+            <label>Location of existing collections: </label><br /><textarea data-dojo-type="dijit/form/SimpleTextarea" rows="4" cols="50" id="COLLECTIONSLOCATION" name="COLLECTIONSLOCATION" class="formSpace" ></textarea><br />
+
+            <label>Location of photographs: </label><br /><textarea data-dojo-type="dijit/form/SimpleTextarea" rows="4" cols="50" id="PHOTOLOCATION" name="PHOTOLOCATION" class="formSpace" ></textarea><br />
+
+            <label>Location of special samples: </label><br /><textarea data-dojo-type="dijit/form/SimpleTextarea" rows="4" cols="50" id="SAMPLELOCATION" name="SAMPLELOCATION" class="formSpace" ></textarea><br />
+
+            <label>Types of special samples: </label><br /><textarea data-dojo-type="dijit/form/SimpleTextarea" rows="4" cols="50" id="SAMPLETYPE" name="SAMPLETYPE" class="formSpace" ></textarea><br />
+            
+        </div>
+
+            <div id="navBar" class="navBar" >
+                <div id="btnBack" class="toolbarButton" data-action="back">Back</div>
+                <span id="pages">1 of 6</span>
+                <div id="btnNext" class="toolbarButton" data-action="next">Next</div>
+            </div>
+
+            </div> <!--Site Form-->
+             <br />
+             <div class='toolPanel attachForm'><span class="header">Attachments</span> 
+            <div id="es_v2_attachment" style="margin-left: 5px; width: 100%"></div>
+        </div>
+       
+
+        </div> <!--Page Container-->
+            
+	</div>
+    <div id="es_view_3" data-dojo-attach-point="es_view_3" class="viewPane hidePage">
+        <div id="loadingOverlay" class="loadingOverlay pageOverlay">
+            <div id="loadingMessage" class="loadingMessage">Loading...</div>
+        </div>
+    </div>
+    <div id="es_view_4" data-dojo-attach-point="es_view_4" class="viewPane hidePage">
+        <span>Are you sure you want to delete this draft site?</span>
+        <div>
+            <div id="es_v4_btnDeleteSite" class='toolbarButton' title='Delete'>Delete</div>
+            <div id="es_v4_btnCancel" class='toolbarButton' title='Cancel'>Cancel</div>
+        </div>
+    </div>
+    <div id="es_view_5" data-dojo-attach-point="es_view_5" class="viewPane hidePage">
+        <div id="es_v5_btnGeoSearch" class='toolbarButton' title='Select Site by Point'>Select Site by Point</div>
+        <div id="es_v5_btnCancel" class='toolbarButton' title='Cancel'>Cancel</div>
+
+        <div><label>Search by Site Number: </label><input data-dojo-type="dijit/form/TextBox" id="attrSearch" name="attrSearch" data-dojo-attach-event='onKeyUp: attributeSearch' data-dojo-props="placeHolder:'Enter Site Number'" />
+        </div>
+        <div id="v_5_pg_1" data-dojo-type="dijit/layout/ContentPane" data-dojo-attach-point="v_5_pg_1" style="overflow: auto; width: 325px; height: 300px;">
+            <div data-dojo-attach-point="searchList" id="searchList" style="margin-top: 30px; margin-left: 5px;"></div>
+        </div>
+        
+    </div>
+    <div id="es_view_6" data-dojo-attach-point="es_view_6" class="viewPane hidePage">
+        <div>
+        <div id="es_v6_btnBackForm" class='toolbarButton right' title='Back to Form'>Back to Form</div>
+  </div>
+        <div class="errorTitle">Validation Errors</div>
+        
+        <div id="v_6_errors" data-dojo-type="dijit/layout/ContentPane" data-dojo-attach-point="v_6_errors" style="overflow: auto; width: 325px; height: 300px;">
+            
+        </div>
+    </div>
+    <div id="es_view_7" data-dojo-attach-point="es_view_7" class="viewPane hidePage">
+        
+        <span id="v_7_message"></span>
+        <br />
+        <div id="v_7_btn" class='toolbarButton' title='Back to Form'>Back to Form</div>
+    </div>
+    <div id="es_view_8" data-dojo-attach-point="es_view_8" class="viewPane hidePage">
+        <span>Are you sure you want to publish this site to SCIAA?  Once you publish, you will be unable to make additional changes.</span>
+        <div>
+            <div id="v_8_btnYes" class='toolbarButton' title='Yes'>Yes</div>
+            <div id="v_8_btnNo" class='toolbarButton' title='No'>No</div>
+        </div>
+    </div>
+  
+    <div id="es_view_11" data-dojo-attach-point="es_view_11" class="viewPane hidePage">
+        <span id="v_11_msg"></span>
+        <div>
+            <div id="v_11_btnCreate" class='toolbarButton' title='Create New'>Create New</div>
+            <div id="v_11_btnCancel" class='toolbarButton' title='Cancel'>Cancel</div>
+        </div>
+        <div class="padContainer">
+        <div class="Pad ">
+            <div class="cfgPanel" style="display: block;">
+                <div data-dojo-attach-point="v_11_revistList" id="v_11_revistList" style="margin-top: 5px;"></div>
+
+            </div>
+
+        </div>
+        </div>
+    </div>
+    <div id="es_view_12" data-dojo-attach-point="es_view_12" class="viewPane hidePage">
+        <form enctype="multipart/form-data" method="post" id="uploadForm">
+        <div>
+        <label>
+             <span><strong>Add File</strong></span>
+                 <input type="file" name="file" id="inFile" />
+        </label>
+        </div>
+        </form>
+        <span class="file-upload-status" style="opacity:1;" id="upload-status"></span>
+        <div id="fileInfo">&nbsp;</div>   
+
+        <div id='es_v12_btnBack' class='toolbarButton' title='Back'>Back</div>
+
+    </div>
+</div>

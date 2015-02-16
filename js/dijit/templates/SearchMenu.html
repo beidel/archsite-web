@@ -1,0 +1,38 @@
+﻿<div class="${theme}" role="presentation">
+ <div class="${_css.container}">
+     
+     <div id="search_view_1" class="viewPane">
+    <div style="margin-top:0px;">
+        <div>Selection Tools: Use these tools to select an area on the map</div>
+        <div id="at_toolbuttons" class="toolButtons">
+            <div id="at_GsPoly" data-menu="polygon" class="attrButton spatSrchPolygon" title="Select by Polygon"></div>
+            <div id="at_GsExt" data-menu="extent" class="attrButton spatSrchExtent" title="Select by Extent"></div>
+            <div id="at_GsLine" data-menu="polyline" class="attrButton spatSrchLine" title="Select by Line"></div>
+            <div id="at_GsPoint" data-menu="point" class="attrButton spatSrchPoint" title="Select by Point"></div>
+            <div id="at_GsFreehand" data-menu="freehandpolygon" class="attrButton spatSrchFreePoly" title="Select by Freehand Polygon"></div>
+        </div>
+    </div>
+
+    <div class="bufferTools">
+    <input id="at_UseBuffer" name="at_UseBuffer" type="checkbox" value="Y" /> <label for="at_UseBuffer">Apply a Buffer?</label><br />
+    <label>Buffer: </label><input type="text" id="at_txtBufferDist" name="at_txtBufferDist"style="width: 50px;" data-dojo-props="placeHolder:'100'"/>
+    <select id="at_cmbBufferUnits" name="at_cmbBufferUnits" style="width: 75px;">
+        <option value="meters">meters</option>
+        <option value="kilometers">kilometers</option>
+        <option value="feet">feet</option>
+        <option value="miles">miles</option>
+    </select>
+    </div> 
+    </div>
+
+     <div id="search_view_2" class="viewPane hidePane">
+         <span id='search_btnBackTools' class='toolbarButton sideButton' title='Back'>Back</span>
+    <div id="at_results" class="tableResults"></div>
+         </div>
+
+     <div id="search_view_3" class="viewPane hidePane">
+         <span id='search_btnBackResults' class='toolbarButton sideButton' title='Back'>Back</span>
+     <div id="at_details" class="tableResults"></div>
+         </div>
+</div>
+</div>

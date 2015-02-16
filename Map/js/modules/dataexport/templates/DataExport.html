@@ -1,0 +1,49 @@
+﻿<div id="dex_containerNode" class="dataExport" >
+    <div id="dex_view_1" class="viewPane">
+        <div class="atPanel">
+            <div class="label">Export Layers: Select the layers you want to export</div>
+            <div class='layerList'>
+                <ul id="dex_LayerSelectBoxes"></ul>
+            </div>
+        </div>
+        <div class="atPanel">
+            <span>Selection Method:</span><br />
+           <div><input id="dex_rbCurExt" type="radio" name="radExtent" value="CurExt" checked>Current Extent</div>
+            <div><input id="dex_rbPoly" type="radio" name="radExtent" value="DrawPoly">Draw Polygon
+            <div id="dex_btnExtractArea" class="attrButton selExtractArea"></div></div>
+        </div>
+        <div class="atPanel">
+            <span>Output Type:  </span>
+            <select id="dex_selOutputType">
+                <option value="ShapeFile ">Shapefile</option>
+                <option value="CSV">CSV</option>
+                <option value="FileGeodatabase">File Geodatabase</option>
+                <option value="KML">KML</option>
+            </select>
+        </div>
+        <div>
+            <div id="dex_scaleWarning" class="hidePane">Please zoom in on map</div>
+            <div id="dex_btnSubmit" class="toolbarButton sideButton right">Export</div>
+        </div>
+    </div>
+
+    <div id="dex_view_2" class="viewPane hidePane" >
+        <div id="loadingOverlay" class="loadingOverlay pageOverlay" style="position: absolute; top: 30px; left: 10px;">
+            <div id="loadingMessage" class="loadingMessage">Loading...</div>
+        </div>
+    </div>
+
+    <div id="dex_view_3" class="viewPane hidePane">
+        <span>You export file is now ready</span><br />
+        <span id="dex_pdfLink"></span><br />
+        <a id="dex_exportLink2">Export Data</a>
+    </div>
+
+    <div id="dex_view_4" class="viewPane hidePane">
+        <span>There has been an error.  Please try again.</span><br />
+        
+        <a id="dex_exportLink">Export Data</a>
+    </div>
+</div>
+
+

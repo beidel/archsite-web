@@ -1,0 +1,139 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Site_admin.master.cs" Inherits="SiteMaster" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head id="Head1" runat="server">
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+    <meta charset="utf-8">
+
+    <!-- Force latest available IE rendering engine and Chrome Frame (if installed) -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <!-- Document Title & Description -->
+    <title>South Carolina ArchSite: About</title>
+    <meta name="description" content="">
+
+    <!-- Mobile Screen Resizing -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- stylesheet -->
+    <link rel="stylesheet" href="Styles/kraken.css" type="text/css">
+    <link rel="stylesheet" href="Styles/scarch5.css" type="text/css">
+
+    <script>
+        (function () {
+            if ("-ms-user-select" in document.documentElement.style && navigator.userAgent.match(/IEMobile\/10\.0/)) {
+                var msViewportStyle = document.createElement("style");
+                msViewportStyle.appendChild(
+                    document.createTextNode("@-ms-viewport{width:auto!important}")
+                );
+                document.getElementsByTagName("head")[0].appendChild(msViewportStyle);
+            }
+        })();
+    </script>
+</head>
+
+
+<body>
+    <form id="form1" runat="server">
+        <div class="container">
+            <div class="grid-6">
+                <div class="grid-1">
+                    <h3 class="tb"><a href="default.aspx">scarchsite.com</a></h3>
+                </div>
+                <!-- close one -->
+                <div class="grid-5">
+                </div>
+                <!-- close five -->
+            </div>
+            <!-- close six -->
+        </div><!-- close container -->    
+        <%--<div class="container">
+        <div class="grid-6">
+            <nav class="navAdmin-wrap">
+		            <ul class="navAdmin">
+                        <li><a href="default.aspx" >Home</a></li>
+                    </ul>
+            </nav>
+        </div><!-- close six -->
+    </div><!-- close container -->--%>
+        <div class="container">
+            <div class="grid-6">
+
+            <asp:ContentPlaceHolder ID="nav" runat="server">
+            </asp:ContentPlaceHolder>
+
+            </div><!-- close six -->
+    </div><!-- close container -->
+        <div class="container">
+            <div class="grid-6 logo">
+                <h1 class="no-space-bottom no-space-top header"><a href="default.aspx">SC <span class="arch">Arch</span><span class="site">Site</span></a> <span class="sublogo">SCIAA&nbsp;+&nbsp;SCDAH</span>
+                    <img src="Images/AS/logos60x89.png" />
+                </h1>
+            </div>
+            <!-- close six logo -->
+        </div>
+        <!-- close container -->
+
+        <div class="container">
+            <asp:ContentPlaceHolder ID="mainContent" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <!-- close container -->
+
+        <div class="footer">
+            <div class="container">
+                <div class="grid-6">
+                    <hr class="no-space-top no-space-bottom" />
+                    <p class="no-space-bottom"><span class="text-small"><strong>Contact Us</strong></span></p>
+                </div>
+                <!-- close 6 -->
+
+                <div class="grid-2">
+                    <p class="no-space-top">
+                        <span class="text-small">SCIAA<br />
+                            1321 Pendleton Street<br />
+                            Columbia, SC 29208<br />
+                            Attn: Tamara Wilson</span>
+                    </p>
+                </div>
+                <!-- close 2 -->
+
+                <div class="grid-2">
+                    <p class="no-space-top">
+                        <span class="text-small">ArchSite Office: 803-777-9720<br />
+                            Direct Line: 803-576-6583<br />
+                            Fax: 803-254-1338<br />
+                            <a href="mailto:TAWILSON@mailbox.sc.edu">Email the web administrator</a></span>
+                    </p>
+                </div>
+                <!-- close 2 -->
+
+                <div class="grid-2">
+                    <p class="copyright">
+                        SC ArchSite<br />
+                        &copy; 2004 &#8211; 2014<br />
+                        Maintained by the <a href="http://artsandsciences.sc.edu/sciaa/">South Carolina Institute of Archaeology and Anthropology</a>
+                    </p>
+                </div>
+                <!-- close 2 -->
+            </div>
+            <!-- close container -->
+        </div>
+        <!-- close footer -->
+
+        <!-- Javascript -->
+        <!-- In the footer for better performance -->
+        <!--instantiate js plugins-->
+        <script type="text/javascript" src="Javascript/jquery-1.7.1.min.js"></script>
+        <script type="text/javascript" src="Javascript/dropdowns.js"></script>
+
+        <!-- Google Analytics -->
+
+
+
+
+    </form>
+</body>
+</html>

@@ -1,0 +1,1428 @@
+﻿/* =============================================================
+
+    Kraken v2.3
+    A lightweight front-end boilerplate by Chris Ferdinandi.
+    http://gomakethings.com
+
+    Free to use under the MIT License.
+    http://gomakethings.com/mit/
+
+
+    COLORS
+    Primary (red): #bb292d
+    Secondary (Dark Blue): #005580
+    Black: #272727
+    White: #ffffff
+    Gray: #808080
+    Light Gray: #eeeeee
+
+
+    FONT STACKS
+    Sans-Serif (default): Arial, "Helvetica Neue", sans-serif
+    Serif (suggested): Georgia, Times, serif
+    Add your own here...
+
+
+    TYPOGRAPHIC SCALE 
+    (For math purposes. Actual font sizes in ems.)
+    4px, 5px, 8px, 10px, 11px, 14px, 15px, 16px (base), 20px, 23px, 24px, 30px, 32px, 51px, 68px, 85px, 102px
+    
+ * ============================================================= */
+
+
+/* =============================================================
+    CSS RESET
+    Meyer's CSS Reset, Normalized.css, and custom code.
+ * ============================================================= */
+
+/*  Mobile Screen Resizing */
+@-webkit-viewport { width: device-width; zoom: 1.0; }
+   @-moz-viewport { width: device-width; zoom: 1.0; }
+    @-ms-viewport { width: device-width; zoom: 1.0; }
+     @-o-viewport { width: device-width; zoom: 1.0; }
+        @viewport { width: device-width; zoom: 1.0; }
+
+/*  Remove browser defaults */
+html, body, div, span, applet, object, iframe, 
+h1, h2, h3, h4, h5, h6, p, blockquote, pre, 
+a, abbr, acronym, address, big, cite, code, 
+del, dfn, em, img, ins, kbd, q, s, samp, 
+small, strike, strong, sub, sup, tt, var, 
+b, u, i, center, 
+dl, dt, dd, ol, ul, li, 
+button, fieldset, form, label, legend, 
+table, caption, tbody, tfoot, thead, tr, th, td, 
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary, 
+time, mark, audio, video { 
+    margin: 0; 
+    padding: 0; 
+    border: 0; 
+    font-family: Arial, "Helvetica Neue", sans-serif;
+    font-size: 100%; 
+    font: inherit; 
+    vertical-align: baseline; 
+}
+
+/*  Set display type for HTML5 semantic elements */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section { 
+    display: block; 
+}
+
+/*  Force scrollbar display to prevent jumping on pages. 
+ *  Fix text resize bug on mobile devices. */
+html { 
+    overflow-y: scroll; 
+    -webkit-text-size-adjust: 100%; 
+        -ms-text-size-adjust: 100%; 
+} 
+
+/*  Display audio, canvas, and video elements as inline block elements. */
+audio, canvas, video { 
+    display: inline-block; 
+    *display: inline; 
+    *zoom: 1; 
+}
+
+/*  Prevent modern browsers from displaying audio without controls. */
+audio:not([controls]) { 
+    display: none; 
+}
+
+/*  Prevent img and video elements from spilling 
+ *  outside of the page on smaller screens. */
+img, video { 
+    max-width: 100%; 
+    height: auto; 
+}
+
+/*  Prevent iframe, object, and embed elements from 
+ *  spilling outside of the page on smaller screens. */
+iframe, object, embed {
+    max-width: 100%; 
+}
+
+/*  Prevents IE from making scaled images look like crap */
+img { 
+    -ms-interpolation-mode: bicubic; 
+}
+
+/*  Address outline inconsistency between Chrome and other browsers. */
+a:focus,
+button:focus { 
+    outline: thin dotted;
+    outline: .3125em auto -webkit-focus-ring-color; 
+    outline-offset: -.125em; 
+}
+
+/*  Improve readability when focused and also mouse hovered in all browsers. */
+a:hover, a:active { 
+    outline: 0; 
+}
+
+
+
+
+
+/* =============================================================
+    THE GRID
+    Structure and layout.
+ * ============================================================= */
+
+/*  Mobile-first. Single-column layout by default
+ *  Container sets the maximum page width. Adjust as needed. */
+.container { 
+    max-width: 80em;
+    width: 80%;
+    margin-left: auto; 
+    margin-right: auto;
+}
+
+
+/*  Still mostly single-column.
+ *  Grid-third, grid-half, and grid-img 
+ *  provide sub-gridding on smaller screens.  */
+@media (min-width: 30em) {
+
+	.row {
+        margin-left: -1.515151515152%;
+        margin-right: -1.515151515152%;
+	}
+
+    [class^="grid-"], 
+    [class*=" grid-"] {
+        float: left;
+        width:96.969696969697%;
+        margin-left: 1.515151515152%;
+        margin-right: 1.515151515152%;
+    }
+
+    .grid-third {
+        width: 30.30303030303%;
+    }
+
+    .grid-half,
+    .grid-img {
+        width: 46.969696969697%;
+    }
+
+    .grid-two-thirds {
+        width: 63.636363636364%;
+    }
+
+    /*  Reverses order of grid for content choreography */
+    .grid-flip {
+        float: right;
+    }
+
+}
+
+
+/*  6-column grid  */
+@media (min-width: 40em) {
+
+    .grid-1 {
+        width: 13.636363636364%;
+    }
+
+    .grid-2,
+    .grid-third,
+    .grid-img {
+        width: 30.30303030303%;
+    }
+
+    .grid-3,
+    .grid-half { 
+        width: 46.969696969697%;
+    }
+
+    .grid-4,
+    .grid-two-thirds { 
+        width: 63.636363636364%;
+    }
+
+    .grid-5 { 
+        width: 80.30303030303%;
+    }
+
+    .grid-6,
+    .grid-full { 
+        width: 96.969696969697%;
+    }
+
+
+    /*  Offets let you shift grid elements to the right 
+     *  but stay aligned to the grid. */
+    .offset-1 {
+        margin-left: 18.181818181818%;
+    }
+
+    .offset-2 {
+        margin-left: 34.848484848485%;
+    }
+
+    .offset-3 {
+        margin-left: 51.515151515152%;
+    }
+
+    .offset-4 {
+        margin-left: 68.181818181818%;
+    }
+
+    .offset-5 {
+        margin-left: 84.848484848485%;
+    }
+
+}
+
+
+/*  Additional gridding for grid-img on bigger screens.
+ *  Adjust as needed. */
+@media (min-width: 60em) {
+    .grid-img {
+        width: 13.636363636364%;
+    }
+}
+
+
+
+
+
+/* =============================================================
+    TYPOGRAPHY
+    Sets font styles for entire site.
+ * ============================================================= */
+
+body { 
+    font-family:  Arial, "Helvetica Neue", sans-serif;
+    font-size: 100%; 
+    line-height: 1.5; 
+    color: #555; 
+    background: #ffffff;
+}
+
+p { 
+    margin-bottom: 1.5625em; 
+}
+
+@media (min-width: 40em) {
+    body {
+        line-height: 1.5625;
+    }
+}
+
+
+/*  Sizes 
+ *  For smaller and larger text */
+
+.text-small { 
+    font-size: .8750em; 
+    line-height: 1.5; 
+}
+
+.text-tall { 
+    font-size: 1.1875em; 
+    line-height: 1.4;
+}
+
+@media (min-width: 40em) {
+    .text-tall {
+        font-size: 1.3125em;
+    }
+}
+
+
+/*  Colors 
+ *  For alternate text colors */
+
+.text-muted { 
+    color: #808080; 
+}
+
+
+/*  Links 
+ *  Hyperlink styling */
+
+a { 
+    color: #0088cc;
+    font-weight: 400; 
+    text-decoration: none;
+}
+
+a:hover { 
+    text-decoration: underline; 
+}
+
+a img { 
+    border: none; 
+    background: none; 
+} 
+
+/*  Prevents border/background on linked image hover.
+ *  Adds slight opacity. */
+a:hover img { 
+    border: none; 
+    background: none; 
+    opacity: 0.8; 
+    filter: alpha(opacity=80); 
+}
+
+
+/*  Lists 
+ *  Styling for lists */
+
+ul, ol { 
+    margin-bottom: 1.5625em; 
+    margin-left: 2em;
+}
+
+ul ul, ul ol, ol ol, ol ul { 
+    margin-bottom: 0; 
+}
+
+ul { 
+    list-style: disc; 
+}
+
+ol { 
+    list-style: decimal; 
+}
+
+/*  Removes list styling.
+ *  For semantic reasons, should only 
+ *  be used on unordered lists. */
+.list-unstyled { 
+    margin-left: 0; 
+    list-style: none; 
+}
+
+
+/*  Headings
+ *  h1 through h6 styling
+ *  Heading class lets you use one heading type for semantics
+ *  but style it as another heading type. */
+
+h1, h2, h3, h4, h5, h6 { 
+    line-height: 1.2; 
+    font-weight: normal;
+    margin-bottom: 1em; 
+    padding-top: 1em;
+}
+
+h1, .h1 { 
+    font-size: 1.5em; 
+    padding-top: .5em;
+}
+
+h2, .h2 { 
+    font-size: 1.3125em; 
+}
+
+h3, .h3 { 
+    font-size: 1.1875em; 
+}
+
+h4, h5, h6,
+.h4, .h5, .h6 { 
+    font-size: .875em; 
+    font-style: italic; 
+}
+
+h4, .h4 { 
+    text-transform: uppercase; 
+}
+
+@media (min-width: 40em) {
+    h1, .h1 {
+        font-size: 1.75em;
+    }
+}
+
+
+/*  Lines, Quotes and Emphasis */
+
+/*  Lines */
+hr { 
+    margin: 2em auto; 
+    border: 0; 
+    border-top: .0725em solid #e5e5e5; 
+    border-bottom: 0 solid #ffffff; 
+}
+
+/*  Bold */
+strong { 
+    font-weight: bold; 
+}
+
+/*  Italics */
+em { 
+    font-style: italic; 
+}
+
+/*  Subscript & Superscript */
+sub, sup { 
+    position: relative; 
+    font-size: 85%; 
+    font-weight: bold;
+    line-height: 0; 
+    vertical-align: baseline; 
+    margin-left: .25em;
+}
+
+sup { 
+    top: -0.5em; 
+}
+
+sub { 
+    bottom: -0.25em; 
+}
+
+/*  Highlighting colors */
+::selection { 
+    color: #ffffff; 
+    background: #f3c9ca; 
+}
+
+::-moz-selection { 
+    color: #ffffff; 
+    background: #f3c9ca; 
+}
+
+/*  Blockquotes */
+blockquote { 
+    border-left: .25em solid #e5e5e5; 
+    margin-bottom: 1.5625em; 
+    padding-left: 1.5625em;
+    padding-right: 1.5625em;
+}
+
+blockquote, q {
+	quotes: none;
+}
+
+blockquote:before, blockquote:after, 
+q:before, q:after { 
+    content: ''; 
+    content: none; 
+}
+
+
+
+
+
+/* =============================================================
+    CODE
+    Styling for code and preformatted text.
+ * ============================================================= */
+
+code, pre { 
+    font-family: Menlo, Monaco, "Courier New", monospace; 
+    font-size: .875em;
+    border-radius: .0725em;
+}
+
+code { 
+    color: #d14;
+    background-color: #f7f7f9;
+    padding: .25em;
+}
+
+pre { 
+    display: block; 
+    margin-bottom: 1.5625em;
+    line-height: 1.5em;
+    background-color: #f5f5f5;
+    padding: .8125em;
+    white-space: pre; 
+    white-space: pre-wrap; 
+    word-break: break-all; 
+}
+
+pre code { 
+    font-size: 1em;
+    padding: 0; 
+    color: inherit; 
+    background-color: transparent; 
+    border: 0; 
+}
+
+
+
+
+
+/* =============================================================
+    BUTTONS
+    Styling for CSS buttons.
+ * ============================================================= */
+
+.btn {
+    display: inline-block;
+    font-size: .9375em;
+    padding: .5em .6875em;
+    line-height: 1.2;
+    font-weight: normal;
+    background-color: #bb292d;
+    border: .0725em solid #bb292d;
+    border-radius: .0725em;
+    margin-right: .3125em;
+    margin-bottom: .3125em;
+}
+
+.btn, 
+.btn:hover, 
+a .btn:hover {
+    color: #ffffff;
+}
+
+.btn:hover, 
+a .btn:hover {
+    background-color: #9b2225;
+    border-color: #9b2225;
+    text-decoration: none;
+}
+
+.btn-red {
+    background-color: #bb292d;
+    border-color: #bb292d;
+}
+
+.btn-blue:hover, 
+a .btn-blue:hover {
+    background-color: #005580;
+    border-color: #005580; 
+}
+
+.btn:active {
+    -webkit-box-shadow: inset 0 .125em .25em rgba(0, 0, 0, 0.15), 0 .0725em .1875em rgba(0, 0, 0, 0.05);
+            box-shadow: inset 0 .125em .25em rgba(0, 0, 0, 0.15), 0 .0725em .1875em rgba(0, 0, 0, 0.05);
+    outline: 0; 
+}
+
+.btn-large {
+    padding: .6875em .9375em;
+    font-size: 1em;
+    line-height: normal;
+    background-color: #bb292d;
+    border-color: #bb292d;
+    margin-bottom: .125em;
+}
+
+.btn-xlarge {
+    padding: .6875em 2em;
+    font-size: 1em;
+    line-height: normal;
+    background-color: #bb292d;
+    border-color: #bb292d;
+    margin-bottom: .125em;
+}
+
+.btn-block,
+input[type="submit"].btn-block,
+input[type="reset"].btn-block,
+input[type="button"].btn-block {
+    display: block;
+    width: 100%;
+    margin-left: 0;
+    padding-right: 0;
+    padding-left: 0;
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box; 
+}
+
+.btn-block + .btn-block {
+    margin-top: .3125em; 
+}
+
+button, .btn {
+    cursor: pointer;
+    text-align: center;
+    vertical-align: middle;
+    -webkit-appearance: none; 
+}
+
+.btn:first-child, input.btn {
+    margin-left: 0; 
+}
+
+
+
+
+
+/* =============================================================
+    FORMS
+    Styling for form elements.
+ * ============================================================= */
+
+.log form, fieldset { 
+    margin-bottom: 1.5625em;
+}
+
+.log legend, label { 
+    display: block;
+    font-weight: normal;
+    padding: 0; 
+    margin-bottom: .3125em; 
+}
+
+.log input, textarea, select {
+    display: block;
+    width: 100%;
+    font: inherit;
+    line-height: 1.5;
+    color: #555555;
+    vertical-align: middle; 
+    margin-bottom: 1.1875em; 
+    padding: .3125em; 
+    border: .0725em solid #b8b8b8; 
+    border-radius: .0725em;
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+.log form button, form .btn {
+    margin-bottom: 1.1875em;
+}
+
+.log textarea { 
+    height: 12em; 
+}
+
+.log input.subMap {
+    width: auto;
+}
+
+.log input[type="image"], 
+.log input[type="checkbox"], 
+.log input[type="radio"] {
+    display: inline-block;
+    width: auto; 
+    height: auto; 
+    padding: 0; 
+    margin-bottom: .3125em; 
+    cursor: pointer; 
+}
+
+.log input:focus, 
+.log textarea:focus { 
+    border-color: rgba(82, 168, 236, 0.8); 
+    -webkit-box-shadow: inset 0 .0725em .0725em rgba(0, 0, 0, 0.075), 0 0 .5em rgba(82, 168, 236, 0.6);
+            box-shadow: inset 0 .0725em .0725em rgba(0, 0, 0, 0.075), 0 0 .5em rgba(82, 168, 236, 0.6);
+    outline: 0; 
+    outline: thin dotted \9; 
+}
+
+.log input[type="file"]:focus, 
+.log input[type="checkbox"]:focus, 
+.log select:focus { 
+    outline: thin dotted; 
+    outline: .3125em auto -webkit-focus-ring-color; 
+    outline-offset: -.125em; 
+}
+
+.log input.white {
+    color: white;
+}
+
+/*  Inline Inputs */
+.log .input-inline {
+    display: inline-block;
+    width: auto;
+    vertical-align: middle;
+}
+
+
+/*  Condensed Inputs */
+.log .input-condensed {
+    line-height: 1;
+    padding: .125em;
+}
+
+
+@media (min-width: 40em) {
+    .log input, textarea, select {
+        line-height: 1.5625;
+    }
+}
+
+
+
+/* =============================================================
+    ALIGNMENT, SPACING & VISIBILITY
+    Override default alignment, spacing and visibilty.
+ * ============================================================= */
+
+/*  Text alignment */
+
+.text-center { 
+    text-align: center; 
+}
+
+.text-right { 
+    text-align: right; 
+}
+
+.text-left { 
+    text-align: left; 
+}
+
+
+/*  Floats */
+
+.float-left {
+    float: left;
+}
+
+.float-center {
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.float-right {
+    float: right;
+}
+
+
+/*  Spacing */
+
+.no-space { 
+    margin: 0; 
+    padding: 0; 
+}
+
+.no-space-bottom { 
+    margin-bottom: 0; 
+    padding-bottom: 0; 
+}
+
+.no-space-top { 
+    margin-top: 0; 
+    padding-top: 0; 
+}
+
+.space-bottom { 
+    margin-bottom: 2em; 
+}
+
+.space-bottom-small { 
+    margin-bottom: .5em; 
+    padding-bottom: 0; 
+}
+
+.space-top { 
+    padding-top: .8125em; 
+}
+
+
+/*  Screen Reader Text */
+
+.screen-reader { 
+    position: absolute; 
+    top: -9999em; 
+    left:-9999em; 
+}
+
+
+/*  Clearfix */
+
+.group:before, .group:after, 
+.container:before, .container:after, 
+.row:before, .row:after { 
+    display: table; 
+    content: ""; 
+    *zoom: 1; 
+}
+
+.group:after, 
+.container:after, 
+.row:after { 
+    clear: both; 
+}
+
+
+
+
+
+/* =============================================================
+    PRINT STYLES
+    Styling for printed content. Adapted from HTML5BP.
+    http://html5boilerplate.com
+ * ============================================================= */
+
+@media print {
+
+    /*  Universal selector.
+     *  Reset all content to transparent background,
+     *  black color, and remove box and text shadows. */
+    * {
+        background: transparent !important;
+        color: #000 !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    /*  Specifies page margin */
+    @page {
+        margin: 0.5cm;
+    }
+
+    /*  Underline all links */
+    a, a:visited {
+        text-decoration: underline;
+    }
+
+    /*  Show URL after links */
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+
+    /*  Don't show URL for internal links */
+    a[href^="#"]:after {
+        content: "";
+    }
+
+    /*  Specifies the minimum number of lines to print at the top and bottom of a page. */
+    p, h1, h2, h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    /*  Avoid inserting a page break after headers */
+    h1, h2, h3 {
+        page-break-after: avoid;
+    }
+
+    /*  Change border color on blockquotes and preformatted text.
+     *  Avoid page breaks inside the content */
+    pre, blockquote {
+        border-color: #999;
+        page-break-inside: avoid;
+    }
+
+    /*  Displayed as a table header row group */
+    thead {
+        display: table-header-group;
+    }
+
+    /*  Avoid inserting a page break inside table rows and images */
+    tr, img {
+        page-break-inside: avoid;
+    }
+    
+}
+
+
+body {
+	background-image: url("../Images/AS/topbar.gif");
+	background-repeat: repeat-x;
+}
+
+a {
+    color: #bb292d;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #9b2225;
+    }
+
+/*  NAVIGATION */
+/*  A placeholder for navigation styling.
+ *  Try Astro: A collection of mobile-first navigation patterns.
+ *  http://cferdinandi.github.com/astro/ */
+
+/*navigation*/
+/*  DROP BASIC */
+/*  Basic dropdown styling */
+
+/*  Sets dropdown link to relative positioning */
+.dropdown {
+    position: relative;
+}
+
+/*  Display a caret after each dropdown link when JavaScript is supported.
+ *  You can remove this or change it to a different symbol.
+ *  (For example, a "+" symbol.) */
+.js .dropdown > a:after {
+    content: " \25bc";
+    font-size: .875em;
+    font-weight: normal;
+}
+
+/*  When a dropdown is active, display a caret pointing up instead.
+ *  You can remove this or change it to a different symbol.
+ *  (For example, a "-" symbol.) */
+.js .dropdown > a.active:after {
+    content: " \25b2";
+}
+
+/*  Styling for the dropdown content.
+ *  Hides the content by default. */
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    display: none;
+    visibility: hidden;
+    float: left;
+    min-width: 10em;
+    margin-top: .25em;
+    margin-left: 0;
+    text-align: left;
+    font-size: 100%;
+    font-weight: normal;
+    border: .0625em solid #b8b8b8;
+    background-color: #ffffff;
+    white-space: nowrap;
+    z-index: 1000;
+    border-radius: .3125em;
+    box-shadow: 0 .3125em .5625em rgba(0, 0, 0, 0.2);
+    -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+            box-sizing: border-box;
+    -webkit-background-clip: padding-box;
+        -moz-background-clip: padding;
+            background-clip: padding-box;
+}
+
+/*  Remove list-style and margin-left
+ *  from dropdown menu lists */
+.dropdown-menu ul,
+.dropdown-menu ol {
+    margin: 0 .375em;
+    list-style: none;
+}
+
+/*  When a dropdown is active, display it. */
+.dropdown-menu.active {
+    display: block;
+    visibility: visible;
+}
+
+/*  If dropdown link is near the right edge of the screen,
+ *  shift the dropdown menu position to avoid content clipping. */
+.dropdown-menu.dropdown-right {
+  right: 0;
+  left: auto;
+}
+
+/*  Optional small screen styling for use
+ *  with collapse-and-toggle navigation menus.
+ *  Learn more - http://cferdinandi.github.com/astro/ */
+@media (max-width: 50em) {
+
+    /*  Switch dropdown content to relative positioning.
+     *  Remove styling. */
+    .js .dropdown-menu {
+        position: relative;
+        float: none;
+        min-width: 100%;
+        background-color: #ffffff;
+        border: none;
+        box-shadow: none;
+    }
+
+}
+
+
+/*  Align all navigation elements */
+.nav-wrap {
+    text-align: right;
+}
+
+
+/*  Remove default list styling for navigation list */
+.nav {
+    margin: 0 0 .5em 0;
+    list-style: none;
+    font-size: .875em;
+    font-weight: normal;
+}
+
+.nav a {
+    text-decoration: none;
+}
+
+a.nav-toggle {
+    margin: .5em 0 .5em 0;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/*  Display navigation items as inline-block elements.
+ *  Add slight margin between each navigation item. */
+.nav > li {
+    display: inline-block;
+    float: none;
+    margin-left: .5em;
+    margin-right: .5em;
+    padding: .3125em 0 0 .25em;
+}
+
+/*  Remove margin-left on first navigation item */
+.nav > li:first-child {
+    margin-left: 0;
+}
+
+.nav > li a {
+    color: #666666;
+    border-left: .1875em solid #fff;
+    padding-left: .25em;
+    font-weight: normal;
+}
+
+.nav > li a:hover {
+    border-color: #bb292d;
+}
+
+.nav > li a#current {
+    border-color: #555555;
+    color: #bb292d;
+}
+
+/*  Remove margin-right on last navigation item */
+.nav >li:last-child {
+    margin-right: 0;
+}
+
+/*  Hide the navigation toggle menu button by default.
+ *  Only needed for expand-and-collapse option. */
+.nav-toggle {
+    display: none;
+    visibility: hidden;
+}
+
+
+/*  Expand-and-Collapse styling for smaller screens.
+ *  Remove if not using.
+ *  Change max-width to fit your project. */
+@media (max-width: 50em) {
+
+    /*  .js prefix ensure content is only hidden when JavaScript is supported.
+     *  This requires on the included js-accessibility.js script. */
+
+    /*  Align text to the left when javascript is supported */
+    .js .nav-wrap {
+        text-align: left;
+    }
+
+
+    /*  Display navigation toggle button if javascript is supported */
+    .js .nav-toggle {
+        display: block;
+        visibility: visible;
+        float: right;
+        font-size: .9325em;
+        font-weight: normal;
+    }
+
+    /*  Hide navigation items if javascript is supported */
+    .js .nav-collapse {
+        background-color: #ffffff;
+        max-height: 0;
+        overflow: hidden;
+        display: block;
+        width: 100%;
+        -webkit-box-sizing: border-box;
+           -moz-box-sizing: border-box;
+                box-sizing: border-box;
+        /*  CSS3 animation for when menu content expands */
+        -webkit-transition: all 0.35s ease-in;
+           -moz-transition: all 0.35s ease-in;
+            -ms-transition: all 0.35s ease-in;
+             -o-transition: all 0.35s ease-in;
+                transition: all 0.35s ease-in;
+    }
+
+    /*  When collapsed element has the .active class, show it
+     *  Uses max-height instead of display: none to allow for
+     *  CSS3 animations, which don't work on display values. */
+    .js .nav-collapse.active {
+        max-height: 600em;
+    }
+
+    .js .nav {
+        text-align: left;
+    }
+
+
+    /*  Display navigation items as full-width, stacked blocks when javascript supported */
+    .js .nav-collapse li {
+        display: block;
+        width: 100%;
+        -webkit-box-sizing: border-box;
+           -moz-box-sizing: border-box;
+                box-sizing: border-box;
+        margin-left: 0;
+        margin-right: 0;
+        padding-top: .125em;
+        padding-bottom: .125em;
+        padding-left: 0.25em;
+        font-weight: normal;
+    }
+
+    .js .nav-collapse li span {
+        display: inline;
+    }
+}
+
+@media (min-width: 50em) {
+    .js .nav-collapse li span {
+        display: none;
+    }
+}
+
+
+
+h3.tb a,
+h3.tb a:hover {
+    font-weight: normal;
+    color: #f8f8f8;
+}
+
+.tb-login {
+    font-size: .875em;
+	color: #bb292d;
+	text-align: right;
+    margin-bottom: .25em;
+    padding-top: 1.125em;
+}
+
+.tb-login a {
+    color: #bb292d;
+    font-weight: 600;
+}
+
+
+@media (min-width: 40em) {
+    .tb-login {
+	    color: #fff;
+	    text-align: right;
+        margin-bottom: .375em;
+        padding-top: 1.25em;
+    }
+
+
+    .tb-login a {
+        color: #fff;
+    }
+}
+
+.header {
+    padding: 0 .25em 0 .25em;
+    border-left: 2px solid #bb292d;
+    margin-left: .5em;
+}
+
+.logo {
+	margin: 3.5em 0;
+}
+
+
+.logo h1 a {
+    font-size: 1.75em;
+	color: #666;
+	text-decoration: none;
+    font-weight: 400;
+}
+
+.logo h1 a .arch {
+	color: #bb292d;
+	text-decoration: none;
+}
+
+.logo h1 a .site {
+	color: #bb292d;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.sublogo {
+    font-size: 60%;
+    color: #999;
+    font-weight: 500;
+}
+
+legend {
+    font-weight: 600;
+}
+
+h2.pageTitle {
+	margin: 2em 0;
+	padding-left: 1em;
+	color: #888;
+	padding-bottom: 1em;
+	border-right: 2px solid #bb292d;
+	border-left: 2px solid #bb292d;
+	background-color: #eeeeee;
+}
+
+h3 {
+	color: #555555;
+}
+
+ h3 a, h3 a:hover {
+	color: #555555;
+    text-decoration: none;
+}
+
+.h5 {
+    font-size: .96875em;
+    color: #676767;
+    font-weight: 600;
+    font-style: normal;
+    text-transform: none;
+}
+ /* attention */
+.attention {
+    background: #eaeaea;
+    border-bottom: .0625em #bb292d solid;
+}
+
+
+/*  announcements */
+.announce {
+    border-left: .25em solid #bb292d;
+    border-right: .25em solid #bb292d;
+    background: #f8f8f8;
+    margin-bottom:1.5625em;
+    padding-left: 1.5625em;
+    padding-right: 1.5625em;
+    padding-bottom: 1.5625em;
+}
+
+.announce span {
+	color: #444;
+	font-weight: 500;
+}
+
+.announce:before, .announce:after {
+    content: '';
+    content: none;
+}
+
+
+.log fieldset {
+    border: .125em #ccc dotted;
+    padding: .5em;
+
+}
+
+.log legend {
+    font-size: .875em;
+    font-weight: bold;
+}
+
+.log label {
+    font-size: .9375em;
+}
+
+.log input, textarea, select {
+    display: inline-block;
+    width: 90%;
+    font: inherit;
+    line-height: 1.5;
+    color: #555555;
+    vertical-align: middle; 
+    margin-bottom: 1.1875em; 
+    padding: .3125em; 
+    margin-right: .25em;
+    border: .0725em solid #b8b8b8; 
+    border-radius: .0725em;
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+
+.log input.subMap {
+    display: block-inline;
+    padding: .6875em 1.5em;
+    font-size: 1em;
+    line-height: normal;
+    background-color: #bb292d;
+    border-color: #bb292d;
+    margin-bottom: .250em;
+    float: left;
+    cursor: pointer; 
+}
+
+.log input.subMap:hover {
+    background-color: #9b2225;
+    border-color: #9b2225;
+    text-decoration: none;
+}
+
+.forget {
+    font-size: .75em;
+    font-style: italic;
+    text-align: right;
+    float: right;
+    padding-right: .5em;
+}
+
+.or {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #bb292d;
+    text-align: center;
+}
+
+/* subscriber overview table */
+table#fees {
+    width: 100%;
+	border-collapse: collapse;
+    text-align: left;
+}
+
+table#fees thead tr th {
+    color: #777;
+    font-size: 1em;
+    font-weight: bold;
+    text-align: left;
+    padding: .625em .5em .5em .5em;
+    border-bottom: 1px #bb292d solid;
+}
+
+
+table#fees tbody tr th {
+    text-align: center;
+    font-style: italic;
+    font-weight: 600;
+    color: #444;
+    font-size: .9375em;
+    background-color: #eeeeee;
+}
+
+table#fees tbody tr td {
+    color: #444;
+    font-size: .9375em;
+    padding: 0 .5em 0 .625em;
+}
+
+table#fees tbody tr:hover td {
+	color: #bb292d;
+}
+
+
+.footnote {
+    font-size: .8125em; 
+    line-height: 1.50; 
+}
+
+.red {
+    color: #bb292d;
+}
+
+
+.copyright {
+    border-top: .1875em #ccc dotted;
+    margin-bottom: 2em;
+    text-align: left;
+	color: #999;
+	font-size: .75em;
+    padding: .375em 0 0 0;
+}
+
+@media (min-width: 40em) {
+    .copyright {
+        border-top: none;
+    }
+}
+
+.smallprint {
+	color: #999;
+	font-size: .75em;
+    padding: 1em 1em 0 0;
+
+}
+
+@media (min-width: 40em) {
+    .smallprint {
+        padding: 1em 1em 0 1em;
+    }
+}
+
+
+.pxleft {
+	float: left;
+	padding-right: .5em;
+}
+
+.formTitle {
+    float: left;
+    width: 11em;
+    text-align: right;
+    padding-right: .625em;
+    font-size: .9375em;
+}
+
+@media (max-width: 40em) {
+    .formTitle {
+        text-align: left;
+    }
+}

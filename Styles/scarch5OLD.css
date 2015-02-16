@@ -1,0 +1,370 @@
+﻿body {
+	background-image: url("../Images/AS/topbar.gif");
+	background-repeat: repeat-x;
+}
+
+a {
+    color: #bb292d;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #9b2225;
+    }
+
+/*navigation*/
+#navwrapper  {
+    height: auto;
+}
+
+nav.primary ul  {
+    font-size: .8125em;
+    margin: 0;
+    text-align: right;
+    letter-spacing: 0.08em;
+    padding: .5em 0;
+}
+
+
+nav.primary ul li {
+    margin: 0px;
+    position: relative;
+    display: inline-block;
+    line-height: 1.5em;
+    padding: .25em .375em 0;
+}
+
+nav.primary select {
+    display: none;
+    width: 96%;
+    height: 1.5em;
+    margin: .375em auto 0;
+}
+
+nav.primary ul li a {
+    color: #888;
+    text-decoration: none;
+    padding: 0 0 0 .25em;
+    border-left: .1875em solid #fff;
+    color: #888;
+}
+
+nav.primary ul li a#current  {
+    border-color: #999;
+    color: #bb292d;
+}
+
+nav.primary ul li a:hover {
+    border-color: #bb292d;
+    color: #555;
+    cursor: pointer;
+}
+
+
+/*sub menu*/
+nav.primary ul ul {
+    opacity: 0;
+    filter: alpha(opacity=0);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 999;
+    height: 0px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-align: left;
+    margin: 0px;
+}
+
+nav.primary ul ul li  {
+    float: none;
+    display: block;
+    text-align: left;
+    line-height: 1.5em;
+    letter-spacing: normal;
+    background: #ffffff;
+    font-size: 1.1875em;
+    margin-left: .25em;
+}
+
+nav.primary ul li span {
+    display: none;
+}
+
+nav.primary ul li:hover ul {
+    opacity: 10;
+    filter: alpha(opacity=100);
+    height: auto;
+    overflow: auto;
+}
+
+nav.primary ul ul li {
+    float: none;
+    display: list-item;
+    background: #fff;
+}
+
+@media only screen and (max-width: 40em) {
+    #navwrapper {
+        background: #fff;
+    }
+
+    nav.primary select {
+        display: block;
+    }
+
+    nav.primary ul {
+        display: none;
+    }
+
+    nav.primary ul li span {
+    display: inline;
+}
+
+}
+
+
+.tb-login {
+    font-size: .8750em;
+	color: #bb292d;
+	text-align: right;
+    margin-bottom: .2500em;
+    padding-top: 1.125em;
+}
+
+.tb-login a {
+    color: #bb292d;
+}
+
+
+@media (min-width: 40em) {
+    .tb-login {
+	    color: #fff;
+	    text-align: right;
+        margin-bottom: .375em;
+        padding-top: 1.25em;
+    }
+
+
+    .tb-login a {
+        color: #fff;
+    }
+}
+
+.header {
+    padding: 0 .25em 0 .25em;
+    border-left: 2px solid #bb292d;
+    margin-left: .50em;
+}
+
+.logo {
+	margin: 3.5em 0;
+}
+
+
+.logo h1 a {
+    font-size: 1.75em;
+	color: #666;
+	text-decoration: none;
+    font-weight: 400;
+}
+
+.logo h1 a .arch {
+	color: #bb292d;
+	text-decoration: none;
+}
+
+.logo h1 a .site {
+	color: #bb292d;
+	text-decoration: none;
+    font-weight: bold;
+}
+
+.sublogo {
+    font-size: 60%;
+    color: #999;
+    font-weight: 500;
+}
+
+
+h2.pageTitle {
+	margin: 2em 0;
+	padding-left: 1em;
+	color: #888;
+	padding-bottom: 1em;
+	border-right: 2px solid #bb292d;
+	border-left: 2px solid #bb292d;
+	background-color: #eeeeee;
+}
+
+h3 {
+	color: #999;
+}
+
+ h3 a, h3 a:hover {
+	color: #999;
+    text-decoration: none;
+}
+
+/*  announcements */
+.announce {
+    border-left: .235294118em solid #bb292d;
+    border-right: .235294118em solid #bb292d;
+    background: #efefef;
+    margin-bottom:1.529411765em;
+    padding-left: 1.529411765em;
+    padding-right: 1.529411765em;
+    padding-bottom: 1.529411765em;
+}
+
+.announce span {
+	color: #444;
+	font-weight: 500;
+}
+
+.announce:before, .announce:after {
+    content: '';
+    content: none;
+}
+
+
+
+/*.btn-large {
+    margin-bottom: 0;
+}*/
+
+.btn-xlarge {
+    padding-left: 2em;
+    padding-right: 2em;
+}
+
+.text-xsmall {
+    font-size: .75em;
+    font-style: italic;
+}
+
+table#fees {
+    width: 100%;
+	border-collapse: collapse;
+    text-align: left;
+}
+
+table#fees thead tr th {
+    color: #777;
+    font-size: 1em;
+    font-weight: bold;
+    text-align: left;
+    padding: .6250em .5em .50em .5em;
+    border-bottom: 1px #bb292d solid;
+}
+
+
+table#fees tbody tr th {
+    text-align: center;
+    font-style: italic;
+    font-weight: 600;
+    color: #444;
+    font-size: .9250em;
+    background-color: #eeeeee;
+}
+
+table#fees tbody tr td {
+    color: #444;
+    font-size: .9250em;
+    padding: 0 .5em 0 .6250em;
+}
+
+table#fees tbody tr:hover td {
+	color: #bb292d;
+}
+
+
+.footnote {
+    font-size: .8250em; 
+    line-height: 1.50; 
+}
+
+.red {
+    color: #bb292d;
+}
+
+
+.copyright {
+    border-top: .1875em #ccc dotted;
+    margin-bottom: 2em;
+    text-align: left;
+	color: #999;
+	font-size: .75em;
+    padding-top: .375em 0 0 0;
+}
+
+@media (min-width: 40em) {
+    .copyright {
+        border-top: none;
+    }
+}
+
+
+.smallprint {
+	color: #999;
+	font-size: .75em;
+    padding: 1em 1em 0 0;
+
+}
+
+@media (min-width: 40em) {
+    .smallprint {
+        padding: 1em 1em 0 1em;
+    }
+}
+
+
+.pxleft {
+	float: left;
+	padding-right: .5000em;
+}
+
+.formTitle {
+    float: left;
+    width: 11em;
+    text-align: right;
+    padding-right: .6250em;
+    font-size: .9350em;
+}
+
+@media (max-width: 40em) {
+    .formTitle {
+        text-align: left;
+    }
+}
+
+fieldset.register {
+    border: .1250em #ccc dotted;
+    padding: .5em;
+}
+
+fieldset.register label {
+    display: block;
+    font-size: .9375em;
+    font-weight: bold;
+    padding-bottom: .5em;
+}
+
+ fieldset.register input, textarea, select {
+    display: block;
+    width: 90%;
+    font: inherit;
+    line-height: 1.5;
+    color: #555555;
+    vertical-align: middle;
+    margin-bottom: 1.1875em;
+    padding: .3125em;
+    border: .0725em solid #b8b8b8;
+    border-radius: .0725em;
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+  fieldset.register input

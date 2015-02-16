@@ -1,0 +1,168 @@
+﻿/*-------------------------------------------------- */
+/*  Display */
+/*-------------------------------------------------- */
+
+.dataExport {
+    width:290px; 
+    height: 325px;
+}
+
+.dataExport .viewPane 
+{
+    position: absolute; 
+    top: 25px; 
+    bottom: 20px;
+    width:95%;
+}
+
+.dataExport .hidePane {
+    visibility: hidden; 
+    display:none;
+}
+
+.dataExport .label {
+    padding: 0px, 5px;
+    width: 98%;
+}
+
+.dataExport .right {
+    float: right;
+}
+
+.dataExport #loadingOverlay {
+    background:  #fff url('//ajax.googleapis.com/ajax/libs/dojo/1.9.1/dijit/themes/claro/images/loadingAnimation.gif') no-repeat 10px 23px;
+}
+.dataExport .pageOverlay {
+    top: 0;
+    left: 0;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 1001;
+    display: block;
+}
+.attrTable .loadingMessage {
+    padding: 25px 40px;
+    color: #999;
+}
+
+.dataExport .atPanel
+{
+    font-family: "Open Sans",sans-serif;
+    font-size:0.8em;
+    background-color: #F0F0F0;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 10px;
+}
+
+.dataExport .layerList ul {
+    overflow: auto;
+    height: 100px;
+}
+
+.dataExport .layerList ul {
+    margin: 6px 0;
+    list-style: none;
+    padding: 0;
+}
+
+.dataExport .layerList ul li {
+    line-height: 16px;
+    vertical-align: middle;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dataExport .layerList ul li.qlayer {
+    height: 16px;
+    padding: 2px 10px;
+    position: relative;
+}
+
+.dataExport .layerList ul li.active {
+    padding: 2px 10px;
+    background: #fff;
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+    z-index: 2;
+}
+
+.dataExport .layerList ul ul {
+    margin: 0;
+    display: none;
+}
+
+.dataExport .layerList li .cBox {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    background: url(../images/SmallButtonSprite.png) no-repeat -289px -1px;
+    cursor: pointer;
+    margin: 0 8px 0 0;
+}
+
+.dataExport .layerList li.checked .cBox {
+    background: url(../images/SmallButtonSprite.png) no-repeat -271px -1px;
+}
+
+.dataExport .layerList li .toggle {
+    cursor: pointer;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.dataExport .layerList li.cLoading .toggle {
+    cursor: default;
+}
+
+.dataExport .layerList .cBtitle {
+    display: inline-block;
+    height: 16px;
+    vertical-align: top;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+}
+
+.dataExport .selExtractArea
+{
+    background-image: url("../images/btnExtentSmall.png");
+}
+
+.dataExport .attrButton 
+{
+    margin-left: 2px;
+    margin-right: 2px;
+    padding: 2px;
+    width: 16px;
+    height: 16px;
+    background-color: #666;
+    background-color: rgba(102,102,102,0.80);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.dataExport .attrButton:hover
+{
+    background-color: #333;
+    background-color: rgba(102,102,102,0.90);
+}
+
+.dataExport .attrButtonSelected
+{
+    background-color: #bb292d;
+    background-color: rgba(187,41,45,0.80);
+}

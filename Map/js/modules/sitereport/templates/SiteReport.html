@@ -1,0 +1,706 @@
+﻿<div id="containerNode" data-dojo-attach-point="containerNode" data-dojo-type="dijit/layout/ContentPane" style="overflow:auto; ">
+  <style>
+      label
+      {
+        font-family: "Helvetica Neue", Arial, sans-serif;
+        font-size: 100%;
+        font: inherit;
+      }
+     .numberCol
+     {
+         width: 10px;
+     }
+
+      .formTable
+      {
+          width: 100%;
+          font-family: "Helvetica Neue", Arial, sans-serif;
+          font-size: 100%;
+          font: inherit;
+           margin: 0;
+      }
+
+          .formTable td
+          {
+              padding: 4px;
+          }
+
+    td.sectionText 
+    {
+    font-family: Georgia, Times, serif;
+    color: #bb292d;
+    font-size: .8750em;
+    font-weight: 600;
+    }
+
+    td.third
+    {
+       width: 33%
+    }
+
+      .radiobutton
+      {
+          padding-left: 7px;
+          margin-left: 7px;
+      }
+
+    h1.title {
+        font-family: Georgia, Times, serif;
+        text-align: center;
+        font-size: .9350em;
+        font-weight: 600;
+        margin-top: 2.5em;
+    }
+
+      span.answer
+      {
+          font-weight: bold;
+      }
+ </style>
+    
+    <div class="grid-6">
+      <h1 class="title">SOUTH CAROLINA INSTITUTE OF ARCHAEOLOGY AND ANTHROPOLOGY<br />
+      UNIVERSITY OF SOUTH CAROLINA<br />
+      SITE INVENTORY RECORD<br />
+      (68-1 Rev. 85)</h1>
+      <hr />
+    </div>
+
+     <table class="formTable">
+       <tr>
+           <td class="third">
+               <label for=" ">State:</label> <span class="answer">${fldValues.STATE}</span>
+           </td>
+           <td class="third">
+               <label for=" ">County:</label><span class="answer">${fldValues.COUNTY}</span>
+           </td>
+           <td class="third">
+                <label for=" ">Site Number:</label><span class="answer">${fldValues.SITENUMBER}</span>
+           </td>
+       </tr>
+         <tr>
+           <td class="third">
+              <label for=" ">Recorded By:</label><span class="answer">${fldValues.RECORDEDBY}</span>
+           </td>
+           <td class="third">
+               <label for=" ">Affiliation:</label><span class="answer">${fldValues.AFFILIATION}</span>
+           </td>
+           <td class="third">
+                <label for=" ">Date:</label><span class="answer">${fldValues.RECORDEDDATE}</span>
+           </td>
+       </tr>
+   </table>
+
+    <table class="formTable">
+        <tr>
+            <td colspan="4" class="sectionText">A. GENERAL INFORMATION</td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <label for=" ">1. Site Name:</label><span class="answer">${fldValues.SITENAME}</span>
+            </td>
+            <td colspan="2">
+                 <label for=" ">Project:</label><span class="answer">${fldValues.PROJECT}</span>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <label for=" ">2. USGS Quadrangle:</label>
+      <span class="answer">${fldValues.USGSQUADRANGLE}</span>
+            </td>
+            <td>
+                 <label for=" ">Date:</label><span class="answer">${fldValues.RECORDEDDATE}</span>
+            </td>
+            <td>
+                <label for="">Scale:</label><br />
+              <label for=" "><input type="radio" id="Radio1" checked="checked" /> 7.5 minute</label>
+              <label for=" "><input type="radio" id="Radio2" /> 15 minute</label>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+              <label for=" ">3.  UTM: Zone</label>
+      <span class="answer">${fldValues.UTMZONE}</span>
+            </td>
+            <td>
+                <label for=" ">Easting</label>
+      <span class="answer">${fldValues.GPSEASTING}</span>
+            </td>
+            <td>
+               <label for=" ">Northing</label>
+      <span class="answer">${fldValues.GPSNORTHING}</span>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4">
+              <label for=" ">4. Other Map Reference:</label><span class="answer">${fldValues.OTHERMAPREFNOTES}</span>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4">
+              5. Descriptive site type (see handbook):
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <label for=" " class="formL">Prehistoric:</label><span class="input-inline">${fldValues.DST_PREHISTORIC}</span>
+            </td>
+            <td>
+               <label for=" " class="formL">Historic:</label><span class="input-inline">${fldValues.DST_HISTORIC}</span>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4">
+              6. Archaeological Investigation:
+            </td>
+            </tr>
+        <tr>
+            <td colspan="4">
+               <label for=" "><input type="radio"  id="AI_SURVEY" class="radiobutton"  /> Survey</label>
+              <label for=" "><input type="radio"  id="AI_TESTING" class="radiobutton" /> Testing</label>
+              <label for=" "><input type="radio"  id="AI_EXCAVATION" class="radiobutton" /> Excavation</label>
+            </td>
+
+        </tr>
+        <tr>
+            <td colspan="2">
+              <label for=" ">7. Property Owner:</label><span class="answer">${fldValues.PROPERTYOWNER}</span>
+            </td>
+            <td colspan="2">
+                <label for=" ">Phone Number:</label><span class="answer">${fldValues.PHONENUMBER}</span>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4">
+               <label for=" ">8 .Address:</label><span class="answer">${fldValues.ADDRESS}</span>
+            </td>
+            
+        </tr>
+        <tr>
+            <td colspan="4">
+              <label for=" ">9. Other Site Designations:</label><span class="answer">${fldValues.OTHERSITEDESIGNATIONS}</span>
+            </td>
+            
+        </tr>
+         <tr>
+            <td colspan="4">
+             10.  National Register of Historic Places Status:
+            </td>
+         </tr>
+         <tr>
+            <td colspan="4">
+            <label for=" "><input type="radio" id="NRHP_ELIGIBLE" value=" "  />
+            <span>Potentially eligible</span>
+            </label>
+            <label for=" ">
+              <input type="radio" id="NRHP_NONELIGIBLE" value=" " />
+              <span">Probably not eligible</span>
+            </label>
+            <label for=" ">
+              <input type="radio" id="NRHP_ADDWORK" value=" " />
+              <span>Additional work</span>
+            </label>
+            </td>
+        </tr>
+         <tr>
+            <td colspan="4">
+             11. Level of Significance:
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4">
+              <label for=" "><input type="radio" id="LOS_NATIONAL" class="radiobutton" / >National</label>
+              <label for=" "><input type="radio" id="LOS_STATE" class="radiobutton" /> State</label>
+              <label for=" "><input type="radio" id="LOS_LOCAL" class="radiobutton" /> Local</label>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4">
+               <label for=" ">12. Justification:</label><br /><span>${fldValues.JUSTIFICATION}</span>
+            </td>
+            
+        </tr>
+        <tr>
+            <td colspan="4" class="sectionText">B. ENVIRONMENT AND LOCATION</td>
+        </tr>
+        <tr>
+            <td colspan="4">
+              1. National Register of Historic Places Status:
+            <label for=" "><input type="radio" id="Radio3" class="radiobutton"  />
+            <span>Potentially eligible</span>
+            </label>
+            <label for=" ">
+              <input type="radio" id="Radio4" class="radiobutton" />
+              <span>Probably not eligible</span>
+            </label>
+            <label for=" ">
+              <input type="radio" id="Radio5" class="radiobutton" />
+              <span>Additional work</span>
+            </label>
+            </td>
+        </tr>
+         <tr>
+            <td colspan="2">
+              <label>2. Landform Location:</label><span class="answer">${fldValues.LANDFORMLOCATION}</span>
+            </td>
+            <td colspan="2">
+               <label for=" ">Site Elevation: (above MSL in <strong><em>feet</em></strong>)</label><span class="answer">${fldValues.SITEELEVATION}</span>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+              <label for=" ">3. On Site Soil Type:</label><span class="answer">${fldValues.SOILTYPE}</span>
+            </td>
+            <td colspan="2">
+              <label for=" ">Soil Classification:</label><span class="answer">${fldValues.SOILCLASSIFICATION}</span>
+            </td>
+        </tr>
+         <tr>
+            <td colspan="4">
+              <label for=" ">4. Major River Systeme:</label><span class="answer">${fldValues.MAJORRIVER}</span>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4">
+              <label for=" ">5. Nearest River/Stream</label><span class="answer">${fldValues.NEARESTRIVERSTREAM}</span>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4">
+             <label for="">6. Current Vegetation:</label><br />
+              <label for=" "><input type="radio" id="CV_PINECONF" class="radiobutton" /> Pine/coniferous</label>
+              <label for=" "><input type="radio" id="CV_HARDWOOD" class="radiobutton" /> Hardwood</label>
+              <label for=" "><input type="radio" id="CV_MIXEDPINEHW" class="radiobutton" /> Mixed pine/hardwood</label>
+              <label for=" "><input type="radio" id="CV_OLDFIELD" class="radiobutton" /> Old field</label>
+              <label for=" "><input type="radio" id="CV_GRASSPASTURE" class="radiobutton" /> Grass/pasture</label>
+              <label for=" "><input type="radio" id="CV_AGRICULTURE" class="radiobutton" /> Agricultural/crops</label>
+              <label for=" "><input type="radio" id="CV_WETLANDSFRESHWAT" class="radiobutton" / >Wetlands/freshwater</label>
+              <label for=" "><input type="radio" id="CV_WETLANDSSALTWAT" class="radiobutton" /> Wetlands/saltwater</label>
+              <label for=" "><input type="radio" id="CV_OTHER" class="radiobutton" /> Other</label>
+              <br />
+              <label for=" " class="formL">Comments:</label> <span class="input-inline">${fldValues.VEGCOMMENTS}</span>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4">
+              7. Description of groundcover:<br />
+              <label for=" "><input type="radio" id="Radio33" class="radiobutton" /> Absent</label>
+              <label for=" "><input type="radio" id="Radio34" class="radiobutton" /> Light</label>
+              <label for=" "><input type="radio" id="Radio35" class="radiobutton" /> Moderate</label>
+              <label for=" "><input type="radio" id="Radio36" class="radiobutton" /> Heavy</label>
+            </td>
+        </tr>
+         <tr>
+             <td colspan="4" class="sectionText">C. SITE CHARACTERISTICS</td>
+        </tr>
+        <tr>
+            <td colspan="4">
+              1. Estimated Site Dimensions (in meters):  <span class="answer">${fldValues.SITELENGTH} meters</span> <span class="answer">${fldValues.SITEWIDTH} meters</span>
+            </td>
+        </tr>
+         <tr>
+            <td colspan="4">
+              2. Site Depth (in centimeters):  <span class="answer">${fldValues.SITEDEPTH} cm</span>
+            </td>
+        </tr>
+         <tr>
+            <td colspan="4">
+              <label for=" ">3. Cultural Features (type and number):</label><textarea id="Textarea2">${fldValues.CULTURALFEATURES}</textarea>
+            </td>
+        </tr>
+         <tr>
+            <td colspan="4">
+              4. Presence of: <br />
+            <label for=" "><input type="radio" id="NH_MIDDEN" class="radiobutton" /> Midden</label>
+            <label for=" "><input type="radio" id="NH_FLORAL" class="radiobutton" /> Floral remains</label>
+            <label for=" "><input type="radio" id="NH_FAUNA" class="radiobutton" /> Faunal remains</label>
+            <label for=" "><input type="radio" id="NH_SHELL" class="radiobutton" /> Shell</label>
+            <label for=" "><input type="radio" id="NH_CHARCOAL" class="radiobutton" /> Charcoal</label>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+             5. Human Skeletal Remains:
+            <label for=" "><input type="radio" id="Radio41" class="radiobutton" /> Present</label>
+            <label for=" "><input type="radio" id="Radio42" class="radiobutton" /> Absent</label>
+                <label for=" "><input type="radio" id="Radio6" class="radiobutton" /> Unknown</label>
+            </td>
+            <td colspan="2">
+                Preservation:
+            <label for=" "><input type="radio" id="Radio43" class="radiobutton" /> Good</label>
+            <label for=" "><input type="radio" id="Radio44" class="radiobutton" /> Poor</label>
+                <label for=" "><input type="radio" id="Radio7" class="radiobutton" /> Unknown</label>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4">
+              <label for=" ">6. General Site Description:</label><textarea id="Textarea3">${fldValues.GENERALSITEDESCRIPTION}</textarea>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4">
+
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4">
+
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4">
+                The following information should be provided on the site map: site boundaries, nearby topographic features, associated streams,
+modern cultural features, different land use types in site area, collection loci, test excavation loci, archaeological features and means of
+access (include north arrow and scale).
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4">
+                Map Key: <textarea id="Textarea5"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4">
+                <label for=" ">Verbal Description of Location:</label><textarea id="Textarea6"></textarea>
+            </td>
+        </tr>
+         <tr>
+             <td colspan="4" class="sectionText">D. ARCHAEOLOGICAL COMPONENTS</td>
+        </tr>
+        <tr>
+            <td>
+                <label for=" ">
+              <input type="checkbox" id="ARC_PALEO" value=" " />
+              <span>Paleo Indian</span>
+            </label>
+          <br />
+            <label for=" ">
+              <input type="checkbox" id="ARC_EARLYARCHAIC" value=" " />
+              <span>Early Archaic</span>
+            </label>
+          <br />
+            <label for=" ">
+              <input type="checkbox" id="ARC_MIDDLEARCHAIC" value=" " />
+              <span>Middle Archaic</span>
+            </label>
+          <br />
+            <label for=" ">
+              <input type="checkbox" id="ARC_LATEARCHAIC" value=" " />
+              <span>Late Archaic</span>
+            </label>
+          <br />
+            <label for=" ">
+              <input type="checkbox" id="ARC_EARLYWOODLAND" value=" " />
+              <span>Early Woodland</span>
+            </label>
+            </td>
+            <td>
+               <label for=" ">
+              <input type="checkbox" id="ARC_MIDDLEWOODLAND" value=" " />
+              <span>Middle Woodland</span>
+            </label>
+          <br />
+            <label for=" ">
+              <input type="checkbox" id="ARC_LATEWOODLAND" value=" " />
+              <span>Late Woodland</span>
+            </label>
+          <br />
+            <label for=" ">
+              <input type="checkbox" id="ARC_MISSISSIPPIAN" value=" " />
+              <span>Mississippian</span>
+            </label>
+          <br />
+            <label for=" ">
+              <input type="checkbox" id="ARC_UNKNOWNPREHISTORIC" value=" " />
+              <span>Unknown prehistoric</span>
+            </label>
+          <br />
+            <label for=" ">
+              <input type="checkbox" id="ARC_16CENTURY" value=" " />
+              <span>16th Century</span>
+            </label>
+            </td>
+            <td colspan="2">
+                <label for=" ">
+              <input type="checkbox" id="ARC_17CENTURY" value=" " />
+              <span>17th Century</span>
+            </label>
+          <br />
+            <label for=" ">
+              <input type="checkbox" id="ARC_18CENTURY" value=" " />
+              <span>18th Century</span>
+            </label>
+          <br />
+            <label for=" ">
+              <input type="checkbox" id="ARC_19CENTURY" value=" " />
+              <span>19th Century</span>
+            </label>
+          <br />
+            <label for=" ">
+              <input type="checkbox" id="ARC_20CENTURY" value=" " />
+              <span>20th Century</span>
+            </label>
+          <br />
+            <label for=" ">
+              <input type="checkbox" id="ARC_UNKNOWNHISTORIC" value=" " />
+              <span>Unknown historic</span>
+            </label>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4" class="sectionText">E. DATA RECOVERED</td>
+        </tr>
+         <tr>
+            <td colspan="2">
+                List materials recovered:
+            </td>
+            <td colspan="2">
+               <label for=" " class="formM">Total Number of Artifacts:</label><span class="answer">${fldValues.TOTALARTIFACTS}</span>
+            </td>
+        </tr>
+         <tr>
+            <td colspan="4">
+
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4" class="sectionText">F. DATA RECOVERY METHODS</td>
+        </tr>
+        <tr>
+            <td colspan="4">
+              1. Ground Surface Visibility: <br />
+            <label for=" "><input type="radio" id="VIS_0" class="radiobutton" /> 0%</label>
+            <label for=" "><input type="radio" id="VIS_1_25" class="radiobutton" /> 1-25%</label>
+            <label for=" "><input type="radio" id="VIS_26_50" class="radiobutton" /> 26-50%</label>
+            <label for=" "><input type="radio" id="VIS_51_75" class="radiobutton" /> 51-75%</label>
+            <label for=" "><input type="radio" id="VIS_76_100" class="radiobutton" /> 76-100%</label>
+            </td>
+        </tr>
+         <tr>
+            <td colspan="4">
+               Number of person hours spent collecting (total hours x total people): <span class="answer">${fldValues.TOTALHOURSCOLLECTING}</span>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4">
+               Description of Surface Collection Methods
+            </td>
+        </tr>
+         <tr>
+            <td colspan="2">
+                <label for="">Type:</label><br />
+            <label for=" "><input type="radio" id="CT_GRID" class="radiobutton" />Grid collection</label>
+            <br />
+            <label for=" "><input type="radio" id="CT_CONTROLLED" class="radiobutton" />Grab collection</label>
+            <br />
+            <label for=" "><input type="radio" id="CT_GRAB" class="radiobutton" />Controlled sampling</label>
+            <br />
+            <label for=" "><input type="radio" id="CT_OTHER" class="radiobutton" />Other (specify):
+            </td>
+            <td colspan="2">
+              <label for="">Extent:</label><br />
+            <label for=" "><input type="radio" id="COLEXT_COMPLETE" class="radiobutton" />Complete</label>
+            <br />
+            <label for=" "><input type="radio" id="COLEXT_SELECTIVE" class="radiobutton" />Selective</label>
+            <br />
+            <label for=" "><input type="radio" id="COLEXT_NO_COLLECT" class="radiobutton" />No collection made</label>
+            </td>
+        </tr>
+         <tr>
+            <td colspan="4">
+               Description of testing methods
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <label for=" "><input type="radio" id="Radio57" class="radiobutton" />Systematic</label>
+                <br />
+                <label for=" "><input type="radio" id="Radio58" class="radiobutton" />Nonsystematic</label>
+            </td>
+            <td colspan="2">
+                <label for=" " class="formL">System Type:</label><span class="answer">${fldValues.TESTINGMETHOD}</span>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4">
+
+            </td>
+        </tr>
+         <tr>
+            <td colspan="4">
+               5. Description of Excavation Units
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+         <tr>
+             <td colspan="4" class="sectionText">G. MANAGEMENT INFORMATION</td>
+        </tr>
+        <tr>
+            <td colspan="4">
+              1. Present Land Use: <br />
+
+                <label for=" "><input type="radio" id="LU_AGRICULTURE" class="radiobutton" />Agricultural</label>
+
+            <label for=" "><input type="radio" id="LU_RESIDENTIALHD" class="radiobutton" />Forest</label>
+
+            <label for=" "><input type="radio" id="LU_FOREST" class="radiobutton" />Fallow</label>
+
+            <label for=" "><input type="radio" id="LU_COMMERCIAL" class="radiobutton" />Residential, low density</label>
+
+            <label for=" "><input type="radio" id="LU_FALLOW" class="radiobutton" />Residential, high density</label>
+
+            <label for=" "><input type="radio" id="LU_INDUSTRIAL" class="radiobutton" />Commercial</label>
+
+            <label for=" "><input type="radio" id="LU_RESIDENTIALLD" class="radiobutton" />Industrial</label>
+
+            <label for=" "><input type="radio" id="LU_OTHER" class="radiobutton" />Other (specify):&nbsp;</label>
+            </td>
+           
+        </tr>
+        <tr>
+            <td colspan="4">
+             2. Present Condition/Integrity of Site:
+            </td>
+           
+        </tr>
+        <tr>
+            <td>
+                <label for=" "><input type="radio" id="Radio67" class="radiobutton" />Intact</label>
+                 <label for=" "><input type="radio" id="Radio68" class="radiobutton" />Damaged</label>
+            </td>
+            <td>
+                <label for="">Extent of Damage:</label>
+            <br />
+            <label for=" "><input type="radio" id="Radio69" class="radiobutton" />Light</label>
+            <br />
+            <label for=" "><input type="radio" id="Radio70" class="radiobutton" />Moderate</label>
+            <br />
+            <label for=" "><input type="radio" id="Radio71" class="radiobutton" />Heavy</label>
+            </td>
+            <td colspan="2">
+                <label for="">Nature of Damage:</label>
+            <br />
+            <label for=" "><input type="radio" id="DAMAGE_EROSION" class="radiobutton" />Erosion</label>
+            <br />
+            <label for=" "><input type="radio" id="DAMAGE_VANDALISM" class="radiobutton" />Cultivation</label>
+            <br />
+            <label for=" "><input type="radio" id="DAMAGE_CULTIVATION" class="radiobutton" />Logging</label>
+            <br />
+            <label for=" "><input type="radio" id="DAMAGE_INUNDATION" class="radiobutton" />construction/development</label>
+            <br />
+            <label for=" "><input type="radio" id="DAMAGE_LOGGING" class="radiobutton" />Vandalism</label>
+            <br />
+            <label for=" "><input type="radio" id="DAMAGE_OTHER" class="radiobutton" />Inundation</label>
+            <br />
+            <label for=" "><input type="radio" id="DAMAGE_CONSTRUCTION" class="radiobutton" />Other (specify):</label>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4">
+            3. Potentential Impacts and Threats to Site:
+            </td>
+           
+        </tr>
+        <tr>
+            <td colspan="2">
+                <label for="">Potential Threat:</label>
+            <br />
+            <label for=" "><input type="radio" id="Radio79" class="radiobutton" />None</label>
+            <br />
+            <label for=" "><input type="radio" id="Radio80" class="radiobutton" />Low</label>
+            <br />
+            <label for=" "><input type="radio" id="Radio81" class="radiobutton" />Moderate</label>
+            <br />
+            <label for=" "><input type="radio" id="Radio82" class="radiobutton" />High</label>
+            </td>
+            <td colspan="2">
+                 <label for="">Nature of Threat:</label>
+            <br />
+            <label for=" "><input type="radio" id="THREAT_EROSION" class="radiobutton" />Erosion</label>
+            <br />
+            <label for=" "><input type="radio" id="THREAT_VANDALISM" class="radiobutton" />Cultivation</label>
+            <br />
+            <label for=" "><input type="radio" id="THREAT_CULTIVATION" class="radiobutton" />Logging</label>
+            <br />
+            <label for=" "><input type="radio" id="THREAT_INUNDATION" class="radiobutton" />construction/development</label>
+            <br />
+            <label for=" "><input type="radio" id="THREAT_LOGGING" class="radiobutton" />Vandalism</label>
+            <br />
+            <label for=" "><input type="radio" id="THREAT_OTHER" class="radiobutton" />Inundation</label>
+            <br />
+            <label for=" "><input type="radio" id="THREAT_CONSTRUCTION" class="radiobutton" />Other (specify):</label><br />
+            </td>
+        </tr>
+         <tr>
+            <td colspan="4">
+            4. Recommendations for Further Work: 
+                <label for=" "><input type="radio" id="Radio94" class="radiobutton" />Survey</label>
+
+            <label for=" "><input type="radio" id="Radio95" class="radiobutton" />Testing</label>
+
+            <label for=" "><input type="radio" id="Radio96" class="radiobutton" />Excavation</label>
+
+            <label for=" "><input type="radio" id="Radio97" class="radiobutton" />Archival</label>
+
+            <label for=" "><input type="radio" id="Radio98" class="radiobutton" />None</label>
+
+            <label for=" "><input type="radio" id="Radio99" class="radiobutton" />Other (specify):&nbsp;</label>
+            </td>
+           
+        </tr>
+        <tr>
+            <td colspan="4">
+                 <label for=" ">Comments:</label><span class="answer">${fldValues.TESTINGMETHOD}</span>
+            </td>
+           
+        </tr>
+        <tr>
+            <td colspan="4">
+           5. References: <label for " ">Historical/Archival Documentation:</label>
+            <label for=" "><input type="radio" id="Radio100" class="radiobutton" />Yes</label>
+
+            <label for=" "><input type="radio" id="Radio101" class="radiobutton" />No</label>
+
+            <label for=" "><input type="radio" id="Radio102" class="radiobutton" />Not Known</label>
+            </td>
+           
+        </tr>
+        <tr>
+
+            <td colspan="4">
+           6. Additional Management Information/Comments: <textarea id="Textarea10">${fldValues.MANAGEMENTCOMMENTS}</textarea>
+            </td>
+           
+        </tr>
+        <tr>
+            <td colspan="4">
+           7. Location of Existing Collections: <textarea id="Textarea11">${fldValues.COLLECTIONSLOCATION}</textarea>
+            </td>
+           
+        </tr>
+         <tr>
+            <td colspan="4">
+           <label for=" " class="formM">8. Location of Photographs:</label> <textarea id="Textarea12">${fldValues.PHOTOLOCATION}</textarea>
+            </td>
+           
+        </tr>
+        <tr>
+            <td colspan="4">
+            <label for=" " class="formM">9. Location of Special Samples:</label><textarea id="Textarea13">${fldValues.SAMPLELOCATION}</textarea>
+            </td>
+           
+        </tr>
+        <tr>
+            <td colspan="4">
+             <label for=" " class="formM">10. Type of Special Samples:</label> <textarea id="Textarea14">${fldValues.SAMPLETYPE}</textarea>
+            </td>
+           
+        </tr>
+
+        </table>
+    
+</div>

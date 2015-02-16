@@ -1,0 +1,51 @@
+﻿.commentWidget {
+    padding: 5px;
+    height: 225px;
+    color: #808080;
+    font-family: "Open Sans",sans-serif;
+}
+
+.commentWidget .viewPanel {
+    display: inline;
+}
+
+.commentWidget .titleText 
+{
+    padding: 2px 0px;
+    color: #808080;
+    font-family: "Open Sans",sans-serif;
+}
+
+.commentWidget #cm_email {
+width: 200px;
+}
+
+.commentWidget .viewPanel div {
+   padding: 2px 0px;     
+}
+
+.commentWidget .textArea {
+    resize: none;
+    overflow: auto;
+    width: 260px;
+	height: 100px;
+	border: 1px solid #cccccc;
+	padding: 5px;
+}
+
+.commentWidget .submitButton {
+    float: right;
+    margin: 0 2px;
+}
+
+.commentWidget .cancelButton {
+    float:right;
+    margin: 0 2px;
+}
+
+.commentWidget .hidePage
+{
+    visibility: hidden;
+    display: none;
+
+}

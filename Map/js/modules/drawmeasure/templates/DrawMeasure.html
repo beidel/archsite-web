@@ -1,0 +1,32 @@
+﻿<div id="dm_containerNode">
+    <div class="drawMeasureWidget">
+        <div id="buttonPanel" class="buttonPanel">
+            <div id="dm_BtnPoint" data-measure="point" title="Get coordinate" class="measureButtons measureButton measurePointButton"></div>
+            <div id="dm_BtnLine" data-measure="polyline" title="Measure line" class="measureButtons measureButton measurePolylineButton"></div>
+            <div id="dm_BtnPoly" data-measure="polygon" title="Measure area" class="measureButtons measureButton measurePolygonButton"></div>
+            <div id="dm UnitSelect" class="measureButtons">
+                <div class="selectMenus hideItem">
+                <select class="selectBox hideItem" data-select="area" name="dm_areaUnits" id="dm_areaUnits" >
+                    <option value="UNIT_ACRES" class="dijitSelectEntryText">Acres</option>
+                    <option value="UNIT_HECTARES" class="dijitSelectEntryText">Hectares</option>
+                    <option value="UNIT_SQUARE_FEET" class="dijitSelectEntryText">Sq. Feet</option>
+                    <option value="UNIT_SQUARE_METERS" class="dijitSelectEntryText">Sq. Meters</option>
+                    <option value="UNIT_SQUARE_MILES" class="dijitSelectEntryText">Sq. Miles</option>
+                    <option value="UNIT_SQUARE_YARDS" class="dijitSelectEntryText">Sq. Yards</option>
+                </select>
+                <select class="selectBox hideItem" data-select="length" name="dm_lengthUnits" id="dm_lengthUnits" >
+                    <option value="UNIT_METER" class="dijitSelectEntryText">Meters</option>
+                    <option value="UNIT_FOOT" class="dijitSelectEntryText">Int'l Feet</option>
+                    <option value="UNIT_KILOMETER" class="dijitSelectEntryText">Kilometer</option>
+                    <option value="UNIT_STATUTE_MILE" class="dijitSelectEntryText">Miles</option>
+                </select>
+            </div>
+            </div>
+        </div>
+        <div id="dm_Results" class="resultPanel">
+            <span>Measurement Results</span><br />
+            <span id="dm_ResultView" class="resultView"></span>
+            <div class="clearLink hideItem">Clear</div>
+        </div>
+        </div>
+</div>

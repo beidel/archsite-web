@@ -1,0 +1,369 @@
+﻿/*-------------------------------------------------- */
+/*  Display */
+/*-------------------------------------------------- */
+
+.attrTable .viewPane 
+{
+    position: absolute; 
+    top: 70px; 
+    bottom: 10px;
+    width:100%;
+}
+
+.attrTable .hidePane {
+    visibility: hidden; 
+    display:none;
+}
+
+.attrTable #loadingOverlay {
+    background:  #fff url('//ajax.googleapis.com/ajax/libs/dojo/1.9.1/dijit/themes/claro/images/loadingAnimation.gif') no-repeat 10px 23px;
+}
+.attrTable .pageOverlay {
+    top: 0;
+    left: 0;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 1001;
+    display: block;
+}
+.attrTable .loadingMessage {
+    padding: 25px 40px;
+    color: #999;
+}
+
+.attrTable .sideButton {
+    float: right;
+}
+
+.attrTable .atPanel
+{
+    font-family: "Open Sans",sans-serif;
+    font-size:0.8em;
+    background-color: #F0F0F0;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 10px;
+}
+
+.attrTable .attrDialog {
+    width: 250px; 
+    height:250px;
+} 
+
+/*-------------------------------------------------- */
+/*  Spatial Search Layer List */
+/*-------------------------------------------------- */
+
+.attrTable .layerList ul {
+    margin: 6px 0;
+    list-style: none;
+    padding: 0;
+}
+
+.attrTable .layerList ul li {
+    line-height: 16px;
+    vertical-align: middle;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.attrTable .layerList ul li.qlayer {
+    height: 16px;
+    padding: 2px 10px;
+    position: relative;
+}
+
+.attrTable .layerList ul li.active {
+    padding: 2px 10px;
+    background: #fff;
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+    z-index: 2;
+}
+
+.attrTable .layerList ul ul {
+    margin: 0;
+    display: none;
+}
+
+.attrTable .layerList li .cBox {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    background: url(../images/SmallButtonSprite.png) no-repeat -289px -1px;
+    cursor: pointer;
+    margin: 0 8px 0 0;
+}
+
+.attrTable .layerList li.checked .cBox {
+    background: url(../images/SmallButtonSprite.png) no-repeat -271px -1px;
+}
+
+.attrTable .layerList li .toggle {
+    cursor: pointer;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.attrTable .layerList li.cLoading .toggle {
+    cursor: default;
+}
+
+.attrTable .layerList .cBtitle {
+    display: inline-block;
+    height: 16px;
+    vertical-align: top;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+}
+
+.attrTable #layersMenu .cBtitle {
+    width: 200px;
+}
+
+.attrTable .layerList .cBtitle:hover, .layerList .cBtitle:focus {
+    opacity: 0.75;
+}
+
+.attrTable .layerList .cover {
+    display: none;
+}
+
+.attrTable .layerList .active .cover {
+    background: #fff;
+    display: block;
+    width: 1px;
+    height: 26px;
+    _height: 28px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 5;
+}
+
+
+/*-------------------------------------------------- */
+/*  Tool Buttons */
+/*-------------------------------------------------- */
+
+.attrTable .toolButtons
+{
+    margin: 5px auto auto auto; 
+    text-align:center; 
+    width:100%;
+    text-align:center;
+}
+
+.attrTable .bufferTools
+{
+    text-align:center; 
+    height:40px; 
+    clear: left;
+}
+
+.attrTable .attrButton 
+{
+    margin-left: 2px;
+    margin-right: 2px;
+    padding: 2px;
+    width: 34px;
+    height: 34px;
+    background-color: #666;
+    background-color: rgba(102,102,102,0.80);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.attrTable .attrButton:hover
+{
+    background-color: #333;
+    background-color: rgba(102,102,102,0.90);
+}
+
+.attrTable .attrTable .attrButton:active
+{
+    background-color: #ccc;
+    background-color: rgba(102,102,102,0.60);
+}
+
+.attrTable .attrButtonSelected
+{
+    background-color: #bb292d;
+    background-color: rgba(187,41,45,0.80);
+}
+
+.attrTable .searchGeoIcon {
+    background-image: url("../images/GeoSearchButton.png");
+    float: left;
+}
+
+.attrTable .searchAttrIcon {
+    background-image: url("../images/AttrSearchButton.png");
+    float: left;
+}
+
+.attrTable .resultsIcon {
+    background-image: url("../images/AttrResults.png");
+    float: left;
+}
+
+.attrTable .spatSrchPolygon
+{
+    background-image: url("../images/btnPolygon.png");
+    display:inline-block;
+}
+
+.attrTable .spatSrchExtent
+{
+    background-image: url("../images/btnExtent.png");
+    display:inline-block;
+}
+
+.attrTable .spatSrchPoint
+{
+    background-image: url("../images/btnPoint.png");
+    display:inline-block;
+}
+
+.attrTable .spatSrchLine
+{
+    background-image: url("../images/btnLine.png");
+    display:inline-block;
+}
+
+.attrTable .spatSrchFreePoly
+{
+    background-image: url("../images/btnFreePoly.png");
+    display:inline-block;
+}
+
+/*-------------------------------------------------- */
+/*  Attribute Search */
+/*-------------------------------------------------- */
+
+.attrTable .attrControlContainer {
+    height:50px;
+    padding:2px;
+}
+
+.attrTable .attrControls {
+    margin:3px;
+}
+
+.attrTable .attrControlText {
+    width: 125px;
+}
+
+.attrTable .attrControlOperator {
+    width: 50px;
+}
+
+.attrTable .attrControlOperator {
+    width: 25px;
+}
+
+.attrTable .searchOptions {
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+.attrTable .deleteColumn {
+    min-width:20px;
+    width: 20px;
+}
+
+.attrTable th .hCenterColumn{
+    text-align: center;
+}
+
+.attrTable .smallCloseButton
+{
+        width: 18px;
+        height: 18px;
+        display: block;
+        overflow: hidden;
+        cursor: pointer;
+        background: url(../images/SmallButtonSprite.png) no-repeat -224px -3px;
+}
+
+/*-------------------------------------------------- */
+/*  Search Results */
+/*-------------------------------------------------- */
+
+.attrTable .detailsLink
+{
+    font-family: "Open Sans",sans-serif;
+    font-size:0.9em;
+    cursor: pointer;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    color: blue;
+    text-decoration:underline;
+}
+
+.attrTable .detailsView
+{
+    position: absolute;
+    bottom: 10px;
+    top: 35px;
+    left: 5px;
+    right: 5px;
+    overflow: auto;
+}
+
+.attrTable .resultTitle {
+    margin: 10px 0px 5px;
+    font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+    font-size:1.4em;
+    font-weight: bold;
+    color:#bb292d; 
+    text-shadow: 1px 1px 2px rgba(102,102,102,0.60);
+}
+
+.attrTable .tableResults
+{
+font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+width:100%;
+border-collapse:collapse;
+}
+
+.attrTable .tableResults td, .tableResults th 
+{
+font-size:1.2em;
+border:1px solid #bb292d;
+padding:3px 7px 2px 7px;
+}
+
+.attrTable .tableResults th 
+{
+font-size:1.4em;
+text-align:left;
+padding-top:5px;
+padding-bottom:4px;
+background-color:#bb292d;
+color:#fff;
+}
+
+.attrTable .tableResults tr.alt td 
+{
+color:#000;
+background-color:#EDADAF;
+}
+
+
+

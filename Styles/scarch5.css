@@ -1,0 +1,693 @@
+﻿body {
+	background-image: url("../Images/AS/topbar.gif");
+	background-repeat: repeat-x;
+}
+
+a {
+    color: #bb292d;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #9b2225;
+    }
+
+/*  NAVIGATION */
+/*  A placeholder for navigation styling.
+ *  Try Astro: A collection of mobile-first navigation patterns.
+ *  http://cferdinandi.github.com/astro/ */
+
+/*navigation*/
+/*  DROP BASIC */
+/*  Basic dropdown styling */
+
+/*  Sets dropdown link to relative positioning */
+.dropdown {
+    position: relative;
+}
+
+/*  Display a caret after each dropdown link when JavaScript is supported.
+ *  You can remove this or change it to a different symbol.
+ *  (For example, a "+" symbol.) */
+.js .dropdown > a:after {
+    content: " \25bc";
+    font-size: .875em;
+    font-weight: normal;
+}
+
+/*  When a dropdown is active, display a caret pointing up instead.
+ *  You can remove this or change it to a different symbol.
+ *  (For example, a "-" symbol.) */
+.js .dropdown > a.active:after {
+    content: " \25b2";
+}
+
+/*  Styling for the dropdown content.
+ *  Hides the content by default. */
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    display: none;
+    visibility: hidden;
+    float: left;
+    min-width: 10em;
+    /*margin-top: .25em;*/
+    margin-left: 0;
+    text-align: left;
+    font-size: 100%;
+    font-weight: normal;
+    /*border: .0625em solid #b8b8b8;*/
+    background-color: #ffffff;
+    white-space: nowrap;
+    z-index: 1000;
+    border-radius: .3125em;
+    box-shadow: 0 .3125em .5625em rgba(0, 0, 0, 0.2);
+    -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+            box-sizing: border-box;
+    -webkit-background-clip: padding-box;
+        -moz-background-clip: padding;
+            background-clip: padding-box;
+}
+
+/*  Remove list-style and margin-left
+ *  from dropdown menu lists */
+.dropdown-menu ul,
+.dropdown-menu ol {
+    margin: 0 .5em;
+    list-style: none;
+}
+
+/*  When a dropdown is active, display it. */
+.dropdown-menu.active {
+    display: block;
+    visibility: visible;
+}
+
+/*  If dropdown link is near the right edge of the screen,
+ *  shift the dropdown menu position to avoid content clipping. */
+.dropdown-menu.dropdown-right {
+  right: 0;
+  left: auto;
+}
+
+/*  Optional small screen styling for use
+ *  with collapse-and-toggle navigation menus.
+ *  Learn more - http://cferdinandi.github.com/astro/ */
+@media (max-width: 40em) {
+
+    /*  Switch dropdown content to relative positioning.
+     *  Remove styling. */
+    .js .dropdown-menu {
+        position: relative;
+        float: none;
+        min-width: 100%;
+        background-color: #ffffff;
+        border: none;
+        box-shadow: none;
+    }
+
+}
+
+
+/*  Align all navigation elements */
+.nav-wrap {
+    text-align: right;
+}
+
+/*  Remove default list styling for navigation list */
+.nav {
+    margin: 0 0 .5em 0;
+    list-style: none;
+    font-size: .875em;
+    font-weight: normal;
+}
+
+.nav a {
+    text-decoration: none;
+}
+
+a.nav-toggle {
+    margin: .5em 0 .5em 0;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/*  Display navigation items as inline-block elements.
+ *  Add slight margin between each navigation item. */
+.nav > li {
+    display: inline-block;
+    float: none;
+    margin-left: .5em;
+    margin-right: .5em;
+    padding: .375em 0 0 .25em;
+}
+
+/*  Remove margin-left on first navigation item */
+.nav > li:first-child {
+    margin-left: 0;
+}
+
+.nav > li a {
+    color: #666666;
+    border-left: .1875em solid #fff;
+    padding-left: .25em;
+    font-weight: normal;
+}
+
+.nav > li a:hover {
+    border-color: #bb292d;
+}
+
+.nav > li a#current {
+    border-color: #555555;
+    color: #bb292d;
+}
+
+/*  Remove margin-right on last navigation item */
+.nav >li:last-child {
+    margin-right: 0;
+}
+
+/*  Hide the navigation toggle menu button by default.
+ *  Only needed for expand-and-collapse option. */
+.nav-toggle {
+    display: none;
+    visibility: hidden;
+}
+
+/* navigation for Management Tools page */
+.navAdmin-wrap {
+    text-align: right;
+}
+.navAdmin {
+    margin: 0 0 .5em 0;
+    list-style: none;
+    font-weight: normal;
+}
+
+.navAdmin a {
+    text-decoration: none;
+    }
+
+.navAdmin li {
+    display: inline-block;
+    float: none;
+    font-size: .875em;
+    margin-left: .5em;
+    margin-right: .5em;
+    padding: .375em 0 0 .25em;
+    }
+
+.navAdmin > li a {
+    color: #666666;
+    border-left: .1875em solid #fff;
+    padding-left: .25em;
+    font-weight: normal;
+}
+
+.navAdmin > li a:hover {
+    border-color: #bb292d;
+}
+
+
+
+
+/*  Expand-and-Collapse styling for smaller screens.
+ *  Remove if not using.
+ *  Change max-width to fit your project. */
+@media (max-width: 40em) {
+
+    /*  .js prefix ensure content is only hidden when JavaScript is supported.
+     *  This requires on the included js-accessibility.js script. */
+
+    /*  Align text to the left when javascript is supported */
+    .js .nav-wrap {
+        text-align: left;
+    }
+
+
+
+    /*  Display navigation toggle button if javascript is supported */
+    .js .nav-toggle {
+        display: block;
+        visibility: visible;
+        float: right;
+        font-size: .9325em;
+        font-weight: normal;
+    }
+
+    /*  Hide navigation items if javascript is supported */
+    .js .nav-collapse {
+        background-color: #ffffff;
+        max-height: 0;
+        overflow: hidden;
+        display: block;
+        width: 100%;
+        -webkit-box-sizing: border-box;
+           -moz-box-sizing: border-box;
+                box-sizing: border-box;
+        /*  CSS3 animation for when menu content expands */
+        -webkit-transition: all 0.35s ease-in;
+           -moz-transition: all 0.35s ease-in;
+            -ms-transition: all 0.35s ease-in;
+             -o-transition: all 0.35s ease-in;
+                transition: all 0.35s ease-in;
+    }
+
+    /*  When collapsed element has the .active class, show it
+     *  Uses max-height instead of display: none to allow for
+     *  CSS3 animations, which don't work on display values. */
+    .js .nav-collapse.active {
+        max-height: 600em;
+    }
+
+    .js .nav {
+        text-align: left;
+    }
+
+
+    /*  Display navigation items as full-width, stacked blocks when javascript supported */
+    .js .nav-collapse li {
+        display: block;
+        width: 100%;
+        -webkit-box-sizing: border-box;
+           -moz-box-sizing: border-box;
+                box-sizing: border-box;
+        margin-left: 0;
+        margin-right: 0;
+        padding-top: .125em;
+        padding-bottom: .125em;
+        padding-left: 0.25em;
+        font-weight: normal;
+    }
+
+    .js .nav-collapse li span {
+        display: inline;
+    }
+
+}
+
+@media (min-width: 40em) {
+    .js .nav-collapse li span {
+        display: none;
+    }
+}
+
+
+h3.tb a,
+h3.tb a:hover {
+    font-weight: normal;
+    color: #f8f8f8;
+}
+
+.tb-login {
+    font-size: .8750em;
+	color: #bb292d;
+	text-align: right;
+    margin-bottom: .2500em;
+    padding-top: 1.125em;
+}
+
+.tb-login a {
+    color: #bb292d;
+}
+
+
+@media (min-width: 40em) {
+    .tb-login {
+	    color: #fff;
+	    text-align: right;
+        margin-bottom: .375em;
+        padding-top: 1.25em;
+    }
+
+
+    .tb-login a {
+        color: #fff;
+    }
+}
+
+.header {
+    padding: 0 .25em 0 .25em;
+    border-left: 2px solid #bb292d;
+    margin-left: .5em;
+}
+
+.title {
+    font-size: .8125em;
+    padding: 0 0 1em 0;
+}
+
+.headerMap {
+    padding: 0 .25em 0 .625em;
+    border-left: 2px solid #bb292d;
+    margin-left: .5em;
+}
+
+.logo {
+	margin: 3.5em 0 2em 0;
+}
+
+
+.logo h1 a {
+    font-size: 1.75em;
+	color: #666;
+	text-decoration: none;
+    font-weight: 400;
+}
+
+.logo h1 a .arch {
+	color: #bb292d;
+	text-decoration: none;
+}
+
+.logo h1 a .site {
+	color: #bb292d;
+	text-decoration: none;
+    font-weight: bold;
+}
+
+.sublogo {
+    font-size: 60%;
+    color: #999;
+    font-weight: 500;
+}
+
+
+h2.pageTitle {
+	margin: 2em 0;
+	padding-left: 1em;
+	color: #888;
+	padding-bottom: 1em;
+	border-right: 2px solid #bb292d;
+	border-left: 2px solid #bb292d;
+	background-color: #eeeeee;
+}
+
+h3 {
+	color: #555555;
+}
+
+h3 a, h3 a:hover {
+	color: #555555;
+    text-decoration: none;
+}
+
+.h5 {
+    font-size: .96875em;
+    color: #676767;
+    font-weight: 600;
+    font-style: normal;
+    text-transform: none;
+}
+
+/*  announcements */
+.announce {
+    border-left: .235294118em solid #bb292d;
+    border-right: .235294118em solid #bb292d;
+    background: #efefef;
+    margin-bottom:1.529411765em;
+    padding-left: 1.529411765em;
+    padding-right: 1.529411765em;
+    padding-bottom: 1.529411765em;
+}
+
+.announce span {
+	color: #444;
+	font-weight: 500;
+}
+
+.announce:before, .announce:after {
+    content: '';
+    content: none;
+}
+
+
+
+/*.btn-large {
+    margin-bottom: 0;
+}*/
+
+.btn-xlarge {
+    padding-left: 2em;
+    padding-right: 2em;
+}
+
+.text-xsmall {
+    font-size: .75em;
+    font-style: italic;
+}
+
+table#fees {
+    width: 100%;
+	border-collapse: collapse;
+    text-align: left;
+}
+
+table#fees thead tr th {
+    color: #777;
+    font-size: 1em;
+    font-weight: bold;
+    text-align: left;
+    padding: .6250em .5em .50em .5em;
+    border-bottom: 1px #bb292d solid;
+}
+
+
+table#fees tbody tr th {
+    text-align: center;
+    font-style: italic;
+    font-weight: 600;
+    color: #444;
+    font-size: .9250em;
+    background-color: #eeeeee;
+}
+
+table#fees tbody tr td {
+    color: #444;
+    font-size: .9250em;
+    padding: 0 .5em 0 .6250em;
+}
+
+table#fees tbody tr:hover td {
+	color: #bb292d;
+}
+
+
+.footnote {
+    font-size: .8250em; 
+    line-height: 1.50; 
+}
+
+.red {
+    color: #bb292d;
+}
+
+
+.copyright {
+    border-top: .1875em #ccc dotted;
+    margin-bottom: 2em;
+    text-align: left;
+	color: #999;
+	font-size: .75em;
+    padding-top: .375em 0 0 0;
+}
+
+@media (min-width: 40em) {
+    .copyright {
+        border-top: none;
+    }
+}
+
+
+.smallprint {
+	color: #999;
+	font-size: .75em;
+    padding: 1em 1em 0 0;
+
+}
+
+@media (min-width: 40em) {
+    .smallprint {
+        padding: 1em 1em 0 1em;
+    }
+}
+
+
+.pxleft {
+	float: left;
+	padding-right: .5000em;
+}
+
+.formTitle {
+    float: left;
+    width: 11em;
+    text-align: right;
+    padding-right: .6250em;
+    font-size: .9350em;
+}
+
+@media (max-width: 40em) {
+    .formTitle {
+        text-align: left;
+    }
+}
+
+label.inline {
+    display:inline;
+}
+
+/* create a new account page */
+.log form, fieldset { 
+    margin-bottom: 1.5625em;
+}
+
+fieldset.log  {
+    border: 1px dotted #999999;
+    padding: .25em 0 .25em 2em;
+}
+
+.log legend, label { 
+    display: block;
+    font-weight: normal;
+    padding: 0; 
+    margin-bottom: .125em; 
+}
+
+.log input, textarea/*, select*/ {
+    display: inline-block;
+    width: 80%;
+    font: inherit;
+    line-height: 1.5;
+    color: #555555;
+    vertical-align: middle; 
+    margin-bottom: 1.1875em; 
+    padding: .3125em; 
+    border: .0725em solid #b8b8b8; 
+    border-radius: .0725em;
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+.log form button, form .btn {
+    margin-bottom: 1.1875em;
+}
+
+.log textarea { 
+    height: 12em; 
+}
+
+.log input.subMap {
+    width: auto;
+}
+
+.log input[type="image"], 
+.log input[type="checkbox"], 
+.log input[type="radio"] {
+    display: inline-block;
+    width: auto; 
+    height: auto; 
+    padding: 0; 
+    margin-bottom: .3125em; 
+    cursor: pointer; 
+}
+
+.log input:focus, 
+.log textarea:focus { 
+    border-color: rgba(82, 168, 236, 0.8); 
+    -webkit-box-shadow: inset 0 .0725em .0725em rgba(0, 0, 0, 0.075), 0 0 .5em rgba(82, 168, 236, 0.6);
+            box-shadow: inset 0 .0725em .0725em rgba(0, 0, 0, 0.075), 0 0 .5em rgba(82, 168, 236, 0.6);
+    outline: 0; 
+    outline: thin dotted \9; 
+}
+
+.log input[type="file"]:focus, 
+.log input[type="checkbox"]:focus/*, 
+.log select:focus*/ { 
+    outline: thin dotted; 
+    outline: .3125em auto -webkit-focus-ring-color; 
+    outline-offset: -.125em; 
+}
+
+
+.log input.white {
+    color: white;
+}
+
+/*  Inline Inputs */
+.log .input-inline {
+    display: inline-block;
+    width: auto;
+    vertical-align: middle;
+}
+
+
+/*  Condensed Inputs */
+.log .input-condensed {
+    line-height: 1;
+    padding: .125em;
+}
+
+
+@media (min-width: 40em) {
+    .log input, textarea/*, select*/ {
+        line-height: 1.5625;
+    }
+}
+
+.btn-xlarge {
+    color: white;
+    padding: .6875em 2em;
+    font-size: 1em;
+    line-height: normal;
+    background-color: #bb292d;
+    border-color: #bb292d;
+    margin-bottom: .125em;
+}
+
+.btn-xlarge:hover, 
+a .btn-xlarge:hover {
+    background-color: #9b2225;
+    border-color: #9b2225;
+    text-decoration: none;
+}
+
+/* Management Tool page */
+
+.manage label {
+    display: inline;
+}
+
+
+
+.manage input[type="image"], 
+.manage input[type="checkbox"], 
+.manage input[type="radio"] {
+    display: inline-block;
+    width: auto; 
+    height: auto; 
+    padding: 0; 
+    margin-bottom: .294117647em; 
+    cursor: pointer;
+}
+
+
+.manage input:focus, 
+.manage textarea:focus { 
+    border-color: rgba(82, 168, 236, 0.8); 
+    -webkit-box-shadow: inset 0 .071428571em .071428571em rgba(0, 0, 0, 0.075), 0 0 .470588235em rgba(82, 168, 236, 0.6);
+            box-shadow: inset 0 .071428571em .071428571em rgba(0, 0, 0, 0.075), 0 0 .470588235em rgba(82, 168, 236, 0.6);
+    outline: 0; 
+    outline: thin dotted \9; 
+}
+
+.manage input[type="file"]:focus, 
+.manage input[type="checkbox"]:focus { 
+    outline: thin dotted; 
+    outline: .294117647em auto -webkit-focus-ring-color; 
+    outline-offset: -.117647059em; 
+}
+

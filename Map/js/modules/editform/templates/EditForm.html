@@ -1,0 +1,102 @@
+﻿<div id="${widgetId}_ContainerNode" data-dojo-attach-point="${widgetId}_ContainerNode" class="editFormWidget">
+	<div id="${widgetId}_view_2" data-dojo-attach-point="${widgetId}_view_2" class="viewPane">
+                
+       <div id="pgContainer">
+       
+       <div class='toolPanel'><span class="header">Draw Site</span> 
+            <div style="margin-left: 5px; width: 100%">
+                <div id="${widgetId}_v2_btnGeo" class='geoToolButton btnGeoNew' title='Add New Site Boundary'></div>
+                <div id="${widgetId}_v2_btnSaveGeo" class='geoToolButton btnGeoSave hidePage' title='Save Site Boundary'></div>
+                <div id="${widgetId}_v2_btnCancel" class='geoToolButton btnGeoCancel hidePage' title='Cancel Site Boundary'></div>
+                <div id="${widgetId}_v2_iconSave" class="iconInvalidSite" title="Please define a valid site"></div>
+                <div class="clear"></div>
+            </div>
+        </div>
+          
+      
+        <div class='toolPanel siteForm'><span class="header">Site Form</span>
+        <div id="pg_1" data-dojo-type="dijit/layout/ContentPane" data-dojo-attach-point="pg_1" class="formPage">
+            <select data-bind="options: COUNTIESDDL,
+                value: COUNTY,
+                optionsCaption: 'Choose...'"></select><br />
+
+            <label>Recorded By: </label><input type="text" data-bind="value: RECORDEDBY" id="RECORDEDBY" name="RECORDEDBY" class="formSpace" /><br />
+            <label>Affiliation: </label><input type="text" data-bind="value: AFFILIATION" id="c" name="AFFILIATION" class="formSpace"  /><br />
+            <label>Date: </label><input data-dojo-type="dijit/form/DateTextBox" data-bind="value: RECORDEDDATE" id="RECORDEDDATE" name="RECORDEDDATE" class="formSpace" style="width:150px;" /><br />
+
+            <label>Site name: </label><input type="text" data-bind="value: SITENAME" id="SITENAME" name="SITENAME" class="formSpace"  /><br />
+            <label class="required">Project: </label><input type="text" data-bind="value: PROJECT" id="PROJECT" name="PROJECT" class="formSpace" style="width: 200px"/><br />
+            <label>USGS Quadrangle: </label><input type="text" data-bind="value: USGSQUADRANGLE" id="USGSQUADRANGLE" name="USGSQUADRANGLE" class="formSpace"  /><br />
+            <label>UTM Zone: </label><input type="text" data-bind="value: UTMZONE" id="UTMZONE" name="UTMZONE" class="formSpace" style="width:35px;" /><br />
+            <label class="required">Easting: </label><input type="text" data-bind="value: GPSEASTING" id="GPSEASTING" name="GPSEASTING" class="formSpace" style="width:100px;" /><br />
+            <label class="required">Northing: </label><input type="text" data-bind="value: GPSNORTHING" id="GPSNORTHING" name="GPSNORTHING" class="formSpace" style="width:100px;" /><br />
+            <label>Other map reference: </label><br />
+            <textarea data-bind="value: OTHERMAPREFNOTES" id="OTHERMAPREFNOTES" name="OTHERMAPREFNOTES" rows="4" cols="50" class="formSpace" ></textarea><br />
+      
+            <label class="groupHeading">Descriptive site type: </label><br />
+            <label>Prehistoric:</label><br /><textarea data-bind="value: DST_PREHISTORIC" rows="4" cols="50" id="DST_PREHISTORIC" name="DST_PREHISTORIC" ></textarea><br />
+            <label>Historic:</label><br /><textarea data-bind="value: DST_HISTORIC" rows="4" cols="50" id="DST_HISTORIC" name="DST_HISTORIC"  ></textarea><br />
+            
+
+            <span class="required formSpaceTop">Descriptive site type (see handbook)</span><br />
+            <div id="es_chks_dst">
+            <input id="AI_SURVEY" name="AI_SURVEY" type="checkbox" data-bind="checked: AI_SURVEY" value="Y" style="margin:2px;" /> <label for="AI_SURVEY">Survey</label><br />
+            <input id="AI_TESTING" name="AI_TESTING" type="checkbox" data-bind="checked: AI_TESTING" value="Y" style="margin:2px;" /> <label for="AI_TESTING">Testing</label><br />
+            <input id="AI_EXCAVATION" name="AI_EXCAVATION" type="checkbox" data-bind="checked: AI_EXCAVATION" value="Y" style="margin:2px;" /> <label for="AI_EXCAVATION">Excavation</label><br />
+            </div>
+            
+            <label>Property Owner: </label><input type="text" data-bind="value: PROPERTYOWNER" id="PROPERTYOWNER" name="PROPERTYOWNER" class="formSpace" /><br />
+            <label>Phone Number: </label><input type="text" data-bind="value: PHONENUMBER" id="PHONENUMBER" name="PHONENUMBER" class="formSpace" style="width:150px;" data-dojo-props="regExp:'[\\w]+', invalidMessage:'Invalid Non-Space Text.'" /><br />
+            <label>Address: </label><input type="text" data-bind="value: ADDRESS" id="ADDRESS" name="ADDRESS" class="formSpace"  /><br />
+            <label>Other site designations: </label><br /><textarea data-bind="value: OTHERSITEDESIGNATIONS" rows="4" cols="50" id="OTHERSITEDESIGNATIONS" name="OTHERSITEDESIGNATIONS" ></textarea><br />
+
+            <span class="required formSpaceTop">National Register of Historic Places recommendation: </span><br />
+            <div id="es_chks_nr">
+            <input id="NRHP_ELIGIBLE" name="NRHP_ELIGIBLE" type="checkbox" data-bind="checked: NRHP_ELIGIBLE" value="Y" style="margin:2px;"/> <label for="NRHP_ELIGIBLE">Eligible</label><br />
+            <input id="NRHP_NONELIGIBLE" name="NRHP_NONELIGIBLE" type="checkbox" data-bind="checked: NRHP_NONELIGIBLE" value="Y" style="margin:2px;"/> <label for="NRHP_NONELIGIBLE">Not eligible</label><br />
+            <input id="NRHP_ADDWORK" name="NRHP_ADDWORK" type="checkbox" data-bind="checked: NRHP_ADDWORK" value="Y" style="margin:2px;"/> <label for="NRHP_ADDWORK">Additional Work</label><br />
+                </div>
+            <label style="margin-top: 5px;">Level of significance: </label><br />
+            <input id="LOS_NATIONAL" name="LOS_NATIONAL" type="checkbox" data-bind="checked: LOS_NATIONAL" value="Y" style="margin:2px;"/> <label for="LOS_NATIONAL">National</label><br />
+            <input id="LOS_STATE" name="LOS_STATE" type="checkbox" data-bind="checked: LOS_STATE" value="Y" style="margin:2px;"/> <label for="LOS_STATE">State</label><br />
+            <input id="LOS_LOCAL" name="LOS_LOCAL" type="checkbox" data-bind="checked: LOS_LOCAL" value="Y" style="margin:2px;"/> <label for="LOS_LOCAL">Local</label><br />
+
+            <label>Justification: </label><br /><textarea data-bind="value: JUSTIFICATION" rows="4" cols="50" id="JUSTIFICATION" name="JUSTIFICATION" ></textarea>
+        </div>
+        <div id="pg_2" data-dojo-type="dijit/layout/ContentPane" data-dojo-attach-point="pg_2" class="formPage hidePage">
+                
+            
+       </div>
+        <div id="pg_3" data-dojo-type="dijit/layout/ContentPane" data-dojo-attach-point="pg_3" class="formPage hidePage">
+           
+        </div>
+        <div id="pg_4" data-dojo-type="dijit/layout/ContentPane" data-dojo-attach-point="pg_4" class="formPage hidePage">
+            
+        </div>
+        <div id="pg_5" data-dojo-type="dijit/layout/ContentPane" data-dojo-attach-point="pg_5" class="formPage hidePage">
+            
+
+        </div>
+        <div id="pg_6" data-dojo-type="dijit/layout/ContentPane" data-dojo-attach-point="pg_6" class="formPage hidePage">
+           
+        </div>
+
+            <div id="navBar" class="navBar" >
+                <div id="btnBack" class="toolbarButton" data-action="back">Back</div>
+                <span id="pages">1 of 6</span>
+                <div id="btnNext" class="toolbarButton" data-action="next">Next</div>
+            </div>
+
+            </div> <!--Site Form-->
+             <br />
+             <div class='toolPanel attachForm'><span class="header">Attachments</span> 
+            <div id="${widgetId}_v2_attachment" style="margin-left: 5px; width: 100%"></div>
+        </div>
+       
+
+        </div> <!--Page Container-->
+            
+	</div>
+
+    
+</div>

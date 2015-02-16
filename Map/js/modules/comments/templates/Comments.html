@@ -1,0 +1,30 @@
+﻿<div id="cm_ContainerNode">
+    <div class="commentWidget">
+    <div id="cm_view_1" class="viewPanel">
+        <span class="titleText">Please enter any comments, suggestions, or errors in the text box below.  Thank you!</span>
+        <div>
+        Email: <input type="text" id="cm_email" data-dojo-attach-point="cm_email"/>
+        </div>
+        <div>
+        Comments: <br />
+        <textarea id="cm_commentArea" data-dojo-attach-point="cm_commentArea" class="textArea"></textarea> 
+        </div>
+        <div>
+            <div id="cm_btnCancel" data-dojo-attach-event="ondijitclick:cancelComment" class="toolbarButton cancelButton ">Cancel</div>
+            <div id="cm_btnSubmit" data-dojo-attach-event="ondijitclick:sendComment" class="toolbarButton submitButton">Submit</div>
+        </div>
+    </div>
+    <div id="cm_view_2" class="viewPanel hidePage">
+        <div id="loadingOverlay" class="loadingOverlay pageOverlay">
+            <div id="loadingMessage" class="loadingMessage">Sending...</div>
+        </div>
+    </div>
+    <div id="cm_view_3" class="viewPanel hidePage">
+        <span>Your comment was submitted</span><br />
+        <div id="cm_btnSubmitMore" data-dojo-attach-event="ondijitclick:cancelComment" class="submitButton toolbarButton">Submit Another?</div>
+    </div>
+    <div id="cm_view_4" class="viewPanel hidePage">
+        <span data-dojo-attach-point="cm_v4_msg"></span>
+    </div>
+    </div>
+</div>

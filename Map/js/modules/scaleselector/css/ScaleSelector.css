@@ -1,0 +1,129 @@
+﻿.scaleSelector .selectorContainer * {
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+}
+
+.scaleSelector .selectorContainer {
+    width: 150px;
+    font-size: 12px;
+    line-height: 16px;
+    font-family: verdana,helvetica;
+}
+
+.scaleSelector .selectorContainer ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: block;
+    }
+
+.scaleSelector .selectorIcon {
+    float: left;
+    outline: 0;
+    width: 14px;
+    height: 16px;
+    display: block;
+    overflow: hidden;
+    margin: 6px 0 6px 6px;
+}
+
+.scaleBox .clearFloat {
+    clear: both;
+    display: block;
+    overflow: hidden;
+    visibility: hidden;
+    width: 0;
+    height: 0;
+}
+
+.scaleSelector .scaleBox {
+    display: block;
+    width: 100%;
+    margin: 0;
+    border: 2px solid #666;
+    background: #fff;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.scaleSelector .scaleActive, .scaleSelector .scaleMenuActive {
+    border-bottom: 0;
+    -webkit-border-radius: 5px 5px 0 0;
+    border-radius: 5px 5px 0 0;
+}
+
+.scaleSelector .scaleBox input {
+    outline: 0;
+    display: block;
+    border: 0;
+    border-collapse: collapse;
+    vertical-align: middle;
+    font-size: 12px;
+    line-height: 16px;
+    margin: 0;
+    padding: 6px 0;
+    float: left;
+    color: #444;
+    background: none;
+    margin: 0 6px;
+    width: 90px;
+}
+
+
+.scaleSelector .scaleBox input:focus {
+    color: #333;
+}
+
+.scaleSelector .scaleBox .scaleBoxSearch {
+    cursor: pointer;
+    margin-left: 6px;
+    background: url(../images/selectorSprite.png) no-repeat -35px 0px;
+}
+
+.scaleSelector .scaleBox .selectDropdown:hover, .scaleSelector .scaleBox .selectDropdown:focus {
+    opacity: .75;
+}
+
+.scaleSelector .scaleList {
+    display: none;
+    z-index: 99;
+    width: 150px;
+    position: absolute;
+    margin: -1px 0 0;
+    border: 2px solid #666;
+    border-top: 0;
+    padding: 0;
+    background: #fff;
+    -webkit-border-radius: 0 0 5px 5px;
+    border-radius: 0 0 5px 5px;
+}
+
+.scaleSelector .scaleItem {
+    padding: 6px;
+    display: block;
+    cursor: pointer;
+    outline: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+}
+
+.scaleSelector .scaleItemOdd {
+}
+
+    .scaleSelector .scaleItem:hover, .scaleSelector .scaleItemEven:focus, .scaleSelector .scaleItemOdd:focus {
+        background-color: #ededed;
+    }
+
+.scaleSelector .scaleItemLast {
+    -webkit-border-radius: 0 0 5px 5px;
+    border-radius: 0 0 5px 5px;
+}
+
+.scaleSelector .scaleItem .scaleItemPartial {
+    font-weight: 700;
+}
+
+
