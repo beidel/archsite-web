@@ -2315,6 +2315,49 @@ get_browser_version: function(){
 
             //this.logToConsole(_suelf.itemInfo.itemData.operationalLayers);
 
+            //set temporary global variable
+            window.globals = { map: _self.map };
+
+            //override built in map click
+            _self.map.onClick = null;
+            _self.map.on("click", function (evt) {
+                //get click point
+                var pt = evt.mapPoint;
+
+                //read config file for layers to query on click
+
+                //loop through config and get layers from map
+
+                //query layers for map click
+                    //collect the deferred results
+                        //on deferred list complete built infoWindow content collection
+
+
+                var layer = _self.map.getLayer("ArchSites_Prod_5009");
+                
+                var q = new Query();
+                q.geometry = pt;
+                q.outFields = ["*"];
+                q.returnGeometry = false;
+                q.where = "1=1";
+
+                var d = layer.queryFeatures(q);
+                d.then(function (results) {
+                    var feature = results.features[0];
+                    
+                    var html = "<h6>" + layer.name + "</h6><hr />";
+                    html += "<a target=\"_blank\" href=\"http://www.scarchsite.org/PDFs/" + feature.attributes.SITENUMBER + ".pdf\">Site PDF</a>";
+                    for (var i=0,l=results.fields.length;i<l;i++){
+                        html += "<div>" + results.fields[i].alias + ": " + feature.attributes[results.fields[i].name] + "</div>";
+                    }
+                    _self.map.infoWindow.setContent(html);
+                });
+
+                _self.map.infoWindow.setTitle("Map Features");;
+                _self.map.infoWindow.setContent("<h6>Querying...</h6>");
+                _self.map.infoWindow.show(pt);
+            });
+
             _self.agolPopupClickHandle = response.clickEventHandle;
             _self.agolPopupclickEventListener = response.clickEventListener;
 
