@@ -2345,10 +2345,10 @@ get_browser_version: function(){
                 d.then(function (results) {
                     var feature = results.features[0];
                     
-                    var html = "<h6>" + layer.name + "</h6><hr />";
+                    var html = "<h5>" + layer.name + "</h5><hr />";
                     html += "<a target=\"_blank\" href=\"http://www.scarchsite.org/PDFs/" + feature.attributes.SITENUMBER + ".pdf\">Site PDF</a>";
                     for (var i=0,l=results.fields.length;i<l;i++){
-                        html += "<div>" + results.fields[i].alias + ": " + feature.attributes[results.fields[i].name] + "</div>";
+                        html += "<div><b>" + results.fields[i].alias + "</b>: " + feature.attributes[results.fields[i].name] + "</div>";
                     }
                     _self.map.infoWindow.setContent(html);
                 });
