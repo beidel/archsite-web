@@ -1,4 +1,4 @@
-define(["dojo/ready", "dojo/_base/declare", "dojo/_base/connect", "dojo/_base/Deferred", "dojo/_base/event", "dojo/_base/array", "dojo/_base/lang", "dojo/dom",
+define(["dojo/ready", "dojo/_base/declare", "dojo/_base/connect", "dojo/promise/all", "dojo/_base/Deferred", "dojo/_base/event", "dojo/_base/array", "dojo/_base/lang", "dojo/dom",
     "dojo/query", "dojo/dom-class", "dojo/dom-construct", "dojo/dom-geometry", "dojo/dom-style", "dojo/date", "dojo/number", "dojo/window",
     "dojo/on", "dojo/topic", "dojo/fx", "dojo/i18n!./nls/template.js", "modules/edit/EditSite", "modules/adminview/AdminView", "modules/attrtable/AttrTable",
     "modules/sitereport/SiteReport", "modules/adminview/AdminView", "modules/print/PrintWidget",
@@ -7,14 +7,14 @@ define(["dojo/ready", "dojo/_base/declare", "dojo/_base/connect", "dojo/_base/De
     "dijit/form/VerticalSlider", "dojo/NodeList-traverse", "dojo/NodeList-manipulate", "templateConfig/commonConfig", "dojo/cookie", "dojo/json", 
     "esri/config", "esri/arcgis/utils", "esri/urlUtils", "esri/request", "esri/tasks/query", "esri/tasks/QueryTask", "esri/tasks/GeometryService",
     "esri/dijit/BasemapGallery", "esri/dijit/HomeButton", "esri/dijit/LocateButton", "esri/geometry/Extent", "esri/geometry/Point", "esri/SpatialReference", "esri/symbols/PictureMarkerSymbol",
-    "esri/dijit/Legend", "esri/dijit/Scalebar", "esri/geometry/webMercatorUtils", "esri/graphic", "esri/layers/GraphicsLayer", "esri/dijit/Geocoder",
+    "esri/dijit/Legend", "esri/dijit/Scalebar", "esri/geometry/Circle", "esri/geometry/webMercatorUtils", "esri/graphic", "esri/layers/GraphicsLayer", "esri/dijit/Geocoder",
     "esri/geometry/screenUtils", "esri/dijit/Popup", "esri/layers/FeatureLayer", "esri/dijit/Measurement", "esri/IdentityManagerBase", "esri/kernel", "esri/dijit/Print"
-, "esri/tasks/PrintTemplate", "dojo/store/Memory", "dijit/form/ComboBox"],
-function (ready, declare, connect, Deferred, event, array, lang, dom, query, domClass, domConstruct, domGeom, domStyle, date, number, win, on, topic, coreFx, i18n,
+, "esri/tasks/PrintTemplate", "esri/InfoTemplate", "dojo/store/Memory", "dijit/form/ComboBox"],
+function (ready, declare, connect, promiseAll, Deferred, event, array, lang, dom, query, domClass, domConstruct, domGeom, domStyle, date, number, win, on, topic, coreFx, i18n,
     EditSite, AdminView, AttrTable, SiteReport, AdminView, PrintWidget, ScaleSelector, DrawMeasure, DataExport, Dialog, HorizontalSlider, VerticalSlider, nlTraverse, nlManipulate,
     templateConfig, cookie, JSON, config, arcgisUtils, urlUtils, esriRequest, Query, QueryTask, GeometryService, BasemapGallery, HomeButton, LocateButton, Extent, Point, SpatialReference,
-    PictureMarkerSymbol, Legend, Scalebar, webMercatorUtils, Graphic, GraphicsLayer, Geocoder, screenUtils, Popup, FeatureLayer, Measurement, IMB, kernel, Print,
-    PrintTemplate, Memory, ComboBox) {
+    PictureMarkerSymbol, Legend, Scalebar, Circle, webMercatorUtils, Graphic, GraphicsLayer, Geocoder, screenUtils, Popup, FeatureLayer, Measurement, IMB, kernel, Print,
+    PrintTemplate, InfoTemplate, Memory, ComboBox) {
     var Widget = declare("application.main", null, {
         constructor: function(options) {
             var _self = this;
@@ -2323,38 +2323,57 @@ get_browser_version: function(){
             _self.map.on("click", function (evt) {
                 //get click point
                 var pt = evt.mapPoint;
-
-                //read config file for layers to query on click
-
-                //loop through config and get layers from map
-
-                //query layers for map click
-                    //collect the deferred results
-                        //on deferred list complete built infoWindow content collection
-
-
-                var layer = _self.map.getLayer("ArchSites_Prod_5009");
-                
-                var q = new Query();
-                q.geometry = pt;
-                q.outFields = ["*"];
-                q.returnGeometry = false;
-                q.where = "1=1";
-
-                var d = layer.queryFeatures(q);
-                d.then(function (results) {
-                    var feature = results.features[0];
-                    
-                    var html = "<h5>" + layer.name + "</h5><hr />";
-                    html += "<a target=\"_blank\" href=\"http://www.scarchsite.org/PDFs/" + feature.attributes.SITENUMBER + ".pdf\">Site PDF</a>";
-                    for (var i=0,l=results.fields.length;i<l;i++){
-                        html += "<div><b>" + results.fields[i].alias + "</b>: " + feature.attributes[results.fields[i].name] + "</div>";
-                    }
-                    _self.map.infoWindow.setContent(html);
+                //buffer point
+                var circle = new Circle({
+                    center: evt.mapPoint,
+                    geodesic: true,
+                    radius: 150
                 });
 
-                _self.map.infoWindow.setTitle("Map Features");;
-                _self.map.infoWindow.setContent("<h6>Querying...</h6>");
+                var layer, p, q, dCol = [];
+                //query each map layer
+                for (var i = 0, l = _self.map.graphicsLayerIds.length; i < l; i++) {
+                    if (_self.map.graphicsLayerIds[i].indexOf("ArchSites") > -1) {
+                        layer = _self.map.getLayer(_self.map.graphicsLayerIds[i]);
+
+                        if (layer.visible === false) continue;
+
+                        q = new Query();
+                        q.geometry = circle.getExtent();
+                        q.outFields = ["*"];
+                        q.returnGeometry = false;
+                        q.where = "1=1";
+                        var d = layer.queryFeatures(q);
+
+                        if (layer.id === "ArchSites_Prod_5009");
+
+                        dCol.push(d);
+                    }
+                }
+                //handle all query results at once
+                p = promiseAll(dCol);
+                p.then(function (resultsCol) {
+                    var featureCol = [];
+                    for (var x = 0, l = resultsCol.length; x < l; x++) {
+                        if (resultsCol[x].features.length > 0) {
+                            if (featureCol.length === 0) featureCol = resultsCol[x].features;
+                            else featureCol = featureCol.concat(resultsCol[x].features);
+                        }
+                    }
+                    //set results of query to infoWindow
+                    _self.map.infoWindow.setFeatures(featureCol);
+
+                    //auto hide info window if no features are present
+                    if (featureCol.length === 0) {
+                        setTimeout(function () {
+                            _self.map.infoWindow.hide();
+                        }, 1000);
+                    }
+                });
+
+                //set temp info window content while query is performed
+                _self.map.infoWindow.setTitle("Querying Features");;
+                _self.map.infoWindow.setContent("<img src=\"../images/ajax-loader.gif\" />&nbsp;Please wait...");
                 _self.map.infoWindow.show(pt);
             });
 
