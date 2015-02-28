@@ -1883,3 +1883,13 @@ a.mapSubmit:hover, a.mapSubmit:focus {
     color: #333;
     text-decoration: none;
 }
+
+.archSiteFieldName {
+    color: #888888;
+    padding-right: 10px;
+}
+
+.archSitePdf {
+    padding: 5px;
+    border-bottom: solid 1px black;
+}

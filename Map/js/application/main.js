@@ -2345,7 +2345,35 @@ get_browser_version: function(){
                         q.where = "1=1";
                         var d = layer.queryFeatures(q);
 
-                        if (layer.id === "ArchSites_Prod_5009");
+                        if (layer.id === "ArchSites_Prod_5009") {
+                            d.then(function (results) {
+                                var _layer = layer;
+                                for (var j = 0, _l = results.features.length; j < _l; j++) {
+                                    var feature = results.features[j];
+
+                                    //TODO: check for PDF availability
+
+                                    var html =
+                                        "<div class=\"archSitePdf\"><b>Archaeological Sites:&nbsp;" + feature.attributes["SITENUMBER"] + "</b></div>" +
+                                        "<div class=\"archSitePdf\">" +
+                                            "<span style=\"padding-right:20px;\">Site document available:</span>" +
+                                            "<a target=\"_blank\" href=\"http://www.scarchsite.org/PDFs/" + feature.attributes.SITENUMBER + ".pdf\"><img src=\"../images/pdf.png\" /></a>" +
+                                        "</div>" +
+                                        "<div style=\"height:10px;\"></div>";
+                                    for (var i = 0, l = results.fields.length; i < l; i++) {
+                                        if (results.fields[i].name != "OBJECTID") {
+                                            html += "<div><span class=\"archSiteFieldName\">" + results.fields[i].alias + ":</span>" +
+                                                ((feature.attributes[results.fields[i].name] !== null) ? feature.attributes[results.fields[i].name] : "" ) + "</div>";
+                                        }
+                                    }
+                                    var infoTemplate = new InfoTemplate("Archaeological Sites", html);
+                                    feature.setInfoTemplate(infoTemplate);
+
+                                    result.features[j] = feature;
+                                }
+                                return result;
+                            });
+                        }
 
                         dCol.push(d);
                     }
