@@ -340,7 +340,7 @@ function (declare, lang, query, registry, domConstruct, domAttr, domClass, _Widg
             ///sharing/rest/content/items/09bfbc48ed8f4368b34a2c4b56416968/data?
             //value.itemID
             //https://www.arcgis.com/sharing/rest/content/items/" + outputFile.value.itemID + "/data?token=" + _self.options.token + "
-                dojo.byId("dex_pdfLink").innerHTML = "<a href='https://www.arcgis.com/sharing/rest/content/items/" + outputFile.value.itemID + "/data?token=" + _self.options.token + "' target=_blank>Link</a>";
+                dojo.byId("dex_pdfLink").innerHTML = "<a href='https://www.arcgis.com/sharing/rest/content/items/" + outputFile.value.itemId + "/data?token=" + _self.options.token + "' target=_blank>Link</a>";
             //window.location = outputFile.value.url + "/data?token=" + _self.options.token;
             _self.setView(3);
         //var theurl = outputFile.value.url;
