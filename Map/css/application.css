@@ -1893,3 +1893,80 @@ a.mapSubmit:hover, a.mapSubmit:focus {
     padding: 5px;
     border-bottom: solid 1px black;
 }
+
+.printDiv {
+    width:340px;
+    height: 240px;
+    top:75px;
+    right:10px;
+    position:absolute;
+    z-index: 10001;
+    background-color: white;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    box-shadow: 3px 3px 3px #808080;
+    border: solid 1px #A0C9F2;
+    font-size: 11pt;
+    font-family: Verdana, Arial;
+    color: black; 
+}
+
+.printLoading {
+    font-size: 8pt;
+    font-family: Verdana, Arial;
+    color: white;
+    width: 240px;
+    height: 42px;
+    padding-left: 5px;
+    padding-top: 8px;
+    background-color: #292929;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;    
+    opacity: 0.7;
+    filter:progid:DXImageTransform.Microsoft.Alpha(opacity=70);
+}
+
+.printLoadingText {
+    padding-top: 5px;
+}
+
+.printLoadingGraphic {
+    height: 25px;
+    width: 25px;
+    float: left;
+    background-image:url(../../images/ajax-loader-reverse.gif);
+    background-size: 25px;
+}
+
+.printError {
+    font-family: Arial, Verdana;
+    font-size: 9pt;
+    color: red;
+}
+
+.printResult {
+    font-family: Arial, Verdana;
+    font-size: 9pt;
+    color: black;
+    overflow: auto;
+    max-height: 55px;
+}
+
+.printContainer {
+    padding: 15px;
+}
+
+.printSpacer {
+    height: 5px;
+}
+
+.print-table td{
+    padding-right: 5px;
+    padding-bottom: 2px;
+}
+
+.toolButtonCustom {
+    height: 32px !important;
+}

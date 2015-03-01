@@ -1,7 +1,7 @@
 define(["dojo/ready", "dojo/_base/declare", "dojo/_base/connect", "dojo/promise/all", "dojo/_base/Deferred", "dojo/_base/event", "dojo/_base/array", "dojo/_base/lang", "dojo/dom",
     "dojo/query", "dojo/dom-class", "dojo/dom-construct", "dojo/dom-geometry", "dojo/dom-style", "dojo/date", "dojo/number", "dojo/window",
     "dojo/on", "dojo/topic", "dojo/fx", "dojo/i18n!./nls/template.js", "modules/edit/EditSite", "modules/adminview/AdminView", "modules/attrtable/AttrTable",
-    "modules/sitereport/SiteReport", "modules/adminview/AdminView", "modules/print/PrintWidget",
+    "modules/sitereport/SiteReport", "modules/adminview/AdminView", "modules/PrintTool/PrintMap", "modules/print/PrintWidget",
     "modules/scaleselector/ScaleSelector", "modules/drawmeasure/DrawMeasure", "modules/dataexport/DataExport", "dijit/Dialog",
     "dijit/form/HorizontalSlider",
     "dijit/form/VerticalSlider", "dojo/NodeList-traverse", "dojo/NodeList-manipulate", "templateConfig/commonConfig", "dojo/cookie", "dojo/json", 
@@ -11,7 +11,7 @@ define(["dojo/ready", "dojo/_base/declare", "dojo/_base/connect", "dojo/promise/
     "esri/geometry/screenUtils", "esri/dijit/Popup", "esri/layers/FeatureLayer", "esri/dijit/Measurement", "esri/IdentityManagerBase", "esri/kernel", "esri/dijit/Print"
 , "esri/tasks/PrintTemplate", "esri/InfoTemplate", "dojo/store/Memory", "dijit/form/ComboBox"],
 function (ready, declare, connect, promiseAll, Deferred, event, array, lang, dom, query, domClass, domConstruct, domGeom, domStyle, date, number, win, on, topic, coreFx, i18n,
-    EditSite, AdminView, AttrTable, SiteReport, AdminView, PrintWidget, ScaleSelector, DrawMeasure, DataExport, Dialog, HorizontalSlider, VerticalSlider, nlTraverse, nlManipulate,
+    EditSite, AdminView, AttrTable, SiteReport, AdminView, PrintTool, PrintWidget, ScaleSelector, DrawMeasure, DataExport, Dialog, HorizontalSlider, VerticalSlider, nlTraverse, nlManipulate,
     templateConfig, cookie, JSON, config, arcgisUtils, urlUtils, esriRequest, Query, QueryTask, GeometryService, BasemapGallery, HomeButton, LocateButton, Extent, Point, SpatialReference,
     PictureMarkerSymbol, Legend, Scalebar, Circle, webMercatorUtils, Graphic, GraphicsLayer, Geocoder, screenUtils, Popup, FeatureLayer, Measurement, IMB, kernel, Print,
     PrintTemplate, InfoTemplate, Memory, ComboBox) {
@@ -1843,11 +1843,17 @@ get_browser_version: function(){
                 }
 
                 //initialize print widget
-                _self.options.printerWidget = new PrintWidget({
+                _self.options.printerWidget = new PrintTool({
                     map: _self.map,
-                    url: templateConfig.helperServices.printTask.url
-                }, dom.byId("printContent"));
-                _self.options.printerWidget.startup();
+                    url: templateConfig.helperServices.printTask.url,
+                    containerId: "printContent"
+                });
+
+                //_self.options.printerWidget = new PrintWidget({
+                //    map: _self.map,
+                //    url: templateConfig.helperServices.printTask.url
+                //}, dom.byId("printContent"));
+                //_self.options.printerWidget.startup();
             }
       
         },
