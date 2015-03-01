@@ -44,6 +44,8 @@ function (
 
     var Widget =
         declare("modules.dataexport.DataExport", [_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin], {
+            outputFiles: [],
+
             constructor: function (options) {
 
                 var _self = this;
@@ -345,11 +347,26 @@ function (
 
             downloadFile: function (outputFile) {
                 var _self = this;
-                console.log("OUTPUT");
+                
+                var currentdate = new Date(); 
+                var datetime = (currentdate.getMonth()+1) + "/"
+                                + currentdate.getDate() + "/"
+                                + currentdate.getFullYear() + "  "  
+                                + currentdate.getHours() + ":"  
+                                + ((currentdate.getMinutes() < 10) ? "0" : "") +currentdate.getMinutes() + ":" 
+                                + currentdate.getSeconds();
+                _self.outputFiles.push({ output: outputFile, timestamp: datetime });
+
                 console.log("OUTPUT", outputFile);
 
-                // /sharing/rest/content/items/09bfbc48ed8f4368b34a2c4b56416968/data?
-                dojo.byId("dex_pdfLink").innerHTML = "<a href='https://www.arcgis.com/sharing/rest/content/items/" + outputFile.value.itemId + "/data?token=" + _self.options.token + "' target=_blank>Link</a>";
+                var html = "<table class=\"print-table\">";
+                for (var x = 0, l = _self.outputFiles.length; x < l; x++) {
+                    var url = "https://www.arcgis.com/sharing/rest/content/items/" + _self.outputFiles[x].output.value.itemId + "/data?token=" + _self.options.token;
+                    html += "<tr><td><a href=\"" + url + "\" target=\"_blank\">Download</a></td><td>" + _self.outputFiles[x].timestamp + "</td></tr>";
+                }
+                html += "</table>";
+
+                dojo.byId("dex_pdfLink").innerHTML = html;
                 _self.setView(3);
             },
 
@@ -393,8 +410,6 @@ function (
                         }
 
                         urlStr += comma + "{'url': '" + encodeURIComponent(url) + "', serviceToken: '" + _self.options.token + "'}";
-                        //urlStr += "%22%7B%5C%22url%5C%22%3A%5C%22http%3A%2F%2Fservices.arcgis.com%2FoEazpvC7G00gPDRM%2Farcgis%2Frest%2Fservices%2FArchSites_Prod%2FFeatureServer%2F1%5C%22%2C%5C%22serviceToken%5C%22%3A%5C%" + _self.options.token + "%5C%22%7D%22";
-
                         comma = ",";
 
                         chkCount++;
@@ -407,7 +422,6 @@ function (
 
                         urlStr += "&Clip=false";
                         urlStr += "&DataFormat=" + dojo.byId("dex_selOutputType").value;
-
 
                         urlStr += "&Extent=%7B%22";
                         urlStr += "xmin%22%3A" + _self.ext.xmin + "%2C%22";
@@ -438,8 +452,6 @@ function (
                         urlStr += "&token=" + _self.options.analysisGpToken;
 
                         console.log("URL", decodeURI(urlStr));
-
-                        //urlStr = decodeURI(urlStr);
 
                         var layersRequest = esri.request({
                             url: urlStr,
@@ -501,7 +513,8 @@ function (
             checkDir: function () {
                 var _self = this;
                 console.log("checkdir");
-                ///sharing/rest/content/users/kramerusc
+
+                // /sharing/rest/content/users/kramerusc
                 _self.buildRequest("http://www.arcgis.com/sharing/rest/content/users/kramerusc", _self.options.analysisGpToken)
                     .then(function (response) {
                         console.log("RESPONSE for directory", response);
