@@ -1842,52 +1842,12 @@ get_browser_version: function(){
                     node.innerHTML = '<div class="menuClose"><div class="closeButton closeMenu"></div>' + i18n.viewer.buttons.printTitle + '<div class="clear"></div></div><div class="printMenuCon"><div class="slideScroll2"><div id="printContent"></div></div></div>';
                 }
 
-                ////Insert widget title here
-                //var layoutTemplate, templateNames, mapOnlyIndex, templates;
-
-                //var layouts = [{
-                //    name: "Letter ANSI A Landscape",
-                //    label: "Landscape (PDF)",
-                //    format: "pdf",
-                //    options: {
-                //        legendLayers: [], // empty array means no legend
-                //        scalebarUnit: "Miles",
-                //        titleText: "Archsite, Landscape PDF"
-                //    }
-                //}, {
-                //    name: "Letter ANSI A Portrait",
-                //    label: "Portrait (Image)",
-                //    format: "jpg",
-                //    options: {
-                //        legendLayers: [],
-                //        scaleBarUnit: "Miles",
-                //        titleText: "Archsite, Portrait JPG"
-                //    }
-                //}];
-
-                //// create the print templates
-                //var templates = array.map(layouts, function (lo) {
-                //    var t = new PrintTemplate();
-                //    t.layout = lo.name;
-                //    t.label = lo.label;
-                //    t.format = lo.format;
-                //    t.layoutOptions = lo.options;
-                //    return t;
-                //});
-
+                //initialize print widget
                 _self.options.printerWidget = new PrintWidget({
                     map: _self.map,
                     url: templateConfig.helperServices.printTask.url
                 }, dom.byId("printContent"));
-
-                //_self.options.printerWidget = new Print({
-                //    map: _self.map,
-                //    templates: templates,
-                //    url: templateConfig.helperServices.printTask.url
-                //}, dom.byId("printContent"));
-
                 _self.options.printerWidget.startup();
-
             }
       
         },
