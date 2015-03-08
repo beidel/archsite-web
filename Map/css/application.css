@@ -1967,3 +1967,9 @@ a.mapSubmit:hover, a.mapSubmit:focus {
 .toolButtonCustom {
     height: 32px !important;
 }
+
+ .search-form-label {
+     text-align:right;
+     width: 75px;
+     padding-right: 3px;
+ }
