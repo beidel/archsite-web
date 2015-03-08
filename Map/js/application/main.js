@@ -1706,6 +1706,8 @@ get_browser_version: function(){
                     geometryServiceUrl: templateConfig.helperServices.geometry.url,
                     domainList: _self.options.domains,
                     archSiteLayerTitle: _self.options.archsitename,
+                    pdfBaseUrl: _self.options.pdfBaseUrl,
+                    pdfLookupTblUrl: _self.options.pdfLookupTableUrl,
                     searchTitle: _self.options.attrSearchTitle
                 });
 
@@ -2000,6 +2002,7 @@ get_browser_version: function(){
                 on(findButton, "click", function (event) {
                     if (event.type === 'click') {
                         _self.toggleAttributeMenu('find');
+                        dijit.byId("at_cmbBufferUnits").set("value", "meters");
                     }
                 });
             }
@@ -2285,106 +2288,112 @@ get_browser_version: function(){
             window.globals = { map: _self.map };
 
             //override built in map click
-            _self.map.onClick = null;
-            _self.map.on("click", function (evt) {
-                //get click point
-                var pt = evt.mapPoint;
-                //buffer point
-                var circle = new Circle({
-                    center: evt.mapPoint,
-                    geodesic: true,
-                    radius: 150
-                });
+            _self.map.disableMapClick = function () {
+                _self.map.onClick = null;
+            };
+            _self.map.enableMapClick = function () {
+                _self.map.on("click", function (evt) {
+                    //get click point
+                    var pt = evt.mapPoint;
+                    //buffer point
+                    var circle = new Circle({
+                        center: evt.mapPoint,
+                        geodesic: true,
+                        radius: 150
+                    });
 
-                var layer, p, q, dCol = [];
-                //query each map layer
-                for (var i = 0, l = _self.map.graphicsLayerIds.length; i < l; i++) {
-                    if (_self.map.graphicsLayerIds[i].indexOf("ArchSites") > -1) {
-                        layer = _self.map.getLayer(_self.map.graphicsLayerIds[i]);
+                    var layer, p, q, dCol = [];
+                    //query each map layer
+                    for (var i = 0, l = _self.map.graphicsLayerIds.length; i < l; i++) {
+                        if (_self.map.graphicsLayerIds[i].indexOf("ArchSites") > -1) {
+                            layer = _self.map.getLayer(_self.map.graphicsLayerIds[i]);
 
-                        if (layer.visible === false) continue;
+                            if (layer.visible === false) continue;
 
-                        q = new Query();
-                        q.geometry = circle.getExtent();
-                        q.outFields = ["*"];
-                        q.returnGeometry = false;
-                        q.where = "1=1";
-                        var d = layer.queryFeatures(q);
+                            q = new Query();
+                            q.geometry = circle.getExtent();
+                            q.outFields = ["*"];
+                            q.returnGeometry = false;
+                            q.where = "1=1";
+                            var d = layer.queryFeatures(q);
 
-                        if (layer.id === "ArchSites_Prod_5009") {
-                            d.then(function (results) {
-                                var _layer = layer;
-                                for (var j = 0, _l = results.features.length; j < _l; j++) {
-                                    var feature = results.features[j];
+                            if (layer.id === "ArchSites_Prod_5009") {
+                                d.then(function (results) {
+                                    var _layer = layer;
+                                    for (var j = 0, _l = results.features.length; j < _l; j++) {
+                                        var feature = results.features[j];
 
-                                    //synchronous request to get pdf availability
-                                    //can't figure out how to chain the deferred properly
-                                    var pdfHtml = "No site files available.";
-                                    var url = _self.options.pdfLookupTableUrl + "/query?where=SITENUMBER+%3D+%27" + feature.attributes.SITENUMBER + "%27&objectIds=&time=&outFields=*&returnIdsOnly=false&returnCountOnly=false&returnZ=false&returnM=false&f=json"
-                                    $.ajax({
-                                        url: url,
-                                        dataType: "json",
-                                        async: false,
-                                        success: function (result) {
-                                            if (result.features.length > 0) {
-                                                if (result.features[0].attributes.Exist === "Y") {
-                                                    pdfHtml = "<span style=\"padding-right:20px;\">Site document available:</span>" +
-                                                    "<a target=\"_blank\" href=\"" + _self.options.pdfBaseUrl + feature.attributes.SITENUMBER + ".pdf\"><img src=\"../images/pdf.png\" /></a>";
+                                        //synchronous request to get pdf availability
+                                        //can't figure out how to chain the deferred properly
+                                        var pdfHtml = "No site files available.";
+                                        var url = _self.options.pdfLookupTableUrl + "/query?where=SITENUMBER+%3D+%27" + feature.attributes.SITENUMBER + "%27&objectIds=&time=&outFields=*&returnIdsOnly=false&returnCountOnly=false&returnZ=false&returnM=false&f=json"
+                                        $.ajax({
+                                            url: url,
+                                            dataType: "json",
+                                            async: false,
+                                            success: function (result) {
+                                                if (result.features.length > 0) {
+                                                    if (result.features[0].attributes.Exist === "Y") {
+                                                        pdfHtml = "<span style=\"padding-right:20px;\">Site document available:</span>" +
+                                                        "<a target=\"_blank\" href=\"" + _self.options.pdfBaseUrl + feature.attributes.SITENUMBER + ".pdf\"><img src=\"../images/pdf.png\" /></a>";
+                                                    }
                                                 }
                                             }
-                                        }
-                                    });
+                                        });
 
-                                    var html =
-                                        "<div class=\"archSitePdf\"><b>Archaeological Sites:&nbsp;" + feature.attributes["SITENUMBER"] + "</b></div>" +
-                                        "<div class=\"archSitePdf\" style=\"text-align:center;\" id=\"site-pdf-container-" + feature.attributes["SITENUMBER"] + "\">" +
-                                            pdfHtml +
-                                        "</div>" +
-                                        "<div style=\"height:10px;\"></div>";
-                                    for (var i = 0, l = results.fields.length; i < l; i++) {
-                                        if (results.fields[i].name != "OBJECTID") {
-                                            html += "<div><span class=\"archSiteFieldName\">" + results.fields[i].alias + ":</span>" +
-                                                ((feature.attributes[results.fields[i].name] !== null) ? feature.attributes[results.fields[i].name] : "" ) + "</div>";
+                                        var html =
+                                            "<div class=\"archSitePdf\"><b>Archaeological Sites:&nbsp;" + feature.attributes["SITENUMBER"] + "</b></div>" +
+                                            "<div class=\"archSitePdf\" style=\"text-align:center;\" id=\"site-pdf-container-" + feature.attributes["SITENUMBER"] + "\">" +
+                                                pdfHtml +
+                                            "</div>" +
+                                            "<div style=\"height:10px;\"></div>";
+                                        for (var i = 0, l = results.fields.length; i < l; i++) {
+                                            if (results.fields[i].name != "OBJECTID") {
+                                                html += "<div><span class=\"archSiteFieldName\">" + results.fields[i].alias + ":</span>" +
+                                                    ((feature.attributes[results.fields[i].name] !== null) ? feature.attributes[results.fields[i].name] : "") + "</div>";
+                                            }
                                         }
+                                        var infoTemplate = new InfoTemplate("Archaeological Sites", html);
+                                        feature.setInfoTemplate(infoTemplate);
+
+                                        results.features[j] = feature;
                                     }
-                                    var infoTemplate = new InfoTemplate("Archaeological Sites", html);
-                                    feature.setInfoTemplate(infoTemplate);
+                                    return results;
+                                });
+                            }
 
-                                    results.features[j] = feature;
-                                }
-                                return results;
-                            });
-                        }
-
-                        dCol.push(d);
-                    }
-                }
-                //handle all query results at once
-                p = promiseAll(dCol);
-                p.then(function (resultsCol) {
-                    var featureCol = [];
-                    for (var x = 0, l = resultsCol.length; x < l; x++) {
-                        if (resultsCol[x].features.length > 0) {
-                            if (featureCol.length === 0) featureCol = resultsCol[x].features;
-                            else featureCol = featureCol.concat(resultsCol[x].features);
+                            dCol.push(d);
                         }
                     }
-                    //set results of query to infoWindow
-                    _self.map.infoWindow.setFeatures(featureCol);
+                    //handle all query results at once
+                    p = promiseAll(dCol);
+                    p.then(function (resultsCol) {
+                        var featureCol = [];
+                        for (var x = 0, l = resultsCol.length; x < l; x++) {
+                            if (resultsCol[x].features.length > 0) {
+                                if (featureCol.length === 0) featureCol = resultsCol[x].features;
+                                else featureCol = featureCol.concat(resultsCol[x].features);
+                            }
+                        }
+                        //set results of query to infoWindow
+                        _self.map.infoWindow.setFeatures(featureCol);
 
-                    //auto hide info window if no features are present
-                    if (featureCol.length === 0) {
-                        setTimeout(function () {
-                            _self.map.infoWindow.hide();
-                        }, 1000);
-                    }
+                        //auto hide info window if no features are present
+                        if (featureCol.length === 0) {
+                            setTimeout(function () {
+                                _self.map.infoWindow.hide();
+                            }, 1000);
+                        }
+                    });
+
+                    //set temp info window content while query is performed
+                    _self.map.infoWindow.setTitle("Querying Features");;
+                    _self.map.infoWindow.setContent("<img src=\"../images/ajax-loader.gif\" />&nbsp;Please wait...");
+                    _self.map.infoWindow.show(pt);
                 });
-
-                //set temp info window content while query is performed
-                _self.map.infoWindow.setTitle("Querying Features");;
-                _self.map.infoWindow.setContent("<img src=\"../images/ajax-loader.gif\" />&nbsp;Please wait...");
-                _self.map.infoWindow.show(pt);
-            });
+            };
+            _self.map.onClick = null;
+            _self.map.enableMapClick();
 
             _self.agolPopupClickHandle = response.clickEventHandle;
             _self.agolPopupclickEventListener = response.clickEventListener;
