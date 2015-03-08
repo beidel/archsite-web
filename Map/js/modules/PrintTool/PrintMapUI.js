@@ -27,7 +27,7 @@ function (
                                     "<option value=\"PDF\">PDF</option>" +
                                     "<option value=\"JPG\">JPG</option>" +
                                     "<option value=\"SVG\">SVG</option>" +
-                                    "<option value=\"png8 \">PNG</option>" +
+                                    "<option value=\"PNG8 \">PNG</option>" +
                                 "</select>" +
                             "</td>" +
                         "</tr>" +
@@ -36,8 +36,10 @@ function (
                             "<td>" +
                                 "<select id=\"print-select-layout\">" +
                                     "<option value=\"MAP_ONLY\">Map Only</option>" +
-                                    "<option value=\"Letter ANSI A Landscape\">Letter Landscape</option>" +
-                                    "<option value=\"Letter ANSI A Portrait\">Letter Portrait</option>" +
+                                    "<option value=\"Letter ANSI A Landscape\">Letter (8.5\" x 11\") - Landscape</option>" +
+                                    "<option value=\"Letter ANSI A Portrait\">Letter (8.5\" x 11\") - Portrait</option>" +
+                                    "<option value=\"Tabloid ANSI B Landscape\">Tabloid (11\" x 17\") - Landscape</option>" +
+                                    "<option value=\"Letter ANSI A Portrait\">Tabloid (11\" x 17\") - Portrait</option>" +
                                 "</select>" +
                             "</td>" +
                         "</tr>" +
