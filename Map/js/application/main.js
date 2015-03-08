@@ -2317,13 +2317,28 @@ get_browser_version: function(){
                                 for (var j = 0, _l = results.features.length; j < _l; j++) {
                                     var feature = results.features[j];
 
-                                    //TODO: check for PDF availability
+                                    //synchronous request to get pdf availability
+                                    //can't figure out how to chain the deferred properly
+                                    var pdfHtml = "No site files available.";
+                                    var url = "http://services.arcgis.com/oEazpvC7G00gPDRM/arcgis/rest/services/SC_ArchSite_LKP/FeatureServer/1/query?where=SITENUMBER+%3D+%27" + feature.attributes.SITENUMBER + "%27&objectIds=&time=&outFields=*&returnIdsOnly=false&returnCountOnly=false&returnZ=false&returnM=false&f=json"
+                                    $.ajax({
+                                        url: url,
+                                        dataType: "json",
+                                        async: false,
+                                        success: function (result) {
+                                            if (result.features.length > 0) {
+                                                if (result.features[0].attributes.Exist === "Y") {
+                                                    pdfHtml = "<span style=\"padding-right:20px;\">Site document available:</span>" +
+                                                    "<a target=\"_blank\" href=\"http://www.scarchsite.org/PDFs/" + feature.attributes.SITENUMBER + ".pdf\"><img src=\"../images/pdf.png\" /></a>";
+                                                }
+                                            }
+                                        }
+                                    });
 
                                     var html =
                                         "<div class=\"archSitePdf\"><b>Archaeological Sites:&nbsp;" + feature.attributes["SITENUMBER"] + "</b></div>" +
-                                        "<div class=\"archSitePdf\">" +
-                                            "<span style=\"padding-right:20px;\">Site document available:</span>" +
-                                            "<a target=\"_blank\" href=\"http://www.scarchsite.org/PDFs/" + feature.attributes.SITENUMBER + ".pdf\"><img src=\"../images/pdf.png\" /></a>" +
+                                        "<div class=\"archSitePdf\" style=\"text-align:center;\" id=\"site-pdf-container-" + feature.attributes["SITENUMBER"] + "\">" +
+                                            pdfHtml +
                                         "</div>" +
                                         "<div style=\"height:10px;\"></div>";
                                     for (var i = 0, l = results.fields.length; i < l; i++) {
@@ -2335,9 +2350,9 @@ get_browser_version: function(){
                                     var infoTemplate = new InfoTemplate("Archaeological Sites", html);
                                     feature.setInfoTemplate(infoTemplate);
 
-                                    result.features[j] = feature;
+                                    results.features[j] = feature;
                                 }
-                                return result;
+                                return results;
                             });
                         }
 
