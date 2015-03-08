@@ -2320,7 +2320,7 @@ get_browser_version: function(){
                                     //synchronous request to get pdf availability
                                     //can't figure out how to chain the deferred properly
                                     var pdfHtml = "No site files available.";
-                                    var url = "http://services.arcgis.com/oEazpvC7G00gPDRM/arcgis/rest/services/SC_ArchSite_LKP/FeatureServer/1/query?where=SITENUMBER+%3D+%27" + feature.attributes.SITENUMBER + "%27&objectIds=&time=&outFields=*&returnIdsOnly=false&returnCountOnly=false&returnZ=false&returnM=false&f=json"
+                                    var url = _self.options.pdfLookupTableUrl + "/query?where=SITENUMBER+%3D+%27" + feature.attributes.SITENUMBER + "%27&objectIds=&time=&outFields=*&returnIdsOnly=false&returnCountOnly=false&returnZ=false&returnM=false&f=json"
                                     $.ajax({
                                         url: url,
                                         dataType: "json",
@@ -2329,7 +2329,7 @@ get_browser_version: function(){
                                             if (result.features.length > 0) {
                                                 if (result.features[0].attributes.Exist === "Y") {
                                                     pdfHtml = "<span style=\"padding-right:20px;\">Site document available:</span>" +
-                                                    "<a target=\"_blank\" href=\"http://www.scarchsite.org/PDFs/" + feature.attributes.SITENUMBER + ".pdf\"><img src=\"../images/pdf.png\" /></a>";
+                                                    "<a target=\"_blank\" href=\"" + _self.options.pdfBaseUrl + feature.attributes.SITENUMBER + ".pdf\"><img src=\"../images/pdf.png\" /></a>";
                                                 }
                                             }
                                         }
@@ -2513,14 +2513,6 @@ get_browser_version: function(){
             connect.connect(_self.options.customPopup, "maximize", function() {
                 _self.hideAllMenus();
             });
-            //connect.connect(_self.options.customPopup, "onSelectionChange", function() {
-            //    _self.overridePopupTitle();
-            //});
-            //connect.connect(_self.options.customPopup, "onHide", function() {
-            //    _self.clearPopupValues();
-            //});
-            // popup theme
-            //domClass.add(_self.options.customPopup.domNode, "modernGrey");
         },
         // Create the map object for the template
         createWebMap: function () {
@@ -2539,6 +2531,7 @@ get_browser_version: function(){
 
             // configure popup
             _self.configurePopup();
+
             // create map deferred with options
             var mapDeferred = arcgisUtils.createMap(_self.options.webmap, 'map', {
                 mapOptions: {
