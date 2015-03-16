@@ -2299,8 +2299,11 @@ get_browser_version: function(){
                     var circle = new Circle({
                         center: evt.mapPoint,
                         geodesic: true,
-                        radius: 150
+                        radius: 75
                     });
+
+                    var tempPdfList = [];
+                    //tempPdfList.push({ siteNumber: result.features[0].attributes.SITENUMBER, pdfExists: result.features[0].attributes.Exist });
 
                     var layer, p, q, dCol = [];
                     //query each map layer
@@ -2361,7 +2364,50 @@ get_browser_version: function(){
                                     return results;
                                 });
                             }
+                            else if (layer.id === "ArchSites_Prod_807") {
+                                d.then(function (results) {
+                                    var _layer = layer;
+                                    for (var j = 0, _l = results.features.length; j < _l; j++) {
+                                        var feature = results.features[j];
 
+                                        //synchronous request to get pdf availability
+                                        //can't figure out how to chain the deferred properly
+                                        var pdfHtml = "No site files available.";
+                                        var url = _self.options.pdfLookupTableUrl + "/query?where=SITENUMBER+%3D+%27" + feature.attributes.SITENUMBER + "%27&objectIds=&time=&outFields=*&returnIdsOnly=false&returnCountOnly=false&returnZ=false&returnM=false&f=json"
+                                        $.ajax({
+                                            url: url,
+                                            dataType: "json",
+                                            async: false,
+                                            success: function (result) {
+                                                if (result.features.length > 0) {
+                                                    if (result.features[0].attributes.Exist === "Y") {
+                                                        pdfHtml = "<span style=\"padding-right:20px;\">Site document available:</span>" +
+                                                        "<a target=\"_blank\" href=\"" + _self.options.pdfBaseUrl + feature.attributes.SITENUMBER + ".pdf\"><img src=\"../images/pdf.png\" /></a>";
+                                                    }
+                                                }
+                                            }
+                                        });
+
+                                        var html =
+                                            "<div class=\"archSitePdf\"><b>Archaeological Points:&nbsp;" + feature.attributes["SITENUMBER"] + "</b></div>" +
+                                            "<div class=\"archSitePdf\" style=\"text-align:center;\" id=\"site-pdf-container-" + feature.attributes["SITENUMBER"] + "\">" +
+                                                pdfHtml +
+                                            "</div>" +
+                                            "<div style=\"height:10px;\"></div>";
+                                        for (var i = 0, l = results.fields.length; i < l; i++) {
+                                            if (results.fields[i].name != "OBJECTID") {
+                                                html += "<div><span class=\"archSiteFieldName\">" + results.fields[i].alias + ":</span>" +
+                                                    ((feature.attributes[results.fields[i].name] !== null) ? feature.attributes[results.fields[i].name] : "") + "</div>";
+                                            }
+                                        }
+                                        var infoTemplate = new InfoTemplate("Archaeological Points", html);
+                                        feature.setInfoTemplate(infoTemplate);
+
+                                        results.features[j] = feature;
+                                    }
+                                    return results;
+                                });
+                            }
                             dCol.push(d);
                         }
                     }
