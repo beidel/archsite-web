@@ -30,11 +30,10 @@ function (ready, declare, connect, promiseAll, Deferred, event, array, lang, dom
                         // set other config options from app id
                         _self.options = declare.safeMixin(_self.options, _self._appSettings);
                     }
+                    _self.debug = _self.options.debug;
                     _self.init();
                 });
             });
-
-            this.debug = true;
 
             this.mapExtentEvent;
             this.mapPanEvent;
@@ -208,20 +207,14 @@ function (ready, declare, connect, promiseAll, Deferred, event, array, lang, dom
                 templateConfig.helperServices.geometry.url = templateConfig.helperServices.geometry.url.replace('http:', 'https:');
             }
             config.defaults.geometryService = new GeometryService(templateConfig.helperServices.geometry.url);
-            //config.defaults.io.proxyUrl = _self.options.proxyUrl.substring(0, _self.options.proxyUrl.lastIndexOf('/'));
-
             config.defaults.io.proxyUrl = _self.options.proxyUrl;
 
-
-            console.log(config.defaults.io.proxyUrl);
             var proxySub = _self.options.proxyUrl.substring(0, _self.options.proxyUrl.lastIndexOf('/'));
             //esri.addProxyRule({ urlPrefix: "analysis.arcgis.com", proxyUrl: proxySub });
 
             config.defaults.io.useCors = true;
             config.defaults.io.corsEnabledServers.push("analysis.arcgis.com");
             config.defaults.io.alwaysUseProxy = false;
-
-            console.log("DONE");
         },
         // Alert box
         alertDialog: function(text) {
@@ -426,7 +419,7 @@ function (ready, declare, connect, promiseAll, Deferred, event, array, lang, dom
         },
         // hide all dropdown menus
         hideAllMenus: function () {
-            console.log("hideMenu");
+            //this.logToConsole("hideMenu");
             var _self = this;
             query('#topMenuCon .barButton').removeClass('barSelected');
             query('#mapcon .menuSelected').forEach(function(selectTag) {
@@ -443,8 +436,8 @@ function (ready, declare, connect, promiseAll, Deferred, event, array, lang, dom
         },
         // Show dropdown menu
         showMenu: function (menuObj, buttonObj) {
-            console.log("menuObj", menuObj);
-            console.log("buttonObj", buttonObj);
+            //console.log("menuObj", menuObj);
+            //console.log("buttonObj", buttonObj);
             query('#mapcon .menuSelected').removeClass('menuSelected');
             if (menuObj) {
                 coreFx.wipeIn({
@@ -467,7 +460,7 @@ function (ready, declare, connect, promiseAll, Deferred, event, array, lang, dom
                 }).play();
                 query(menuObj).addClass('navMenuSelected');
             }
-            console.log("button", buttonObj);
+            //console.log("button", buttonObj);
             if (buttonObj) {
                 query(buttonObj).addClass('navButtonSelected');
             }
@@ -1498,8 +1491,8 @@ function (ready, declare, connect, promiseAll, Deferred, event, array, lang, dom
                 node.innerHTML = '<div class="menuClose"><div class="closeButton closeMenu"></div><span style="color: #666666;">Export Data</span><div class="clear"></div></div><div class="exportCon"><div class="slideScroll"><div id="exportContent"></div></div></div>';
             }
 
-            console.log("A", _self.options.analysisToken);
-            console.log("Working", _self.options.working);
+            //console.log("A", _self.options.analysisToken);
+            //console.log("Working", _self.options.working);
 
             this.options.exportDataWidget = new DataExport({
                 map: _self.map,
@@ -1510,13 +1503,13 @@ function (ready, declare, connect, promiseAll, Deferred, event, array, lang, dom
                 analysisGpServerUrl: _self.options.analysisGpServer
             });
 
-            console.log("B");
+            //console.log("B");
 
             dojo.place(this.options.exportDataWidget.domNode, dom.byId('exportContent'));
 
             this.options.exportDataWidget.startup();
 
-            console.log("C");
+            //console.log("C");
         },
 
         configureHelp: function() {
@@ -1588,18 +1581,18 @@ function (ready, declare, connect, promiseAll, Deferred, event, array, lang, dom
                 node.innerHTML = html;
             }
 
-            console.log("MP4", mp4);
-            console.log("WEBM", webm);
+            //console.log("MP4", mp4);
+            //console.log("WEBM", webm);
 
             if (mp4 || webm) {
                 var hc = dojo.byId("helpContent");
-                console.log("HC", hc);
+                //console.log("HC", hc);
                 if (hc) {
                     //console.log(node);
                     on(hc, ".videoItem:click", function (event) {
                         var video = dojo.attr(this, 'data-video');
                         var desc = dojo.attr(this, 'data-desc');
-                        console.log("VIDEO", video);
+                        //console.log("VIDEO", video);
 
                         var vp = document.getElementById('videoSource');
                         vp.setAttribute("src", video);
@@ -1609,7 +1602,7 @@ function (ready, declare, connect, promiseAll, Deferred, event, array, lang, dom
                         //dojo.byId("videoSource").load();
                         vp.load();
                         query(".videoDialog").removeClass("hideItem");
-                        console.log("videoloaded");
+                        //console.log("videoloaded");
                     });
                 }
                 
@@ -1621,8 +1614,8 @@ function (ready, declare, connect, promiseAll, Deferred, event, array, lang, dom
                 }
             }
 
-            console.log("BROWSER", this.get_browser());
-            console.log("BROWSERVERSIN", this.get_browser_version());
+            //console.log("BROWSER", this.get_browser());
+            //console.log("BROWSERVERSIN", this.get_browser_version());
         },
 
         get_browser: function(){
@@ -2279,7 +2272,7 @@ get_browser_version: function(){
             //console.log(response.itemInfo)
             _self.itemInfo = response.itemInfo;
 
-            console.log("ItemInfo", _self.itemInfo);
+            //console.log("ItemInfo", _self.itemInfo);
             // add secured layers
 
             //this.logToConsole(_suelf.itemInfo.itemData.operationalLayers);

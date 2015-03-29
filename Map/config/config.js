@@ -1,5 +1,6 @@
 define(["esri/layers/ArcGISDynamicMapServiceLayer", "esri/layers/FeatureLayer"], function (ArcGISDynamicMapServiceLayer, FeatureLayer) {
     var config = {
+        "debug": true,
         "mainUrl": "http://www.scarchsite.com",
         "appid": "",
         "version": "v 2.2 March 2015",

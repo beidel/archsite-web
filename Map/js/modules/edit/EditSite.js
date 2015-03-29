@@ -224,7 +224,7 @@ function (declare, connect, arr, lang, event, xhr, query, domConstruct, domAttr,
         startup: function () {
             this.inherited(arguments);
 
-            console.log("STARTUP");
+            //console.log("STARTUP");
 
             var _self = this;
 
