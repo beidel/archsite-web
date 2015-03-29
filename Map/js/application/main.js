@@ -1995,7 +1995,6 @@ get_browser_version: function(){
                 on(findButton, "click", function (event) {
                     if (event.type === 'click') {
                         _self.toggleAttributeMenu('find');
-                        dijit.byId("at_cmbBufferUnits").set("value", "meters");
                     }
                 });
             }
