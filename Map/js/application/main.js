@@ -1657,16 +1657,6 @@ get_browser_version: function(){
                 if (node) {
                     node.innerHTML = '<div class="menuClose"><div class="closeButton closeMenu"></div>' + i18n.viewer.measure.menuTitle + '<div class="clear"></div></div><div class="measureMenuCon"><div class="slideScrollBottom"><div id="measureContent"></div></div></div>';
                 }
-
-               /*_self.options.measureTool = new Measurement({
-                    map: _self.map,
-                    id: 'measureTool',
-                    style: "width:250px;height:150px"
-                }, 'measureContent');
-
-                _self.options.measureTool.startup();
-                */
-
                 _self.options.drawMeasure = new DrawMeasure({
                     map: _self.map,
                     geometryServiceUrl: templateConfig.helperServices.geometry.url,
@@ -1674,10 +1664,6 @@ get_browser_version: function(){
                 }, 'measureContent');
 
                 _self.options.drawMeasure.startup();
-
-                
-
-               
             }            
         },
         // show about button if url is set
@@ -2279,11 +2265,25 @@ get_browser_version: function(){
             //set temporary global variable
             window.globals = { map: _self.map };
 
+            //add custom functions for disabling active map tools
+            _self.map.disableActiveTools = function (disableMapNav) {
+                _self.map.disableMapClick();
+
+                if (disableMapNav && disableMapNav === true) {
+                    _self.map.disableMapNavigation();
+                }
+            };
+            _self.map.enableActiveTools = function () {
+                _self.map.enableMapClick();
+                _self.map.enableMapNavigation();
+            };
+
             //override built in map click
             _self.map.disableMapClick = function () {
                 _self.map.onClick = null;
             };
             _self.map.enableMapClick = function () {
+                _self.map.onClick = null;
                 _self.map.on("click", function (evt) {
                     //get click point
                     var pt = evt.mapPoint;

@@ -1630,7 +1630,7 @@ function (declare, connect, arr, lang, event, xhr, query, domConstruct, domAttr,
 
             this.tbEvent = this.tb.on("draw-end", lang.hitch(this, this.doGraphicSearch));
 
-            this.options.map.disableMapNavigation();
+            this.options.map.disableActiveTools(true);
             this.tb.activate("point");
         },
 
@@ -1639,7 +1639,7 @@ function (declare, connect, arr, lang, event, xhr, query, domConstruct, domAttr,
             //var tb = this.tb;
 
             this.tb.deactivate();
-            this.options.map.enableMapNavigation();
+            this.options.map.enableActiveTools();
 
             this.tbEvent.remove();
 
