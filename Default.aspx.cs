@@ -216,7 +216,7 @@ public partial class _Default : System.Web.UI.Page
         {
             Console.WriteLine(e.Message);
             //throw new Exception(e.StackTrace);
-            Response.Redirect("~/Default.aspx?error=" + e.Message);
+            //Response.Redirect("~/Default.aspx?error=" + e.Message);
             return null;
         }
     }
