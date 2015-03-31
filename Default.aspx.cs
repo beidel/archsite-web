@@ -277,7 +277,7 @@ public partial class _Default : System.Web.UI.Page
                 url = "https://www.arcgis.com/sharing/generateToken?f=json&" +
                                   "&username=" + ConfigurationManager.AppSettings["agol_user"] +
                                   "&password=" + ConfigurationManager.AppSettings["agol_password"] +
-                                  "&referer=http://www.arcgis.com";
+                                  "&referer=https://www.scarchsite.org";
 
                 rt = MakeRequest2(url);
 

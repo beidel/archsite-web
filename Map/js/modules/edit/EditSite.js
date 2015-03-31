@@ -1703,6 +1703,8 @@ function (declare, connect, arr, lang, event, xhr, query, domConstruct, domAttr,
                                 mode = "E";
                             }
 
+                            //need to remove any existing instances of these buttons from previous editing session
+
                             var button = new Button({
                                 label: label,
                                 id: "resultButton" + j,
