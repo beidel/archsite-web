@@ -4,7 +4,7 @@
         <div id='at_btnAttrSearch' data-menu='attrsearch' class='attrButton searchAttrIcon' title='Field Search'></div>
         <div id='at_btnAttrTable' data-menu='results' class='attrButton resultsIcon' title='Search Results'></div>
     </div>
-    <div class="lineSep" style="position: absolute; top: 56px;" ></div>
+    <div class="lineSep" style="position: absolute; top: 56px;"></div>
     <!-- VIEW 1 Results View -->
     <div id="at_view_1" data-dojo-attach-point="at_view_1" class="viewPane hidePane">
         <span id='at_btnClear' class='toolbarButton sideButton' title='Clear'>Clear</span>
@@ -14,78 +14,75 @@
     <!-- VIEW 2 Spatial Search View -->
     <div id="at_view_2" data-dojo-attach-point="at_view_2" class="viewPane">
         <div style="position: absolute; left: 5px; right: 5px; top: 5px; bottom: 5px;">
-       
-        <div class="atPanel" style="margin-top:0px;">
-            <div>Selection Tools: Use these tools to select an area on the map</div>
-            <div id="at_toolbuttons" class="toolButtons">
-                <div id="at_GsPoly" data-menu="polygon" class="attrButton spatSrchPolygon" title="Select by Polygon"></div>
-                <div id="at_GsExt" data-menu="extent" class="attrButton spatSrchExtent" title="Select by Extent"></div>
-                <div id="at_GsLine" data-menu="polyline" class="attrButton spatSrchLine" title="Select by Line"></div>
-                <div id="at_GsPoint" data-menu="point" class="attrButton spatSrchPoint" title="Select by Point"></div>
-                <div id="at_GsFreehand" data-menu="freehandpolygon" class="attrButton spatSrchFreePoly" title="Select by Freehand Polygon"></div>
+
+            <div class="atPanel" style="margin-top:0px;">
+                <div>Selection Tools: Use these tools to select an area on the map</div>
+                <div id="at_toolbuttons" class="toolButtons">
+                    <div id="at_GsPoly" data-menu="polygon" class="attrButton spatSrchPolygon" title="Select by Polygon"></div>
+                    <div id="at_GsExt" data-menu="extent" class="attrButton spatSrchExtent" title="Select by Extent"></div>
+                    <div id="at_GsLine" data-menu="polyline" class="attrButton spatSrchLine" title="Select by Line"></div>
+                    <div id="at_GsPoint" data-menu="point" class="attrButton spatSrchPoint" title="Select by Point"></div>
+                    <div id="at_GsFreehand" data-menu="freehandpolygon" class="attrButton spatSrchFreePoly" title="Select by Freehand Polygon"></div>
+                </div>
             </div>
-        </div>
 
-        <div class="atPanel bufferTools">
-        <input id="at_UseBuffer" name="at_UseBuffer" data-dojo-type="dijit/form/CheckBox" value="Y" /> <label for="at_UseBuffer">Apply a Buffer?</label><br />
-        <label>Buffer: </label><input data-dojo-type="dijit/form/TextBox" id="at_txtBufferDist" name="at_txtBufferDist"style="width: 50px;" data-dojo-props="placeHolder:'100'"/>
-        <select data-dojo-type="dijit/form/Select" id="at_cmbBufferUnits" name="at_cmbBufferUnits" style="width: 75px;">
-            <option>meters</option>
-            <option>kilometers</option>
-            <option>feet</option>
-            <option>miles</option>
-        </select>
-        </div>
+            <div class="atPanel bufferTools">
+                <input id="at_UseBuffer" name="at_UseBuffer" data-dojo-type="dijit/form/CheckBox" value="Y" /> <label for="at_UseBuffer">Apply a Buffer?</label><br />
+                <label>Buffer: </label><input data-dojo-type="dijit/form/TextBox" id="at_txtBufferDist" name="at_txtBufferDist" style="width: 50px;" data-dojo-props="placeHolder:'100'" value="100" />
+                <select data-dojo-type="dijit/form/Select" id="at_cmbBufferUnits" name="at_cmbBufferUnits" style="width: 75px;">
+                    <option selected="selected" value="meters">meters</option>
+                    <option value="kilometers">kilometers</option>
+                    <option value="feet">feet</option>
+                    <option value="miles">miles</option>
+                </select>
+            </div>
 
-        <div class="atPanel">
-        <div>Selection Layers: Select the layers you want to include in the search</div>
-        <div class='layerList'>
-            <ul id="at_LayerSelectBoxes"></ul>
-        </div>
-        </div>
-            
-        
+            <div class="atPanel">
+                <div>Selection Layers: Select the layers you want to include in the search</div>
+                <div class='layerList'>
+                    <ul id="at_LayerSelectBoxes"></ul>
+                </div>
+            </div>
+
+
         </div>
     </div>
 
     <!-- VIEW 3 Attribute Query View -->
     <div id="at_view_3" data-dojo-attach-point="at_view_3" class="viewPane hidePane" style="top:95px; width:95%; bottom:5px;">
-        <div style="position: absolute; top: 2px; bottom:2px; width:95%; ">
-            <div style="position: absolute; left: 5px; right: 5px; text-align:center;">
-                <label>Layer: </label>
-                <select id="at_cmbLayerSelect"></select>
-            </div>
-   
-            <div style="position: absolute; top: 30px; left: 5px; right: 5px;">
+        <div style="padding: 10px;">
+            <div>
                 <div class="searchOptions">
-                <label>Column:</label>
-                <select id="at_fselect0" style="width: 125px; overflow:hidden;"></select>
+                    <label class="search-form-label">Layer: </label>
+                    <select id="at_cmbLayerSelect"></select>
                 </div>
                 <div class="searchOptions">
-                <label>Where:</label>
-                <select id="at_oselect0" style="width: 50px;"></select>
+                    <label class="search-form-label">Column:</label>
+                    <select id="at_fselect0" style="width: 125px; overflow:hidden;"></select>
                 </div>
                 <div class="searchOptions">
-                <label>Find this:</label>
-                <input type="text" id="at_txt0" style="width:125px;" />
+                    <label class="search-form-label">Where:</label>
+                    <select id="at_oselect0" style="width: 50px;"></select>
                 </div>
-                <div class='sideButton'>
-                
-                <span id='at_v3_addQueryButton' class='toolbarButton' title='Add'>Add</span>
-                <span id='at_v3_clear' class='toolbarButton' title='Clear'>Clear</span>
-                <span id='at_v3_search' class='toolbarButton' style="margin-left: 15px;" title='Search'>Search</span>
+                <div class="searchOptions">
+                    <label class="search-form-label">Find this:</label>
+                    <input type="text" id="at_txt0" style="width:125px;" />
+                </div>
+                <div>
+                    <span id='at_v3_addQueryButton' class='toolbarButton' title='Add'>Add Query</span>
+                    <span id='at_v3_clear' class='toolbarButton' title='Clear'>Clear Value</span>
+                    <span id='at_v3_search' class='toolbarButton' style="margin-left: 55px;" title='Search'>Perform Search</span>
                 </div>
             </div>
-
-            <div style="position: absolute; top: 140px; left: 5px; right: 5px; text-align:center;">
-            <table id="at_QueryList" class="tableResults">
-                <tr>
-                    <th>Column</th>
-                    <th>Where</th>
-                    <th>Find this</th>
-                    <th class="deleteColumn hCenterColumn"></th>
-                </tr>
-            </table>
+            <div>
+                <table id="at_QueryList" class="tableResults">
+                    <tr>
+                        <th>Column</th>
+                        <th>Where</th>
+                        <th>Find this</th>
+                        <th class="deleteColumn hCenterColumn"></th>
+                    </tr>
+                </table>
             </div>
         </div>
     </div>
