@@ -2000,11 +2000,9 @@ get_browser_version: function(){
             document.title = "ArchSite Map Viewer";
             var node = dom.byId('mapTitle');
             if (node) {
-                node.innerHTML = "<a href='" + _self.options.mainUrl + "'><span class='archTitle1'>Arch</span><span class='archTitle2'>Site</span></a>";
+                node.innerHTML = "<a href='#'><span class='archTitle1'>Arch</span><span class='archTitle2'>Site</span></a>";
                 query(node).attr('title', "ArchSite Map Viewer");
             }
-
-
 
             query('meta[name="Description"]').attr('content', _self.itemInfo.item.snippet);
             query('meta[property="og:image"]').attr('content', arcgisUtils.arcgisUrl + '/' + _self.itemInfo.item.id + '/info/' + _self.itemInfo.item.thumbnail);
