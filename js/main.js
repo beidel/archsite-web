@@ -27,7 +27,7 @@ define([
     "dojo/_base/array",
     "esri/lang"
 ],
-function(
+function (
     declare,
     lang,
     arcgisUtils,
@@ -51,7 +51,7 @@ function(
 ) {
     return declare("", [About, SocialLayers], {
         config: {},
-        constructor: function(){
+        constructor: function () {
             // css classes
             this.css = {
                 mobileSearchDisplay: "mobile-locate-box-display",
@@ -81,7 +81,7 @@ function(
                 appError: "app-error"
             };
             // pointer event support
-            if(this._pointerEventsSupport()){
+            if (this._pointerEventsSupport()) {
                 domClass.add(document.documentElement, this.css.pointerEvents);
             }
             // mobile size switch domClass
@@ -128,7 +128,7 @@ function(
             domClass.add(dom.byId("mapContainer"), this.css.appError);
             // set message
             var node = dom.byId('error_message');
-            if(node){
+            if (node) {
                 if (this.config && this.config.i18n) {
                     node.innerHTML = this.config.i18n.map.error + ": " + error.message;
                 } else {
@@ -137,14 +137,14 @@ function(
             }
         },
         // if pointer events are supported
-        _pointerEventsSupport: function(){
+        _pointerEventsSupport: function () {
             var element = document.createElement('x');
             element.style.cssText = 'pointer-events:auto';
-            return element.style.pointerEvents === 'auto';   
+            return element.style.pointerEvents === 'auto';
         },
-        _initLegend: function(){
+        _initLegend: function () {
             var legendNode = dom.byId('LegendDiv');
-            if(legendNode){
+            if (legendNode) {
                 this._mapLegend = new Legend({
                     map: this.map,
                     layerInfos: this.layerInfos
@@ -163,7 +163,7 @@ function(
                 this._mapSearch.startup();
             }
         },
-        _initTOC: function(){
+        _initTOC: function () {
             // layers
             var tocNode = dom.byId('TableOfContents'), socialTocNode, tocLayers, socialTocLayers, toc, socialToc;
             if (tocNode) {
@@ -185,19 +185,19 @@ function(
                 content += '</div>';
                 // get node to insert
                 var node = dom.byId('social_media_layers');
-                if(node){
+                if (node) {
                     node.innerHTML = content;
                 }
                 // get toc node for social layers
                 socialTocNode = dom.byId('MediaTableOfContents');
                 // if node exists
-                if(socialTocNode){
+                if (socialTocNode) {
                     socialTocLayers = this.socialLayers;
                     socialToc = new TableOfContents({
                         map: this.map,
                         layers: socialTocLayers
                     }, socialTocNode);
-                    socialToc.startup();    
+                    socialToc.startup();
                 }
             }
         },
@@ -236,22 +236,22 @@ function(
                 if (this.config.enableSummaryInfo) {
                     content += '<div class="' + this.css.panelHeader + '">' + this.config.title + '</div>';
                     content += '<div class="' + this.css.panelSummary + '" id="summary"></div>';
-                    if(this.config.enableModifiedDate){
+                    if (this.config.enableModifiedDate) {
                         content += '<div class="' + this.css.panelModified + '" id="date_modified"></div>';
                     } window.open("http://www.w3schools.com");
-                    if(this.config.enableMoreInfo){
+                    if (this.config.enableMoreInfo) {
                         content += '<div class="' + this.css.panelMoreInfo + '" id="more_info_link"></div>';
                     }
                 }
                 // show notes layer and has one of required things for getting notes layer
-                if(this.config.notesLayer && this.config.notesLayer.id){
+                if (this.config.notesLayer && this.config.notesLayer.id) {
                     content += '<div id="map_notes_section">';
                     content += '<div class="' + this.css.panelHeader + '"><span id="map_notes_title">' + this.config.i18n.general.featured + '</span></div>';
                     content += '<div class="' + this.css.panelSection + '" id="map_notes"></div>';
                     content += '</div>';
                 }
                 // show bookmarks and has bookmarks
-                if(this.config.enableBookmarks && this.bookmarks && this.bookmarks.length){
+                if (this.config.enableBookmarks && this.bookmarks && this.bookmarks.length) {
                     content += '<div class="' + this.css.panelHeader + '">' + this.config.i18n.mapNotes.bookmarks + '</div>';
                     content += '<div class="' + this.css.panelSection + '" id="map_bookmarks"></div>';
                 }
@@ -263,10 +263,10 @@ function(
                     content: content
                 };
                 // map menu
-                if(this.config.defaultPanel === 'about'){
-                    this.drawerMenus.splice(0,0,menuObj);
+                if (this.config.defaultPanel === 'about') {
+                    this.drawerMenus.splice(0, 0, menuObj);
                 }
-                else{
+                else {
                     this.drawerMenus.push(menuObj);
                 }
             }
@@ -286,10 +286,10 @@ function(
                     content: content
                 };
                 // legend menu
-                if(this.config.defaultPanel === 'legend'){
-                    this.drawerMenus.splice(0,0,menuObj);
+                if (this.config.defaultPanel === 'legend') {
+                    this.drawerMenus.splice(0, 0, menuObj);
                 }
-                else{
+                else {
                     this.drawerMenus.push(menuObj);
                 }
             }
@@ -308,10 +308,10 @@ function(
                     content: content
                 };
                 // layers menu
-                if(this.config.defaultPanel === 'layers'){
-                    this.drawerMenus.splice(0,0,menuObj);
+                if (this.config.defaultPanel === 'layers') {
+                    this.drawerMenus.splice(0, 0, menuObj);
                 }
-                else{
+                else {
                     this.drawerMenus.push(menuObj);
                 }
             }
@@ -336,8 +336,8 @@ function(
                 }, 'HomeButton');
                 this._HB.startup();
                 // clear locate on home button
-                on(this._HB, 'home', lang.hitch(this, function(){
-                    if(this._LB){
+                on(this._HB, 'home', lang.hitch(this, function () {
+                    if (this._LB) {
                         this._LB.clear();
                     }
                 }));
@@ -394,22 +394,22 @@ function(
             }
             // i18n overview placement
             var overviewPlacement = 'left';
-            if(this.config.i18n.direction === 'rtl'){
+            if (this.config.i18n.direction === 'rtl') {
                 overviewPlacement = 'right';
             }
             // Overview Map
-            if(this.config.enableOverviewMap){
+            if (this.config.enableOverviewMap) {
                 var size = this._getOverviewMapSize();
                 this._overviewMap = new OverviewMap({
                     attachTo: "bottom-" + overviewPlacement,
-                    width: size,
-                    height: size,
+                    width: size.width,
+                    height: size.height,
                     visible: this.config.openOverviewMap,
                     map: this.map
                 });
                 this._overviewMap.startup();
                 // responsive overview size
-                on(this.map, 'resize', lang.hitch(this, function(){
+                on(this.map, 'resize', lang.hitch(this, function () {
                     this._resizeOverviewMap();
                 }));
             }
@@ -430,56 +430,55 @@ function(
             // on body click containing underlay class
             on(dom.byId("mapContainer"), '.dijitDialogUnderlay:click', function () {
                 // get all dialogs
-                var filtered = array.filter(registry.toArray(), function(w){ 
+                var filtered = array.filter(registry.toArray(), function (w) {
                     return w && w.declaredClass == "dijit.Dialog";
                 });
                 // hide all dialogs
-                array.forEach(filtered, function(w){ 
-                    w.hide(); 
+                array.forEach(filtered, function (w) {
+                    w.hide();
                 });
             });
             // hide loading div
             this._hideLoadingIndicator();
             // swipe layer
-            if(this.config.swipeLayer && this.config.swipeLayer.id){
+            if (this.config.swipeLayer && this.config.swipeLayer.id) {
                 // get swipe tool
-                require(["esri/dijit/LayerSwipe"], lang.hitch(this, function(LayerSwipe){
+                require(["esri/dijit/LayerSwipe"], lang.hitch(this, function (LayerSwipe) {
                     // get layer
                     var layer = this.map.getLayer(this.config.swipeLayer.id);
-                    if(layer){
+                    if (layer) {
                         // create swipe
                         var layerSwipe = new LayerSwipe({
                             type: this.config.swipeType,
                             theme: "PIMSwipe",
                             invertPlacement: this.config.swipeInvertPlacement,
                             map: this.map,
-                            layers: [ layer ]
+                            layers: [layer]
                         }, "swipeDiv");
-                        layerSwipe.startup();    
+                        layerSwipe.startup();
                     }
-                }));  
+                }));
             }
             // drawer size check
             this._drawer.resize();
         },
-        _getOverviewMapSize: function(){
-            var breakPoint = 500;
-            var size = 150;
-            if(this.map.width < breakPoint || this.map.height < breakPoint){
-                size = 75;
-            }
+        _getOverviewMapSize: function () {
+            var size = {
+                height: (this.map.height * .20),
+                width: (this.map.width * .20)
+            };
             return size;
         },
-        _resizeOverviewMap: function(){
-            if(this._overviewMap){
+        _resizeOverviewMap: function () {
+            if (this._overviewMap) {
                 var size = this._getOverviewMapSize();
-                if(this._overviewMap.hasOwnProperty('resize')){
-                    this._overviewMap.resize({ w:size, h:size });    
-                }                
+                if (this._overviewMap.hasOwnProperty('resize')) {
+                    this._overviewMap.resize({ w: size.width, h: size.height });
+                }
             }
         },
         _checkMobileGeocoderVisibility: function () {
-            if(this._mobileGeocoderIconNode && this._mobileSearchNode){
+            if (this._mobileGeocoderIconNode && this._mobileSearchNode) {
                 // check if mobile icon needs to be selected
                 if (domClass.contains(this._mobileGeocoderIconNode, this.css.toggleBlueOn)) {
                     domClass.add(this._mobileSearchNode, this.css.mobileSearchDisplay);
@@ -487,23 +486,23 @@ function(
             }
         },
         _showMobileGeocoder: function () {
-            if(this._mobileSearchNode && this._mobileGeocoderIconContainerNode){
+            if (this._mobileSearchNode && this._mobileGeocoderIconContainerNode) {
                 domClass.add(this._mobileSearchNode, this.css.mobileSearchDisplay);
                 domClass.replace(this._mobileGeocoderIconContainerNode, this.css.toggleBlueOn, this.css.toggleBlue);
             }
         },
         _hideMobileGeocoder: function () {
-            if(this._mobileSearchNode && this._mobileGeocoderIconContainerNode){
+            if (this._mobileSearchNode && this._mobileGeocoderIconContainerNode) {
                 domClass.remove(this._mobileSearchNode, this.css.mobileSearchDisplay);
                 domStyle.set(this._mobileSearchNode, "display", "none");
                 domClass.replace(this._mobileGeocoderIconContainerNode, this.css.toggleBlue, this.css.toggleBlueOn);
             }
         },
-        _setTitle: function(title){
+        _setTitle: function (title) {
             // set config title
             this.config.title = title;
             // window title
-            window.document.title = title;  
+            window.document.title = title;
         },
         _setTitleBar: function () {
             // map title node
@@ -515,7 +514,7 @@ function(
                 domAttr.set(node, "title", this.config.title);
             }
         },
-        _createGeocoderOptions: function() {
+        _createGeocoderOptions: function () {
             var hasEsri = false, esriIdx, geocoders = lang.clone(this.config.helperServices.geocode);
             // default options
             var options = {
@@ -532,14 +531,14 @@ function(
                 if (geocoder.url) {
                     return true;
                 }
-                else{
+                else {
                     return false;
                 }
             });
             // at least 1 geocoder defined
-            if(geocoders.length){
+            if (geocoders.length) {
                 // each geocoder
-                array.forEach(geocoders, lang.hitch(this, function(geocoder) {
+                array.forEach(geocoders, lang.hitch(this, function (geocoder) {
                     // if esri geocoder
                     if (geocoder.url && geocoder.url.indexOf(".arcgis.com/arcgis/rest/services/World/GeocodeServer") > -1) {
                         hasEsri = true;
@@ -645,7 +644,7 @@ function(
                 }));
             }
             var closeMobileGeocoderNode = dom.byId("btnCloseGeocoder");
-            if(closeMobileGeocoderNode){
+            if (closeMobileGeocoderNode) {
                 // cancel mobile geocoder
                 on(closeMobileGeocoderNode, "click", lang.hitch(this, function () {
                     this._hideMobileGeocoder();
@@ -664,9 +663,9 @@ function(
             // add popup theme
             domClass.add(customPopup.domNode, "calcite");
             // set extent from URL Param
-            if(this.config.extent){
+            if (this.config.extent) {
                 var e = this.config.extent.split(',');
-                if(e.length === 4){
+                if (e.length === 4) {
                     itemInfo.item.extent = [
                         [
                             parseFloat(e[0]),
@@ -693,7 +692,7 @@ function(
                 //such as the map, operational layers, popup info and more. This object will also contain
                 //any custom options you defined for the template. In this example that is the 'theme' property.
                 //Here' we'll use it to update the application to match the specified color theme.
-                this.map = response.map;
+                this.map = window.map = response.map;
                 this.layers = response.itemInfo.itemData.operationalLayers;
                 this.item = response.itemInfo.item;
                 this.bookmarks = response.itemInfo.itemData.bookmarks;
