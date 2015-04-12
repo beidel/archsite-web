@@ -205,6 +205,7 @@ function (
             //Back Button Click Event
             on(dojo.byId("search_btnBackTools"), "click", function (evt) {
                 _self.setView(1);
+                _self.map.graphics.clear();
             });
 
             on(dojo.byId("search_btnBackResults"), "click", function (evt) {
@@ -344,8 +345,6 @@ function (
             else {
                 _self.spatialSearch(null, evt.geometry);
             }
-
-
         },
 
         //---------------------------------
