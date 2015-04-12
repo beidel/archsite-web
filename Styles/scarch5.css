@@ -523,9 +523,7 @@ table#fees tbody tr:hover td {
 
 .formTitle {
     float: left;
-    width: 11em;
-    text-align: right;
-    padding-right: .6250em;
+    width: 8em;
     font-size: .9350em;
 }
 

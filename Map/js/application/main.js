@@ -1325,7 +1325,6 @@ function (ready, declare, connect, promiseAll, Deferred, event, array, lang, dom
             html += '<button tabindex="0" id="helpButton" data-menu="help" class="btn btn-default" style="margin-left:2px;margin-top:5px;" title="Help">Help</button>';
             html += '<button tabindex="0" id="userButton" data-menu="user" class="btn btn-default" style="margin-left:2px;margin-top:5px;" title="Logout">Logout</button>';
 
-            //html += '<a href="../Logout.aspx"><span tabindex="0" id="logoutButton" data-menu="social" class="barButton" title="Logout">Logout</span></a>';
             node = dom.byId('menuList');
             if (node) {
                 node.innerHTML = html;
@@ -1346,7 +1345,7 @@ function (ready, declare, connect, promiseAll, Deferred, event, array, lang, dom
             if (userButton) {
                 on(userButton, "click, keyup", function (event) {
                     if (event.type === 'click' || (event.type === 'keyup' && event.keyCode === 13)) {
-                        window.location = "../../Logout.aspx";
+                        window.location = "../Logout.aspx";
                     }
                 });
             }
