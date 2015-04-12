@@ -429,6 +429,7 @@ function (declare, connect, arr, lang, event, domConstruct, all, domAttr, query,
             _self.tbEvent = _self.tb.on("draw-end", lang.hitch(this, _self.onGeoSearch));
 
             _self.options.map.disableMapNavigation();
+            _self.options.map.disableMapClick();
             _self.tb.activate(tool);
         },
 
@@ -444,6 +445,7 @@ function (declare, connect, arr, lang, event, domConstruct, all, domAttr, query,
             //Deactivate draw
             _self.tb.deactivate();
             _self.options.map.enableMapNavigation();
+            _self.options.map.enableMapClick();
             //Remove event handler
             _self.tbEvent.remove();
 
@@ -1118,25 +1120,23 @@ function (declare, connect, arr, lang, event, domConstruct, all, domAttr, query,
             if (node) {
                 node.innerHTML = '';
             }
+
+            var feat = _self.searchResults[layerid].features[featureid];
+            var attrs = _self.searchResults[layerid].fields;
+
             var html = '';
 
             //Only do this for Archaeological Site layer
             if (fl.name == _self.options.archSiteLayerTitle) {
-                html += "<span class='detailsLink' mode='report' layer-id='" + layerid + "' feature-id='" + featureid + "'>View Report</span><br />";
-
-                //Set up click handler  for showReport and showRevists
-                on(dojo.byId("at_details"), ".detailsLink:click", function (event) {
-                    if (event.type === 'click') {
-
-                        var mode = query(this).attr('mode')[0];
-                        var lid = query(this).attr('layer-id');
-                        var fid = query(this).attr('feature-id');
-                        if (mode == "report") {
-
-                            _self.showReport(lid, fid);
-                        }
-                        else if (mode == "revisit") {
-                            _self.showRevisit(lid, fid);
+                $.ajax({
+                    url: _self.options.pdfLookupTblUrl + "/query?where=SITENUMBER+%3D+%27" + feat.attributes.SITENUMBER + "%27&objectIds=&time=&outFields=*&returnIdsOnly=false&returnCountOnly=false&returnZ=false&returnM=false&f=json",
+                    dataType: "json",
+                    async: false,
+                    success: function (result) {
+                        if (result.features.length > 0) {
+                            if (result.features[0].attributes.Exist === "Y") {
+                                html += "<a target=\"_blank\" href=\"" + _self.options.pdfBaseUrl + feat.attributes.SITENUMBER + ".pdf\">View site document</a>";
+                            }
                         }
                     }
                 });
@@ -1146,8 +1146,6 @@ function (declare, connect, arr, lang, event, domConstruct, all, domAttr, query,
             html += "<table class='tableResults'>";
             html += "<tr><th>Field Name</th><th>Value</th></tr>";
 
-            var feat = _self.searchResults[layerid].features[featureid];
-            var attrs = _self.searchResults[layerid].fields;
             var fldValue = "";
 
             //alternating colors

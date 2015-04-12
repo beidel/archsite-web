@@ -1,20 +1,20 @@
-define(["dojo/ready", "dojo/_base/declare", "dojo/_base/connect", "dojo/_base/Deferred", "dojo/_base/event", "dojo/_base/array", "dojo/_base/lang", "dojo/dom",
+define(["dojo/ready", "dojo/_base/declare", "dojo/_base/connect", "dojo/promise/all", "dojo/_base/Deferred", "dojo/_base/event", "dojo/_base/array", "dojo/_base/lang", "dojo/dom",
     "dojo/query", "dojo/dom-class", "dojo/dom-construct", "dojo/dom-geometry", "dojo/dom-style", "dojo/date", "dojo/number", "dojo/window",
     "dojo/on", "dojo/topic", "dojo/fx", "dojo/i18n!./nls/template.js", "modules/edit/EditSite", "modules/adminview/AdminView", "modules/attrtable/AttrTable",
-    "modules/sitereport/SiteReport", "modules/adminview/AdminView", "modules/print/PrintWidget",
+    "modules/sitereport/SiteReport", "modules/adminview/AdminView", "modules/PrintTool/PrintMap", "modules/print/PrintWidget",
     "modules/scaleselector/ScaleSelector", "modules/drawmeasure/DrawMeasure", "modules/dataexport/DataExport", "dijit/Dialog",
     "dijit/form/HorizontalSlider",
     "dijit/form/VerticalSlider", "dojo/NodeList-traverse", "dojo/NodeList-manipulate", "templateConfig/commonConfig", "dojo/cookie", "dojo/json", 
     "esri/config", "esri/arcgis/utils", "esri/urlUtils", "esri/request", "esri/tasks/query", "esri/tasks/QueryTask", "esri/tasks/GeometryService",
     "esri/dijit/BasemapGallery", "esri/dijit/HomeButton", "esri/dijit/LocateButton", "esri/geometry/Extent", "esri/geometry/Point", "esri/SpatialReference", "esri/symbols/PictureMarkerSymbol",
-    "esri/dijit/Legend", "esri/dijit/Scalebar", "esri/geometry/webMercatorUtils", "esri/graphic", "esri/layers/GraphicsLayer", "esri/dijit/Geocoder",
+    "esri/dijit/Legend", "esri/dijit/Scalebar", "esri/geometry/Circle", "esri/geometry/webMercatorUtils", "esri/graphic", "esri/layers/GraphicsLayer", "esri/dijit/Geocoder",
     "esri/geometry/screenUtils", "esri/dijit/Popup", "esri/layers/FeatureLayer", "esri/dijit/Measurement", "esri/IdentityManagerBase", "esri/kernel", "esri/dijit/Print"
-, "esri/tasks/PrintTemplate", "dojo/store/Memory", "dijit/form/ComboBox"],
-function (ready, declare, connect, Deferred, event, array, lang, dom, query, domClass, domConstruct, domGeom, domStyle, date, number, win, on, topic, coreFx, i18n,
-    EditSite, AdminView, AttrTable, SiteReport, AdminView, PrintWidget, ScaleSelector, DrawMeasure, DataExport, Dialog, HorizontalSlider, VerticalSlider, nlTraverse, nlManipulate,
+, "esri/tasks/PrintTemplate", "esri/InfoTemplate", "dojo/store/Memory", "dijit/form/ComboBox"],
+function (ready, declare, connect, promiseAll, Deferred, event, array, lang, dom, query, domClass, domConstruct, domGeom, domStyle, date, number, win, on, topic, coreFx, i18n,
+    EditSite, AdminView, AttrTable, SiteReport, AdminView, PrintTool, PrintWidget, ScaleSelector, DrawMeasure, DataExport, Dialog, HorizontalSlider, VerticalSlider, nlTraverse, nlManipulate,
     templateConfig, cookie, JSON, config, arcgisUtils, urlUtils, esriRequest, Query, QueryTask, GeometryService, BasemapGallery, HomeButton, LocateButton, Extent, Point, SpatialReference,
-    PictureMarkerSymbol, Legend, Scalebar, webMercatorUtils, Graphic, GraphicsLayer, Geocoder, screenUtils, Popup, FeatureLayer, Measurement, IMB, kernel, Print,
-    PrintTemplate, Memory, ComboBox) {
+    PictureMarkerSymbol, Legend, Scalebar, Circle, webMercatorUtils, Graphic, GraphicsLayer, Geocoder, screenUtils, Popup, FeatureLayer, Measurement, IMB, kernel, Print,
+    PrintTemplate, InfoTemplate, Memory, ComboBox) {
     var Widget = declare("application.main", null, {
         constructor: function(options) {
             var _self = this;
@@ -30,11 +30,10 @@ function (ready, declare, connect, Deferred, event, array, lang, dom, query, dom
                         // set other config options from app id
                         _self.options = declare.safeMixin(_self.options, _self._appSettings);
                     }
+                    _self.debug = _self.options.debug;
                     _self.init();
                 });
             });
-
-            this.debug = true;
 
             this.mapExtentEvent;
             this.mapPanEvent;
@@ -208,20 +207,14 @@ function (ready, declare, connect, Deferred, event, array, lang, dom, query, dom
                 templateConfig.helperServices.geometry.url = templateConfig.helperServices.geometry.url.replace('http:', 'https:');
             }
             config.defaults.geometryService = new GeometryService(templateConfig.helperServices.geometry.url);
-            //config.defaults.io.proxyUrl = _self.options.proxyUrl.substring(0, _self.options.proxyUrl.lastIndexOf('/'));
-
             config.defaults.io.proxyUrl = _self.options.proxyUrl;
 
-
-            console.log(config.defaults.io.proxyUrl);
             var proxySub = _self.options.proxyUrl.substring(0, _self.options.proxyUrl.lastIndexOf('/'));
             //esri.addProxyRule({ urlPrefix: "analysis.arcgis.com", proxyUrl: proxySub });
 
             config.defaults.io.useCors = true;
             config.defaults.io.corsEnabledServers.push("analysis.arcgis.com");
             config.defaults.io.alwaysUseProxy = false;
-
-            console.log("DONE");
         },
         // Alert box
         alertDialog: function(text) {
@@ -426,7 +419,7 @@ function (ready, declare, connect, Deferred, event, array, lang, dom, query, dom
         },
         // hide all dropdown menus
         hideAllMenus: function () {
-            console.log("hideMenu");
+            //this.logToConsole("hideMenu");
             var _self = this;
             query('#topMenuCon .barButton').removeClass('barSelected');
             query('#mapcon .menuSelected').forEach(function(selectTag) {
@@ -443,8 +436,8 @@ function (ready, declare, connect, Deferred, event, array, lang, dom, query, dom
         },
         // Show dropdown menu
         showMenu: function (menuObj, buttonObj) {
-            console.log("menuObj", menuObj);
-            console.log("buttonObj", buttonObj);
+            //console.log("menuObj", menuObj);
+            //console.log("buttonObj", buttonObj);
             query('#mapcon .menuSelected').removeClass('menuSelected');
             if (menuObj) {
                 coreFx.wipeIn({
@@ -467,7 +460,7 @@ function (ready, declare, connect, Deferred, event, array, lang, dom, query, dom
                 }).play();
                 query(menuObj).addClass('navMenuSelected');
             }
-            console.log("button", buttonObj);
+            //console.log("button", buttonObj);
             if (buttonObj) {
                 query(buttonObj).addClass('navButtonSelected');
             }
@@ -1498,8 +1491,8 @@ function (ready, declare, connect, Deferred, event, array, lang, dom, query, dom
                 node.innerHTML = '<div class="menuClose"><div class="closeButton closeMenu"></div><span style="color: #666666;">Export Data</span><div class="clear"></div></div><div class="exportCon"><div class="slideScroll"><div id="exportContent"></div></div></div>';
             }
 
-            console.log("A", _self.options.analysisToken);
-            console.log("Working", _self.options.working);
+            //console.log("A", _self.options.analysisToken);
+            //console.log("Working", _self.options.working);
 
             this.options.exportDataWidget = new DataExport({
                 map: _self.map,
@@ -1510,13 +1503,13 @@ function (ready, declare, connect, Deferred, event, array, lang, dom, query, dom
                 analysisGpServerUrl: _self.options.analysisGpServer
             });
 
-            console.log("B");
+            //console.log("B");
 
             dojo.place(this.options.exportDataWidget.domNode, dom.byId('exportContent'));
 
             this.options.exportDataWidget.startup();
 
-            console.log("C");
+            //console.log("C");
         },
 
         configureHelp: function() {
@@ -1588,18 +1581,18 @@ function (ready, declare, connect, Deferred, event, array, lang, dom, query, dom
                 node.innerHTML = html;
             }
 
-            console.log("MP4", mp4);
-            console.log("WEBM", webm);
+            //console.log("MP4", mp4);
+            //console.log("WEBM", webm);
 
             if (mp4 || webm) {
                 var hc = dojo.byId("helpContent");
-                console.log("HC", hc);
+                //console.log("HC", hc);
                 if (hc) {
                     //console.log(node);
                     on(hc, ".videoItem:click", function (event) {
                         var video = dojo.attr(this, 'data-video');
                         var desc = dojo.attr(this, 'data-desc');
-                        console.log("VIDEO", video);
+                        //console.log("VIDEO", video);
 
                         var vp = document.getElementById('videoSource');
                         vp.setAttribute("src", video);
@@ -1609,7 +1602,7 @@ function (ready, declare, connect, Deferred, event, array, lang, dom, query, dom
                         //dojo.byId("videoSource").load();
                         vp.load();
                         query(".videoDialog").removeClass("hideItem");
-                        console.log("videoloaded");
+                        //console.log("videoloaded");
                     });
                 }
                 
@@ -1621,8 +1614,8 @@ function (ready, declare, connect, Deferred, event, array, lang, dom, query, dom
                 }
             }
 
-            console.log("BROWSER", this.get_browser());
-            console.log("BROWSERVERSIN", this.get_browser_version());
+            //console.log("BROWSER", this.get_browser());
+            //console.log("BROWSERVERSIN", this.get_browser_version());
         },
 
         get_browser: function(){
@@ -1664,16 +1657,6 @@ get_browser_version: function(){
                 if (node) {
                     node.innerHTML = '<div class="menuClose"><div class="closeButton closeMenu"></div>' + i18n.viewer.measure.menuTitle + '<div class="clear"></div></div><div class="measureMenuCon"><div class="slideScrollBottom"><div id="measureContent"></div></div></div>';
                 }
-
-               /*_self.options.measureTool = new Measurement({
-                    map: _self.map,
-                    id: 'measureTool',
-                    style: "width:250px;height:150px"
-                }, 'measureContent');
-
-                _self.options.measureTool.startup();
-                */
-
                 _self.options.drawMeasure = new DrawMeasure({
                     map: _self.map,
                     geometryServiceUrl: templateConfig.helperServices.geometry.url,
@@ -1681,10 +1664,6 @@ get_browser_version: function(){
                 }, 'measureContent');
 
                 _self.options.drawMeasure.startup();
-
-                
-
-               
             }            
         },
         // show about button if url is set
@@ -1706,6 +1685,8 @@ get_browser_version: function(){
                     geometryServiceUrl: templateConfig.helperServices.geometry.url,
                     domainList: _self.options.domains,
                     archSiteLayerTitle: _self.options.archsitename,
+                    pdfBaseUrl: _self.options.pdfBaseUrl,
+                    pdfLookupTblUrl: _self.options.pdfLookupTableUrl,
                     searchTitle: _self.options.attrSearchTitle
                 });
 
@@ -1842,52 +1823,18 @@ get_browser_version: function(){
                     node.innerHTML = '<div class="menuClose"><div class="closeButton closeMenu"></div>' + i18n.viewer.buttons.printTitle + '<div class="clear"></div></div><div class="printMenuCon"><div class="slideScroll2"><div id="printContent"></div></div></div>';
                 }
 
-                ////Insert widget title here
-                //var layoutTemplate, templateNames, mapOnlyIndex, templates;
-
-                //var layouts = [{
-                //    name: "Letter ANSI A Landscape",
-                //    label: "Landscape (PDF)",
-                //    format: "pdf",
-                //    options: {
-                //        legendLayers: [], // empty array means no legend
-                //        scalebarUnit: "Miles",
-                //        titleText: "Archsite, Landscape PDF"
-                //    }
-                //}, {
-                //    name: "Letter ANSI A Portrait",
-                //    label: "Portrait (Image)",
-                //    format: "jpg",
-                //    options: {
-                //        legendLayers: [],
-                //        scaleBarUnit: "Miles",
-                //        titleText: "Archsite, Portrait JPG"
-                //    }
-                //}];
-
-                //// create the print templates
-                //var templates = array.map(layouts, function (lo) {
-                //    var t = new PrintTemplate();
-                //    t.layout = lo.name;
-                //    t.label = lo.label;
-                //    t.format = lo.format;
-                //    t.layoutOptions = lo.options;
-                //    return t;
-                //});
-
-                _self.options.printerWidget = new PrintWidget({
+                //initialize print widget
+                _self.options.printerWidget = new PrintTool({
                     map: _self.map,
-                    url: templateConfig.helperServices.printTask.url
-                }, dom.byId("printContent"));
+                    url: templateConfig.helperServices.printTask.url,
+                    containerId: "printContent"
+                });
 
-                //_self.options.printerWidget = new Print({
+                //_self.options.printerWidget = new PrintWidget({
                 //    map: _self.map,
-                //    templates: templates,
                 //    url: templateConfig.helperServices.printTask.url
                 //}, dom.byId("printContent"));
-
-                _self.options.printerWidget.startup();
-
+                //_self.options.printerWidget.startup();
             }
       
         },
@@ -2310,10 +2257,181 @@ get_browser_version: function(){
             //console.log(response.itemInfo)
             _self.itemInfo = response.itemInfo;
 
-            console.log("ItemInfo", _self.itemInfo);
+            //console.log("ItemInfo", _self.itemInfo);
             // add secured layers
 
             //this.logToConsole(_suelf.itemInfo.itemData.operationalLayers);
+
+            //set temporary global variable
+            window.globals = { map: _self.map };
+
+            //add custom functions for disabling active map tools
+            _self.map.disableActiveTools = function (disableMapNav) {
+                _self.map.disableMapClick();
+
+                if (disableMapNav && disableMapNav === true) {
+                    _self.map.disableMapNavigation();
+                }
+            };
+            _self.map.enableActiveTools = function () {
+                _self.map.enableMapClick();
+                _self.map.enableMapNavigation();
+            };
+
+            //override built in map click
+            _self.map.disableMapClick = function () {
+                _self.map.onClick = null;
+            };
+            _self.map.enableMapClick = function () {
+                _self.map.onClick = null;
+                _self.map.on("click", function (evt) {
+                    //get click point
+                    var pt = evt.mapPoint;
+                    //buffer point
+                    var circle = new Circle({
+                        center: evt.mapPoint,
+                        geodesic: true,
+                        radius: 75
+                    });
+
+                    var tempPdfList = [];
+                    //tempPdfList.push({ siteNumber: result.features[0].attributes.SITENUMBER, pdfExists: result.features[0].attributes.Exist });
+
+                    var layer, p, q, dCol = [];
+                    //query each map layer
+                    for (var i = 0, l = _self.map.graphicsLayerIds.length; i < l; i++) {
+                        if (_self.map.graphicsLayerIds[i].indexOf("ArchSites") > -1) {
+                            layer = _self.map.getLayer(_self.map.graphicsLayerIds[i]);
+
+                            if (layer.visible === false) continue;
+
+                            q = new Query();
+                            q.geometry = circle.getExtent();
+                            q.outFields = ["*"];
+                            q.returnGeometry = false;
+                            q.where = "1=1";
+                            var d = layer.queryFeatures(q);
+
+                            if (layer.id === "ArchSites_Prod_5009") {
+                                d.then(function (results) {
+                                    var _layer = layer;
+                                    for (var j = 0, _l = results.features.length; j < _l; j++) {
+                                        var feature = results.features[j];
+
+                                        //synchronous request to get pdf availability
+                                        //can't figure out how to chain the deferred properly
+                                        var pdfHtml = "No site files available.";
+                                        var url = _self.options.pdfLookupTableUrl + "/query?where=SITENUMBER+%3D+%27" + feature.attributes.SITENUMBER + "%27&objectIds=&time=&outFields=*&returnIdsOnly=false&returnCountOnly=false&returnZ=false&returnM=false&f=json"
+                                        $.ajax({
+                                            url: url,
+                                            dataType: "json",
+                                            async: false,
+                                            success: function (result) {
+                                                if (result.features.length > 0) {
+                                                    if (result.features[0].attributes.Exist === "Y") {
+                                                        pdfHtml = "<span style=\"padding-right:20px;\">Site document available:</span>" +
+                                                        "<a target=\"_blank\" href=\"" + _self.options.pdfBaseUrl + feature.attributes.SITENUMBER + ".pdf\"><img src=\"../images/pdf.png\" /></a>";
+                                                    }
+                                                }
+                                            }
+                                        });
+
+                                        var html =
+                                            "<div class=\"archSitePdf\"><b>Archaeological Sites:&nbsp;" + feature.attributes["SITENUMBER"] + "</b></div>" +
+                                            "<div class=\"archSitePdf\" style=\"text-align:center;\" id=\"site-pdf-container-" + feature.attributes["SITENUMBER"] + "\">" +
+                                                pdfHtml +
+                                            "</div>" +
+                                            "<div style=\"height:10px;\"></div>";
+                                        for (var i = 0, l = results.fields.length; i < l; i++) {
+                                            if (results.fields[i].name != "OBJECTID") {
+                                                html += "<div><span class=\"archSiteFieldName\">" + results.fields[i].alias + ":</span>" +
+                                                    ((feature.attributes[results.fields[i].name] !== null) ? feature.attributes[results.fields[i].name] : "") + "</div>";
+                                            }
+                                        }
+                                        var infoTemplate = new InfoTemplate("Archaeological Sites", html);
+                                        feature.setInfoTemplate(infoTemplate);
+
+                                        results.features[j] = feature;
+                                    }
+                                    return results;
+                                });
+                            }
+                            else if (layer.id === "ArchSites_Prod_807") {
+                                d.then(function (results) {
+                                    var _layer = layer;
+                                    for (var j = 0, _l = results.features.length; j < _l; j++) {
+                                        var feature = results.features[j];
+
+                                        //synchronous request to get pdf availability
+                                        //can't figure out how to chain the deferred properly
+                                        var pdfHtml = "No site files available.";
+                                        var url = _self.options.pdfLookupTableUrl + "/query?where=SITENUMBER+%3D+%27" + feature.attributes.SITENUMBER + "%27&objectIds=&time=&outFields=*&returnIdsOnly=false&returnCountOnly=false&returnZ=false&returnM=false&f=json"
+                                        $.ajax({
+                                            url: url,
+                                            dataType: "json",
+                                            async: false,
+                                            success: function (result) {
+                                                if (result.features.length > 0) {
+                                                    if (result.features[0].attributes.Exist === "Y") {
+                                                        pdfHtml = "<span style=\"padding-right:20px;\">Site document available:</span>" +
+                                                        "<a target=\"_blank\" href=\"" + _self.options.pdfBaseUrl + feature.attributes.SITENUMBER + ".pdf\"><img src=\"../images/pdf.png\" /></a>";
+                                                    }
+                                                }
+                                            }
+                                        });
+
+                                        var html =
+                                            "<div class=\"archSitePdf\"><b>Archaeological Points:&nbsp;" + feature.attributes["SITENUMBER"] + "</b></div>" +
+                                            "<div class=\"archSitePdf\" style=\"text-align:center;\" id=\"site-pdf-container-" + feature.attributes["SITENUMBER"] + "\">" +
+                                                pdfHtml +
+                                            "</div>" +
+                                            "<div style=\"height:10px;\"></div>";
+                                        for (var i = 0, l = results.fields.length; i < l; i++) {
+                                            if (results.fields[i].name != "OBJECTID") {
+                                                html += "<div><span class=\"archSiteFieldName\">" + results.fields[i].alias + ":</span>" +
+                                                    ((feature.attributes[results.fields[i].name] !== null) ? feature.attributes[results.fields[i].name] : "") + "</div>";
+                                            }
+                                        }
+                                        var infoTemplate = new InfoTemplate("Archaeological Points", html);
+                                        feature.setInfoTemplate(infoTemplate);
+
+                                        results.features[j] = feature;
+                                    }
+                                    return results;
+                                });
+                            }
+                            dCol.push(d);
+                        }
+                    }
+                    //handle all query results at once
+                    p = promiseAll(dCol);
+                    p.then(function (resultsCol) {
+                        var featureCol = [];
+                        for (var x = 0, l = resultsCol.length; x < l; x++) {
+                            if (resultsCol[x].features.length > 0) {
+                                if (featureCol.length === 0) featureCol = resultsCol[x].features;
+                                else featureCol = featureCol.concat(resultsCol[x].features);
+                            }
+                        }
+                        //set results of query to infoWindow
+                        _self.map.infoWindow.setFeatures(featureCol);
+
+                        //auto hide info window if no features are present
+                        if (featureCol.length === 0) {
+                            setTimeout(function () {
+                                _self.map.infoWindow.hide();
+                            }, 1000);
+                        }
+                    });
+
+                    //set temp info window content while query is performed
+                    _self.map.infoWindow.setTitle("Querying Features");;
+                    _self.map.infoWindow.setContent("<img src=\"../images/ajax-loader.gif\" />&nbsp;Please wait...");
+                    _self.map.infoWindow.show(pt);
+                });
+            };
+            _self.map.onClick = null;
+            _self.map.enableMapClick();
 
             _self.agolPopupClickHandle = response.clickEventHandle;
             _self.agolPopupclickEventListener = response.clickEventListener;
@@ -2442,14 +2560,6 @@ get_browser_version: function(){
             connect.connect(_self.options.customPopup, "maximize", function() {
                 _self.hideAllMenus();
             });
-            //connect.connect(_self.options.customPopup, "onSelectionChange", function() {
-            //    _self.overridePopupTitle();
-            //});
-            //connect.connect(_self.options.customPopup, "onHide", function() {
-            //    _self.clearPopupValues();
-            //});
-            // popup theme
-            //domClass.add(_self.options.customPopup.domNode, "modernGrey");
         },
         // Create the map object for the template
         createWebMap: function () {
@@ -2468,9 +2578,112 @@ get_browser_version: function(){
 
             // configure popup
             _self.configurePopup();
+
             // create map deferred with options
             var mapDeferred = arcgisUtils.createMap(_self.options.webmap, 'map', {
                 mapOptions: {
+                    lods: [
+                       {
+                           "level": 0,
+                           "resolution": 156543.03392800014,
+                           "scale": 5.91657527591555E8
+                       },
+                       {
+                           "level": 1,
+                           "resolution": 78271.51696399994,
+                           "scale": 2.95828763795777E8
+                       },
+                       {
+                           "level": 2,
+                           "resolution": 39135.75848200009,
+                           "scale": 1.47914381897889E8
+                       },
+                       {
+                           "level": 3,
+                           "resolution": 19567.87924099992,
+                           "scale": 7.3957190948944E7
+                       },
+                       {
+                           "level": 4,
+                           "resolution": 9783.93962049996,
+                           "scale": 3.6978595474472E7
+                       },
+                       {
+                           "level": 5,
+                           "resolution": 4891.96981024998,
+                           "scale": 1.8489297737236E7
+                       },
+                       {
+                           "level": 6,
+                           "resolution": 2445.98490512499,
+                           "scale": 9244648.868618
+                       },
+                       {
+                           "level": 7,
+                           "resolution": 1222.992452562495,
+                           "scale": 4622324.434309
+                       },
+                       {
+                           "level": 8,
+                           "resolution": 611.4962262813797,
+                           "scale": 2311162.217155
+                       },
+                       {
+                           "level": 9,
+                           "resolution": 305.74811314055756,
+                           "scale": 1155581.108577
+                       },
+                       {
+                           "level": 10,
+                           "resolution": 152.87405657041106,
+                           "scale": 577790.554289
+                       },
+                       {
+                           "level": 11,
+                           "resolution": 76.43702828507324,
+                           "scale": 288895.277144
+                       },
+                       {
+                           "level": 12,
+                           "resolution": 38.21851414253662,
+                           "scale": 144447.638572
+                       },
+                       {
+                           "level": 13,
+                           "resolution": 19.10925707126831,
+                           "scale": 72223.819286
+                       },
+                       {
+                           "level": 14,
+                           "resolution": 9.554628535634155,
+                           "scale": 36111.909643
+                       },
+                       {
+                           "level": 15,
+                           "resolution": 4.77731426794937,
+                           "scale": 18055.954822
+                       },
+                       {
+                           "level": 16,
+                           "resolution": 2.388657133974685,
+                           "scale": 9027.977411
+                       },
+                       {
+                           "level": 17,
+                           "resolution": 1.1943285668550503,
+                           "scale": 4513.988705
+                       },
+                       {
+                           "level": 18,
+                           "resolution": 0.5971642835598172,
+                           "scale": 2256.994353
+                       },
+                       {
+                           "level": 19,
+                           "resolution": 0.29858214164761665,
+                           "scale": 1128.497176
+                       }
+                    ],             
                     slider: true,
                     wrapAround180: true,
                     infoWindow: _self.options.customPopup,

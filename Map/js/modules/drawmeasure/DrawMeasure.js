@@ -86,10 +86,10 @@ function (declare, lang, event, parser, query, registry, _WidgetBase, _Templated
                     if (event.type === 'click' || (event.type === 'keyup' && event.keyCode === 13)) {
                         query('#buttonPanel .measureButton').removeClass('measureButtonSelected');
                         query('#buttonPanel .selectMenus').addClass('hideItem');
-                        query('#buttonPanel .selectBox').addClass('hideItem');            
+                        query('#buttonPanel .selectBox').addClass('hideItem');
                         query(this).addClass('measureButtonSelected');
                         var type = query(this).attr('data-measure')[0];
-                        
+
                         if (type != null) {
                             if (type == "polyline") {
                                 query('#buttonPanel .selectMenus').removeClass('hideItem');
@@ -106,19 +106,12 @@ function (declare, lang, event, parser, query, registry, _WidgetBase, _Templated
                             _self.doMeasure(type);
                         }
                         else {
-                            
+
                         }
-                        
+
                     }
                 });
             }
-
-            /*var areaBox = dojo.byId("dm UnitSelect");
-            if (areaBox) {
-                on(areaBox, ".selectBox:change", function (event) {
-                    dojo.byId(event.target.id).get("value")
-                });
-            }*/
 
             var results = dojo.byId("dm_Results");
             if (results) {
@@ -128,11 +121,12 @@ function (declare, lang, event, parser, query, registry, _WidgetBase, _Templated
                     }
                 });
             }
-
-
         },
 
-        doMeasure: function(tool) {
+        doMeasure: function (tool) {
+            //disable map clicks
+            this.options.map.disableActiveTools();
+
             this.options.map.graphics.clear();
             var node = dojo.byId("dm_ResultView");
             if (node) {
@@ -153,7 +147,7 @@ function (declare, lang, event, parser, query, registry, _WidgetBase, _Templated
 
         onEndDraw: function (evt) {
             var _self = this;
-
+            this.options.map.enableActiveTools();
             var geo = evt.geometry;
             var sym;
 
@@ -186,7 +180,6 @@ function (declare, lang, event, parser, query, registry, _WidgetBase, _Templated
             params.transformation = { wkid: 15851 };
 
             self.prjEvent = _self.geometryService.on("project-complete", lang.hitch(this, this.onEndProject));
-
             _self.geometryService.project(params);
         },
 
@@ -196,9 +189,6 @@ function (declare, lang, event, parser, query, registry, _WidgetBase, _Templated
             var lengthParams = null;
 
             self.prjEvent.remove();
-
-            
-
             if (result.geometries[0] != null) {
                 var geo = result.geometries[0];
                 var results = "";
@@ -217,33 +207,33 @@ function (declare, lang, event, parser, query, registry, _WidgetBase, _Templated
                     lengthParams.lengthUnit = GeometryService.UNIT_METER;
                     _self.distLabel = "Meters";
 
-                        
-                        if (domAttr.get("dm_lengthUnits", "value") != null) {
- 
-                            switch (domAttr.get("dm_lengthUnits", "value")) {
-                                    case "UNIT_METER":
-                                        _self.distLabel = "Meters";
-                                        lengthParams.lengthUnit = GeometryService.UNIT_METER;
-                                        break;
-                                    case "UNIT_FOOT":
-                                        _self.distLabel = "Feet";
-                                        lengthParams.lengthUnit = GeometryService.UNIT_FOOT;
-                                        break;
-                                    case "UNIT_KILOMETER":
-                                        _self.distLabel = "Kilometers";
-                                        lengthParams.lengthUnit = GeometryService.UNIT_KILOMETER;
-                                        break;
-                                    case "UNIT_STATUTE_MILE":
-                                        _self.distLabel = "Miles";
-                                        lengthParams.lengthUnit = GeometryService.UNIT_STATUTE_MILE;
-                                        break;
-                                    default:
-                                        _self.distLabel = "Meters";
-                                        lengthParams.lengthUnit = GeometryService.UNIT_METER;
-                                        break;
-                                }
-                            }
-                    
+
+                    if (domAttr.get("dm_lengthUnits", "value") != null) {
+
+                        switch (domAttr.get("dm_lengthUnits", "value")) {
+                            case "UNIT_METER":
+                                _self.distLabel = "Meters";
+                                lengthParams.lengthUnit = GeometryService.UNIT_METER;
+                                break;
+                            case "UNIT_FOOT":
+                                _self.distLabel = "Feet";
+                                lengthParams.lengthUnit = GeometryService.UNIT_FOOT;
+                                break;
+                            case "UNIT_KILOMETER":
+                                _self.distLabel = "Kilometers";
+                                lengthParams.lengthUnit = GeometryService.UNIT_KILOMETER;
+                                break;
+                            case "UNIT_STATUTE_MILE":
+                                _self.distLabel = "Miles";
+                                lengthParams.lengthUnit = GeometryService.UNIT_STATUTE_MILE;
+                                break;
+                            default:
+                                _self.distLabel = "Meters";
+                                lengthParams.lengthUnit = GeometryService.UNIT_METER;
+                                break;
+                        }
+                    }
+
 
                     lengthParams.geodesic = true;
                     _self.geometryService.lengths(lengthParams, lang.hitch(_self, _self.onMeasurePolyline), function (error) {
@@ -257,36 +247,36 @@ function (declare, lang, event, parser, query, registry, _WidgetBase, _Templated
                     _self.distLabel = "Acres";
 
 
-                        if (domAttr.get("dm_areaUnits", "value") != null) {
-                            
-                            switch (domAttr.get("dm_areaUnits", "value")) {
-                                    case "UNIT_ACRES":
-                                        _self.distLabel = "Acres";
-                                        areasAndLengthParams.areaUnit = GeometryService.UNIT_ACRES;
-                                        break;
-                                    case "UNIT_HECTARES":
-                                        _self.distLabel = "Hectares";
-                                        areasAndLengthParams.areaUnit = GeometryService.UNIT_HECTARES;
-                                        break;
-                                    case "UNIT_SQUARE_FEET":
-                                        _self.distLabel = "Sq. ft.";
-                                        areasAndLengthParams.areaUnit = GeometryService.UNIT_SQUARE_FEET;
-                                        break;
-                                    case "UNIT_SQUARE_METERS":
-                                        _self.distLabel = "Sq. m";
-                                        areasAndLengthParams.areaUnit = GeometryService.UNIT_SQUARE_MILES;
-                                        break;
-                                    case "UNIT_SQUARE_YARDS":
-                                        _self.distLabel = "Sq. yds";
-                                        areasAndLengthParams.areaUnit = GeometryService.UNIT_SQUARE_YARDS;
-                                        break;
-                                    default:
-                                        _self.distLabel = "Acres";
-                                        areasAndLengthParams.areaUnit = GeometryService.UNIT_ACRES;
-                                        break;
-                                }
-                            }
-                    
+                    if (domAttr.get("dm_areaUnits", "value") != null) {
+
+                        switch (domAttr.get("dm_areaUnits", "value")) {
+                            case "UNIT_ACRES":
+                                _self.distLabel = "Acres";
+                                areasAndLengthParams.areaUnit = GeometryService.UNIT_ACRES;
+                                break;
+                            case "UNIT_HECTARES":
+                                _self.distLabel = "Hectares";
+                                areasAndLengthParams.areaUnit = GeometryService.UNIT_HECTARES;
+                                break;
+                            case "UNIT_SQUARE_FEET":
+                                _self.distLabel = "Sq. ft.";
+                                areasAndLengthParams.areaUnit = GeometryService.UNIT_SQUARE_FEET;
+                                break;
+                            case "UNIT_SQUARE_METERS":
+                                _self.distLabel = "Sq. m";
+                                areasAndLengthParams.areaUnit = GeometryService.UNIT_SQUARE_MILES;
+                                break;
+                            case "UNIT_SQUARE_YARDS":
+                                _self.distLabel = "Sq. yds";
+                                areasAndLengthParams.areaUnit = GeometryService.UNIT_SQUARE_YARDS;
+                                break;
+                            default:
+                                _self.distLabel = "Acres";
+                                areasAndLengthParams.areaUnit = GeometryService.UNIT_ACRES;
+                                break;
+                        }
+                    }
+
 
                     areasAndLengthParams.polygons = [geo];
                     _self.geometryService.areasAndLengths(areasAndLengthParams, lang.hitch(_self, _self.onMeasurePolygon), function (error) {
@@ -294,7 +284,7 @@ function (declare, lang, event, parser, query, registry, _WidgetBase, _Templated
                     });
                 }
             }
-       },
+        },
 
         onMeasurePolyline: function (result) {
             query('#buttonPanel .measureButton').removeClass('measureButtonSelected');
@@ -325,9 +315,7 @@ function (declare, lang, event, parser, query, registry, _WidgetBase, _Templated
 
             this.tbEvent.remove();
         }
-        
     });
-
 
     return Widget;
 });

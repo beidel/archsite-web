@@ -561,6 +561,7 @@ legend {
     top: 0px; 
     bottom: 5px;  
     width:100%;
+    padding: 3px;
 }
 
 .adminWidget .dijitSelect .dijitArrowButton {

@@ -1,7 +1,7 @@
-﻿<div id="dex_containerNode" class="dataExport" >
+﻿<div id="dex_containerNode" class="dataExport" style="padding:10px;" >
     <div id="dex_view_1" class="viewPane">
         <div class="atPanel">
-            <div class="label">Export Layers: Select the layers you want to export</div>
+            <div class="label" style="color:black; font-size: 7pt;">Export Layers: Select the layers you want to export</div>
             <div class='layerList'>
                 <ul id="dex_LayerSelectBoxes"></ul>
             </div>
@@ -23,20 +23,24 @@
         </div>
         <div>
             <div id="dex_scaleWarning" class="hidePane">Please zoom in on map</div>
-            <div id="dex_btnSubmit" class="toolbarButton sideButton right">Export</div>
+            <div id="dex_btnSubmit" class="toolbarButton sideButton right" style="height:28px;">Export</div>
         </div>
     </div>
 
     <div id="dex_view_2" class="viewPane hidePane" >
-        <div id="loadingOverlay" class="loadingOverlay pageOverlay" style="position: absolute; top: 30px; left: 10px;">
-            <div id="loadingMessage" class="loadingMessage">Loading...</div>
+        <div style="padding-left:10px;">
+            <div class="printLoading">
+                <div class="printLoadingGraphic"></div>
+                <div class="printLoadingText">&nbsp;&nbsp;Generating export, please wait...</div>
+            </div>
         </div>
     </div>
 
     <div id="dex_view_3" class="viewPane hidePane">
-        <span>You export file is now ready</span><br />
-        <span id="dex_pdfLink"></span><br />
-        <a id="dex_exportLink2">Export Data</a>
+        <a id="dex_exportLink2">Back to Export Data</a>
+        <div style="height:15px;"></div>
+        <span>You export file is now ready!</span><br />
+        <div id="dex_pdfLink"></div>
     </div>
 
     <div id="dex_view_4" class="viewPane hidePane">
