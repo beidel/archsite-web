@@ -701,7 +701,7 @@ a.mapSubmit:hover, a.mapSubmit:focus {
     font-weight: bold;
     height: 20px;
     margin: 0px;
-    padding: 0px 0 0 5px;
+    padding: 2px 2px 0 5px;
     vertical-align: middle;
 }
 
@@ -1974,3 +1974,7 @@ a.mapSubmit:hover, a.mapSubmit:focus {
      width: 75px;
      padding-right: 3px;
  }
+ 
+#helpMenuCon {
+    padding: 10px;
+}
