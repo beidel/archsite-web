@@ -48,9 +48,7 @@
             <div class="grid-6">
                 <h3 class="tb"><a href="<%= ResolveUrl("~/default.aspx") %>" >scarchsite.org</a></h3>
             </div><!-- close 6 -->
-
         </div><!-- close six -->
-
      </div><!-- close container -->
 
     <div class="container">
@@ -96,11 +94,14 @@
 <%--        <h2>SC ArchSite</h2>--%>
     </div>
     <div class="grid-3">
-        <p>The <a href="http://artsandsciences.sc.edu/sciaa/">South Carolina Institute of Archaeology and Anthropology</a> (SCIAA) and the <a href="http://scdah.sc.gov/Pages/default.aspx">South Carolina Department of Archives and History</a> (SCDAH) are pleased to offer ArchSite, an online cultural resource information system for the state of South Carolina. ArchSite combines data from the state's archaeological and built heritage to provide researchers with a online source for cultural resource information.</p>
+        <p>The <a href="http://artsandsciences.sc.edu/sciaa/">South Carolina Institute of Archaeology and Anthropology</a> (SCIAA) and the <a href="http://scdah.sc.gov/Pages/default.aspx">South Carolina Department of Archives and History</a> (SCDAH) are pleased to offer ArchSite, an online cultural resource information system for the state of South Carolina. ArchSite combines data from the state's archaeological and built heritage to provide researchers with an online source for cultural resource information.</p>
 
         <p>ArchSite includes two applications that have been designed for specific users: Public View and Subscription View. <span class="attention"><strong>Note: </strong><em>The previous version of ArchSite required all viewers to register and log in; the current version requires that only subscribers do so. Users of the Public View Map may go directly to the map.</em></span></p>
 
-        <p>Access to the archaeological sites database is restricted to Federal, state, local, government and private historic preservation consultants for the purposes of preserving and protecting historic properties as defined by the National Historic Preservation Act, amended 2006. The exact location of historic properties owned by the Federal government and in this database are protected from public disclosure under the Archaeological Resources Protection Act of 1979 and misuse of this information is a violation of this act and subject to Federal prosecution.  By entering this site <em><strong>as a Subscriber,</strong></em> you agree to restrict activities to these purposes.</p>
+        <p>
+           Access to the archaeological sites database is restricted to Federal, state, local, government and private historic preservation consultants for the purposes of preserving and protecting historic properties as defined by the National Historic Preservation Act, amended 2006. The exact location of historic properties owned by the Federal government and in this database are protected from public disclosure under the Archaeological Resources Protection Act of 1979 and misuse of this information is a violation of this act and subject to Federal prosecution.  
+           <strong>BY ENTERING THIS SITE AS A SUBSCRIBER YOU AGREE TO RESTRICT ACTIVITIES TO THESE PURPOSES</strong>.
+        </p>
 
         <p>Consulting ArchSite does not satisfy the obligation of federal and/or state agencies to consult with the State Historic Preservation Office (SHPO) of the South Carolina Department of Archives and History (SCDAH) pursuant to Section 106 of the National Historic Preservation Act (as amended), and state laws including the Mining Act, the Coastal Zone Management Act, and the Protection of State-Owned or Leased Historic Properties law.</p>
 
