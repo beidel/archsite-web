@@ -1511,10 +1511,11 @@ function (ready, declare, connect, promiseAll, Deferred, event, array, lang, dom
             //console.log("C");
         },
 
-        configureHelp: function() {
+        configureHelp: function () {
+            var _self = this;
             var node = dom.byId('helpMenu');
             if (node) {
-                node.innerHTML = '<div class="menuClose"><div class="closeButton closeMenu"></div><div class="clear"></div></div><div class="helpMenuCon"><div class="slideScroll"><div id="helpContent"></div></div></div>';
+                node.innerHTML = '<div class="menuClose">Help<div class="closeButton closeMenu"></div><div class="clear"></div></div><div class="helpMenuCon"><div class="slideScroll"><div id="helpContent"></div></div></div>';
             }
 
             var browser = this.get_browser();
@@ -1537,8 +1538,6 @@ function (ready, declare, connect, promiseAll, Deferred, event, array, lang, dom
                 if (node) {
                     domConstruct.place(divHtml, node, "last");
                 }
-                
-                
             }
 
             if (browser.toLowerCase().indexOf("chrome") > -1 ||
@@ -1551,7 +1550,6 @@ function (ready, declare, connect, promiseAll, Deferred, event, array, lang, dom
                 browser.toLowerCase().indexOf("firefox") > -1) {
                 webm = true;
             }
-
 
             var html = "";
             html += "<span>Below are links to videos that will explain how the application works.</span>";
@@ -1580,28 +1578,18 @@ function (ready, declare, connect, promiseAll, Deferred, event, array, lang, dom
                 node.innerHTML = html;
             }
 
-            //console.log("MP4", mp4);
-            //console.log("WEBM", webm);
-
             if (mp4 || webm) {
                 var hc = dojo.byId("helpContent");
-                //console.log("HC", hc);
                 if (hc) {
-                    //console.log(node);
                     on(hc, ".videoItem:click", function (event) {
                         var video = dojo.attr(this, 'data-video');
                         var desc = dojo.attr(this, 'data-desc');
-                        //console.log("VIDEO", video);
 
                         var vp = document.getElementById('videoSource');
                         vp.setAttribute("src", video);
-                        //dojo.attr(dojo.byId("videoSource"), "src", "videso/" + video);
                         dojo.byId("videoTitle").innerHTML = desc;
-                        //console.log(dojo.attr(dojo.byId("videoSource"), "src"));
-                        //dojo.byId("videoSource").load();
                         vp.load();
                         query(".videoDialog").removeClass("hideItem");
-                        //console.log("videoloaded");
                     });
                 }
                 
@@ -1613,8 +1601,7 @@ function (ready, declare, connect, promiseAll, Deferred, event, array, lang, dom
                 }
             }
 
-            //console.log("BROWSER", this.get_browser());
-            //console.log("BROWSERVERSIN", this.get_browser_version());
+            $(".helpMenu").find(".closeButton").click(function () { _self.toggleMenus('help'); });
         },
 
         get_browser: function(){
@@ -2208,7 +2195,7 @@ get_browser_version: function(){
             html += '<div data-menu="places" id="placesMenu" class="slideMenu listMenu"></div>';
             html += '<div data-menu="comment" id="commentMenu" class="slideMenu"></div>';
             html += '<div data-menu="export" id="exportMenu" class="bottomMenu"></div>';
-            html += '<div data-menu="help" id="helpMenu" class="slideMenu"></div>';
+            html += '<div data-menu="help" id="helpMenu" class="helpMenu"></div>';
             html += '<div data-menu="user" id="userMenu" class="slideMenu"></div>';
             //html += '<div data-menu="edit" id="editSitePane" class="slideMenu"></div>';
             //html += '<div data-menu="find" id="attributePane" class="slideMenu"></div>';
@@ -2222,6 +2209,7 @@ get_browser_version: function(){
             if (node) {
                 domConstruct.place(html, node, "last");
             }
+            query('#mapcon .helpMenu').style('display', 'none');
             query('#mapcon .slideMenu').style('display', 'none');
             query('#mapcon .bottomMenu').style('display', 'none');
         },

@@ -654,6 +654,45 @@ a.mapSubmit:hover, a.mapSubmit:focus {
 /*-------------------------------------------------- */
 /* SLIDE MENUS */
 /*-------------------------------------------------- */
+.helpMenu {
+    position: absolute;
+    top: 51px;
+    right: 0px;
+    z-index: 99;
+    background: #ffffff;
+    font-size: 12px;
+    -webkit-box-shadow: 0px 0px 2px 0px #999999;
+    box-shadow: 0px 0px 2px 0px #999999;
+    -moz-border-radius-bottomright: 2px;
+    -moz-border-radius-bottomleft: 2px;
+    -webkit-border-bottom-left-radius: 2px;
+    -webkit-border-bottom-right-radius: 2px;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+}
+
+.helpMenu .menuClose {
+    background-color: rgba(0,0,0,0.5);
+    font-family: "Open Sans",sans-serif;
+    font-weight: bold;
+    color: #FFFFFF;
+    font-weight: bold;
+    height: 20px;
+    margin: 0px;
+    padding: 2px 2px 0 5px;
+    vertical-align: middle;
+}
+
+.helpMenu .closeButton {
+    width: 16px;
+    height: 16px;
+    display: block;
+    float: right;
+    overflow: hidden;
+    cursor: pointer;
+    background: url("../images/ui/CloseButtonWhite16.png") no-repeat 0px 0px;
+}
+
 .slideMenu {
     position: absolute;
     top: 51px;
@@ -1975,6 +2014,6 @@ a.mapSubmit:hover, a.mapSubmit:focus {
      padding-right: 3px;
  }
  
-#helpMenuCon {
+.helpMenuCon {
     padding: 10px;
 }
