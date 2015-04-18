@@ -1875,7 +1875,7 @@ get_browser_version: function(){
             html += "<div id='layersButton' data-menu='layers' class='NavButton LayersButton' title='Map Layers'></div>";
             html += "<div id='measureButton' data-menu='measure' class='NavButton MeasureButton' title='Measure'></div>";
             html += "<div id='printButton' data-menu='print' class='NavButton PrintButton' title='Print'></div>";
-            html += "<div id='editButton' data-menu='edit' class='NavButton EditButton' title='Create/Edit a Site'></div>";
+            html += "<div id='editButton' data-menu='edit' class='NavButtonDisabled EditButton' title='Edit Sites - Coming Soon'></div>";
             html += "<div id='findButton' data-menu='find' class='NavButton FindButton' title='Find Features'></div>";
             html += "<div id='exportButton' data-menu='export' class='NavButton ExportButton' title='Data Export'></div>";
 

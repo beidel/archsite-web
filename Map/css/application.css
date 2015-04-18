@@ -1656,6 +1656,25 @@ a.mapSubmit:hover, a.mapSubmit:focus {
     display: none;
 }
 
+.NavButtonDisabled
+{
+    padding: 2px;
+    cursor: default;
+    width: 34px;
+    height: 34px;
+    background-color: #b0b0b0;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
 .NavButton 
 {
     padding: 2px;
@@ -1678,8 +1697,7 @@ a.mapSubmit:hover, a.mapSubmit:focus {
 
 .NavButton:hover
 {
-    background-color: #333;
-    background-color: rgba(102,102,102,0.90);
+    background-color: #424242;
 }
 
 .NavButton:active
