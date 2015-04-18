@@ -1942,14 +1942,15 @@ get_browser_version: function(){
                 });
             }
 
-            var editButton = dom.byId("editButton");
-            if (editButton) {
-                on(editButton, "click", function (event) {
-                    if (event.type === 'click') {
-                        _self.toggleEditSiteMenu('edit');
-                    }
-                });
-            }
+            //temporarily disabling edit button
+            //var editButton = dom.byId("editButton");
+            //if (editButton) {
+            //    on(editButton, "click", function (event) {
+            //        if (event.type === 'click') {
+            //            _self.toggleEditSiteMenu('edit');
+            //        }
+            //    });
+            //}
 
             if (_self.options.role === "admin") {
                 var adminButton = dom.byId("adminButton");
