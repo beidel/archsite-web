@@ -157,27 +157,27 @@ define(["esri/layers/ArcGISDynamicMapServiceLayer", "esri/layers/FeatureLayer"],
         ],
         "videos": [
         {
-            filename: "http://scarchsite.com/videos/ArchSite_Intro.mp4",
+            filename: "http://scarchsite.org/videos/ArchSite_Intro.mp4",
             type: "MP4",
             desc: "Introduction (MP4)"
         }, {
-            filename: "http://scarchsite.com/videos/Intro.webm",
+            filename: "http://scarchsite.org/videos/Intro.webm",
             type: "WEBM",
             desc: "Introduction (WEBM)"
         }, {
-            filename: "http://scarchsite.com/videos/ArchSite_Toolbar.mp4",
+            filename: "http://scarchsite.org/videos/ArchSite_Toolbar.mp4",
             type: "MP4",
             desc: "How to use the tooolbar (MP4)"
         }, {
-            filename: "http://scarchsite.com/videos/Primary Toolbar.webm",
+            filename: "http://scarchsite.org/videos/Primary Toolbar.webm",
             type: "WEBM",
             desc: "How to use the tooolbar (WEBM)"
         }, {
-            filename: "http://scarchsite.com/videos/ArchSite_CreateSites.mp4",
+            filename: "http://scarchsite.org/videos/ArchSite_CreateSites.mp4",
             type: "MP4",
         desc: "How to create sites (MP4)"
         }, {
-            filename: "http://scarchsite.com/videos/CreateSites.webm",
+            filename: "http://scarchsite.org/videos/CreateSites.webm",
             type: "WEBM",
             desc: "How to create sites (WEBM)"
     }
