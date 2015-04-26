@@ -1487,7 +1487,7 @@ function (ready, declare, connect, promiseAll, Deferred, event, array, lang, dom
             var _self = this;
             var node = dom.byId('exportMenu');
             if (node) {
-                node.innerHTML = '<div class="menuClose"><div class="closeButton closeMenu"></div><span style="color: #666666;">Export Data</span><div class="clear"></div></div><div class="exportCon"><div class="slideScroll"><div id="exportContent"></div></div></div>';
+                node.innerHTML = '<div class="menuClose"><div class="closeButton closeMenu"></div><span>Export Data</span><div class="clear"></div></div><div class="exportCon"><div class="slideScroll"><div id="exportContent"></div></div></div>';
             }
 
             //console.log("A", _self.options.analysisToken);
@@ -1877,7 +1877,7 @@ get_browser_version: function(){
             html += "<div id='printButton' data-menu='print' class='NavButton PrintButton' title='Print'></div>";
             html += "<div id='editButton' data-menu='edit' class='NavButtonDisabled EditButton' title='Edit Sites - Coming Soon'></div>";
             html += "<div id='findButton' data-menu='find' class='NavButton FindButton' title='Find Features'></div>";
-            html += "<div id='exportButton' data-menu='export' class='NavButton ExportButton' title='Data Export'></div>";
+            html += "<div id='exportButton' data-menu='export' class='NavButton ExportButton' title='Export Data'></div>";
 
             if (_self.options.role === "admin") {
                 html += "<div id='adminButton' data-menu='admin' class='NavButton ApproveButton' title='Approve Sites'></div>";

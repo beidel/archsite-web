@@ -4,7 +4,7 @@
 
 .dataExport {
     width:290px; 
-    height: 295px;
+    height: 345px;
 }
 
 .dataExport .viewPane 
@@ -13,7 +13,7 @@
     top: 25px; 
     bottom: 20px;
     width:95%;
-    padding:3px;
+    padding:10px;
 }
 
 .dataExport .hidePane {
@@ -22,7 +22,9 @@
 }
 
 .dataExport .label {
+    font-size: 9pt;
     padding: 0px, 5px;
+    text-align:left !important;
     width: 98%;
 }
 
@@ -50,11 +52,9 @@
 .dataExport .atPanel
 {
     font-family: "Open Sans",sans-serif;
-    font-size:0.8em;
     background-color: #F0F0F0;
-    margin-left: 5px;
-    margin-right: 5px;
-    margin-bottom: 10px;
+    margin: 5px;
+    padding: 5px;
 }
 
 .dataExport .layerList ul {

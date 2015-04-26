@@ -1,16 +1,21 @@
-﻿<div id="dex_containerNode" class="dataExport" style="padding:10px;" >
+﻿<div id="dex_containerNode" class="dataExport">
     <div id="dex_view_1" class="viewPane">
         <div class="atPanel">
-            <div class="label" style="color:black; font-size: 7pt;">Export Layers: Select the layers you want to export</div>
+            <div class="label" style="color:black;">Select the layers you want to export:</div>
             <div class='layerList'>
                 <ul id="dex_LayerSelectBoxes"></ul>
             </div>
         </div>
         <div class="atPanel">
             <span>Selection Method:</span><br />
-           <div><input id="dex_rbCurExt" type="radio" name="radExtent" value="CurExt" checked>Current Extent</div>
-            <div><input id="dex_rbPoly" type="radio" name="radExtent" value="DrawPoly">Draw Polygon
-            <div id="dex_btnExtractArea" class="attrButton selExtractArea"></div></div>
+           <div><input id="dex_rbCurExt" type="radio" name="radExtent" value="CurExt" checked> Current Extent</div>
+            <div>
+                <div>
+                    <input id="dex_rbPoly" type="radio" name="radExtent" value="DrawPoly">
+                    &nbsp;Draw Polygon
+                </div>
+                <div id="dex_btnExtractArea" class="attrButton selExtractArea"></div>
+            </div>
         </div>
         <div class="atPanel">
             <span>Output Type:  </span>
@@ -23,12 +28,16 @@
         </div>
         <div>
             <div id="dex_scaleWarning" class="hidePane">Please zoom in on map</div>
-            <div id="dex_btnSubmit" class="toolbarButton sideButton right" style="height:28px;">Export</div>
+            <div id="dex_btnSubmit" class="toolbarButton sideButton right" style="height:28px;">Export Data</div>
         </div>
+        <div style="clear: both;"></div>
+        <div id="dex_btnResults" style="font-size:8pt;"><a href="#">Export Results</a></div>
     </div>
 
     <div id="dex_view_2" class="viewPane hidePane" >
         <div style="padding-left:10px;">
+            <a id="dex_exportLink3">Back to Export Data</a>
+            <br />
             <div class="printLoading">
                 <div class="printLoadingGraphic"></div>
                 <div class="printLoadingText">&nbsp;&nbsp;Generating export, please wait...</div>
@@ -39,7 +48,7 @@
     <div id="dex_view_3" class="viewPane hidePane">
         <a id="dex_exportLink2">Back to Export Data</a>
         <div style="height:15px;"></div>
-        <span>You export file is now ready!</span><br />
+        <span>Export Results:</span><br />
         <div id="dex_pdfLink"></div>
     </div>
 

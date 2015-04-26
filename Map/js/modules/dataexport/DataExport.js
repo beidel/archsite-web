@@ -98,11 +98,19 @@ function (
                     this.exportDataRequest2();
                 }));
 
+                dojo.query('#dex_btnResults').onclick(lang.hitch(this, function (evt) {
+                    this.setView(3);
+                }));
+
                 dojo.query('#dex_exportLink').onclick(lang.hitch(this, function (evt) {
                     this.setView(1);
                 }));
 
                 dojo.query('#dex_exportLink2').onclick(lang.hitch(this, function (evt) {
+                    this.setView(1);
+                }));
+
+                dojo.query('#dex_exportLink3').onclick(lang.hitch(this, function (evt) {
                     this.setView(1);
                 }));
 
@@ -311,10 +319,11 @@ function (
                     "outputName": outputName
                 };
 
-                _self.gp.submitJob(params, lang.hitch(this, _self.completeCallback), lang.hitch(this, _self.statusCallback), function (error) {
-                    console.log(error);
-                    //_self.setView(2);
-                });
+                _self.gp.submitJob(
+                    params,
+                    lang.hitch(this, _self.completeCallback),
+                    lang.hitch(this, _self.statusCallback),
+                    _self.errorCallback);
 
             },
 
@@ -324,25 +333,55 @@ function (
                 if (jobInfo.jobStatus !== "esriJobFailed") {
                     console.log("OK");
 
-                    _self.gp.getResultData(jobInfo.jobId, "contentID", lang.hitch(this, _self.downloadFile), function (error) {
-
-                        console.log(error);
-                    });
-
-                    console.log("OK1");
+                    _self.gp.getResultData(
+                        jobInfo.jobId,
+                        "contentID",
+                        lang.hitch(this, _self.downloadFile)
+                        );
                 }
             },
 
             statusCallback: function (jobInfo) {
+                var _self = this;
+
                 console.log(jobInfo);
                 var status = jobInfo.jobStatus;
                 if (status === "esriJobFailed") {
-                    console.log(jobInfo);
-
+                    _self.errorCallback(jobInfo);
                 }
-                else if (status === "esriJobSucceeded") {
+            },
 
+            errorCallback: function (error) {
+                var _self = this;
+                
+                var currentdate = new Date();
+                var datetime = (currentdate.getMonth() + 1) + "/"
+                                + currentdate.getDate() + "/"
+                                + currentdate.getFullYear() + "  "
+                                + currentdate.getHours() + ":"
+                                + ((currentdate.getMinutes() < 10) ? "0" : "") + currentdate.getMinutes() + ":"
+                                + currentdate.getSeconds();
+
+                _self.outputFiles.push({ output: null, timestamp: datetime });
+
+
+                var html = "<table class=\"print-table\">";
+                for (var x = 0, l = _self.outputFiles.length; x < l; x++) {
+                    if (_self.outputFiles[x].output === null) {
+                        html += "<tr><td><span style=\"color:red;\">Export Failed</span></td><td>" + _self.outputFiles[x].timestamp + "</td></tr>";
+                    }
+                    else {
+                        var url = "https://www.arcgis.com/sharing/rest/content/items/" + _self.outputFiles[x].output.value.itemId + "/data?token=" + _self.options.token;
+                        html += "<tr><td><a href=\"" + url + "\" target=\"_blank\">Download</a></td><td>" + _self.outputFiles[x].timestamp + "</td></tr>";
+                    }
                 }
+                html += "</table>";
+
+                dojo.byId("dex_pdfLink").innerHTML = html;
+
+                _self.setView(3);
+
+                console.log(error);
             },
 
             downloadFile: function (outputFile) {
@@ -361,8 +400,13 @@ function (
 
                 var html = "<table class=\"print-table\">";
                 for (var x = 0, l = _self.outputFiles.length; x < l; x++) {
-                    var url = "https://www.arcgis.com/sharing/rest/content/items/" + _self.outputFiles[x].output.value.itemId + "/data?token=" + _self.options.token;
-                    html += "<tr><td><a href=\"" + url + "\" target=\"_blank\">Download</a></td><td>" + _self.outputFiles[x].timestamp + "</td></tr>";
+                    if (_self.outputFiles[x].output === null) {
+                        html += "<tr><td><span style=\"color:red;\">Export Failed</span></td><td>" + _self.outputFiles[x].timestamp + "</td></tr>";
+                    }
+                    else {
+                        var url = "https://www.arcgis.com/sharing/rest/content/items/" + _self.outputFiles[x].output.value.itemId + "/data?token=" + _self.options.token;
+                        html += "<tr><td><a href=\"" + url + "\" target=\"_blank\">Download</a></td><td>" + _self.outputFiles[x].timestamp + "</td></tr>";
+                    }
                 }
                 html += "</table>";
 
