@@ -35,12 +35,13 @@
     
     <div class="grid-2">
         <p>The data layers in ArchSite were compiled from various sources, including government agencies, non-profit organizations, and cultural resource consultants. Although every effort has been made to ensure the quality of the spatial and attribute information, the accuracy of the data cannot be guaranteed. In some cases, properties have been demolished since surveys were performed or a property’s address may have changed.</p>
-    </div><!-- close two -->
-    <div class="grid-2">
         <p>Certain data, such as the cultural resource survey area data layer, represent incomplete data sets and should not be interpreted as a comprehensive resource. Researchers are therefore encouraged to review paper files (e.g., state site forms and reports) and additional sources of information to ensure the quality of the data.   Please contact us if you become aware of any errors in the data.</p>
     </div><!-- close two -->
     <div class="grid-2">
-        <p>We are continually editing our maps to improve accuracy of position and information. No warranties, expressed or implied, are provided for the positional or thematic accuracy of the data herein, its use, or its interpretation. Although it is periodically updated, this information may not reflect the data currently on file and SCIAA or SCDAH assumes no liability either for any errors, omissions, or inaccuracies in the information provided regardless of the cause of such or for any decision made, action taken, or action not taken by the user in reliance upon any maps or information provided herein. Use of the ArchSite system indicates your acceptance of these terms.</p>                        
+        <p>We are continually editing our maps to improve accuracy of position and information. No warranties, expressed or implied, are provided for the positional or thematic accuracy of the data herein, its use, or its interpretation. Although it is periodically updated, this information may not reflect the data currently on file and SCIAA or SCDAH assumes no liability either for any errors, omissions, or inaccuracies in the information provided regardless of the cause of such or for any decision made, action taken, or action not taken by the user in reliance upon any maps or information provided herein. Use of the ArchSite system indicates your acceptance of these terms.</p>
+    </div><!-- close two -->
+    <div class="grid-2">
+        <p>The South Carolina SHPO began submitting electronic National Register nominations to the National Park Service in 2014. The new process requires Lat/Long data along with a map, typically from Google Earth or Bing. This data is more accurate than the older data, causing location discrepancies between the old and new data since prior to 2014 properties were plotted on USGS topographic maps. Previous National Register properties will not be corrected since their location in GIS is how they appear in their nomination maps.</p>                        
     </div><!-- close two -->
 
 
