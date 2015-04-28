@@ -54,6 +54,7 @@
                         <asp:RequiredFieldValidator ID="UserNameRequired" runat="server" ControlToValidate="UserName"
                             CssClass="failureNotification" ErrorMessage="User Name is required." ToolTip="User Name is required."
                             ValidationGroup="LoginUserValidationGroup">*</asp:RequiredFieldValidator>
+                        <br />&nbsp;<br />
                         <asp:Label ID="PasswordLabel" runat="server" AssociatedControlID="Password" CssClass="formTitle" Font-Bold="true">Password: </asp:Label>
                         <asp:TextBox ID="Password" runat="server" CssClass="passwordEntry" TextMode="Password" TabIndex="2"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" ControlToValidate="Password"
