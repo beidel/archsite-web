@@ -218,9 +218,8 @@
         <script type="text/javascript" src="<%= ResolveUrl("~/Javascript/dropdowns.js") %>" ></script>
 
         <!-- Google Analytics -->
-
-        <!--    Commented out by MEH on March 20 as refers to an SSL not operational yet. ...
-     <script type="text/javascript">
+        <!--    Made live by kcb 30April2015 -->
+        <script type="text/javascript">
             var _gaq = _gaq || [];
             _gaq.push(['_setAccount', 'UA-47078138-1']);
             _gaq.push(['_setDomainName', "scarchsite.org"]);
@@ -231,7 +230,6 @@
                 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
             })();
         </script>
- -->
 </body>
 
 </html>
