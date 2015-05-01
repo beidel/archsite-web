@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -63,7 +63,7 @@
             esri.addProxyRule({ urlPrefix: "analysis.arcgis.com", proxyUrl: "http://redrock/proxy/proxy.ashx" });
 
             var webmapId = "814aa62882d24c80b67a5f82846e9f8f";
-            var userId = "kramerusc";
+            var userId = "ArchSiteAdmin";
             var tokenStr = "jTfMLAyfNwbFUKxtNxum6eu4kQJ65K_i4mrIILbmjI2Dzrax2I8MYZsAX4NzMJU6t1bqgt5ZamjyTxAdObtKQNaJnKhxPZBV3EysQVlbc1vKtOc9xqlrbJidCaQG_0rI6f5JYY7Bahwf1KK-ejHgpg..";
 
             _self.token = {
@@ -159,7 +159,7 @@
                     tokenServiceUrl: "https://www.arcgis.com/sharing/generateToken"
                 });
 
-                var loginDeferred = esri.id.generateToken(server, { username: "kramerusc", password: "b4qfwwf2" });
+                var loginDeferred = esri.id.generateToken(server, { username: "ArchSiteAdmin", password: "SCIAA2015!" });
 
                 loginDeferred.then(lang.hitch(this, function (response) {
                     console.log("wtf", response);
@@ -198,7 +198,7 @@
                     //    url: "http://analysis.arcgis.com/arcgis/rest/services/tasks/GPServer/ExtractData/submitJob",
                     //    content: {
                     //        f: "json",
-                    //        inputLayers: "['{'url':'http://services.arcgis.com/oEazpvC7G00gPDRM/arcgis/rest/services/ArchSites_Prod/FeatureServer/1','serviceToken':'_OtBt0JI64kxtKv92QnDb4yo8vFLRAmNRA0vTfes19K3bkkv5M4AyDIqa4diccV97u2dOE9socAFVEZwHLqhTQ1OTQhu478L7Sk4lbFekQ3GGv19WIPCmPPutcif7zQP__Q9aW8ZP354rkEsmlUJwg..'}']",
+                    //        inputLayers: "['{'url':'http://services.arcgis.com/oEazpvC7G00gPDRM/arcgis/rest/services/ArchSite_Prod/FeatureServer/1','serviceToken':'_OtBt0JI64kxtKv92QnDb4yo8vFLRAmNRA0vTfes19K3bkkv5M4AyDIqa4diccV97u2dOE9socAFVEZwHLqhTQ1OTQhu478L7Sk4lbFekQ3GGv19WIPCmPPutcif7zQP__Q9aW8ZP354rkEsmlUJwg..'}']",
                     //        clip: "false",
                     //        dataFormat: "CSV",
                     //        extent: "{'xmin':-9160792.315080622,'ymin':3965065.7111794585,'xmax':-9132567.942386357,'ymax':3981499.672260749,'spatialReference':{'wkid':102100,'latestWkid':3857}}",
@@ -212,7 +212,7 @@
                     
                     var urlStr = "http://analysis.arcgis.com/arcgis/rest/services/tasks/GPServer/ExtractData/submitJob?f=json"; 
                     urlStr += "&InputLayers="; 
-                    urlStr += "%5B%22%7B%5C%22url%5C%22%3A%5C%22http%3A%2F%2Fservices.arcgis.com%2FoEazpvC7G00gPDRM%2Farcgis%2Frest%2Fservices%2FArchSites_Prod%2FFeatureServer%2F1%5C%22%2C%5C%22serviceToken%5C%22%3A%5C%22" + _self.token.token + "%5C%22%7D%22%5D";
+                    urlStr += "%5B%22%7B%5C%22url%5C%22%3A%5C%22http%3A%2F%2Fservices.arcgis.com%2FoEazpvC7G00gPDRM%2Farcgis%2Frest%2Fservices%2FArchSite_Prod%2FFeatureServer%2F1%5C%22%2C%5C%22serviceToken%5C%22%3A%5C%22" + _self.token.token + "%5C%22%7D%22%5D";
                     urlStr += "&Clip=false";
                     urlStr += "&DataFormat=CSV";
                     urlStr += "&Extent=%7B%22xmin%22%3A-9039725.61690545%2C%22ymin%22%3A4034011.910692683%2C%22xmax%22%3A-9021877.570800886%2C%22ymax%22%3A4048917.131208272%2C%22spatialReference%22%3A%7B%22wkid%22%3A102100%2C%22latestWkid%22%3A3857%7D%7D";

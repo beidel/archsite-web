@@ -9,12 +9,12 @@ define(["dojo/ready", "dojo/_base/declare", "dojo/_base/connect", "dojo/promise/
     "esri/dijit/BasemapGallery", "esri/dijit/HomeButton", "esri/dijit/LocateButton", "esri/geometry/Extent", "esri/geometry/Point", "esri/SpatialReference", "esri/symbols/PictureMarkerSymbol",
     "esri/dijit/Legend", "esri/dijit/Scalebar", "esri/geometry/Circle", "esri/geometry/webMercatorUtils", "esri/graphic", "esri/layers/GraphicsLayer", "esri/dijit/Geocoder",
     "esri/geometry/screenUtils", "esri/dijit/Popup", "esri/layers/FeatureLayer", "esri/dijit/Measurement", "esri/IdentityManagerBase", "esri/kernel", "esri/dijit/Print"
-, "esri/tasks/PrintTemplate", "esri/InfoTemplate", "dojo/store/Memory", "dijit/form/ComboBox"],
+, "esri/tasks/PrintTemplate", "esri/InfoTemplate", "esri/config", "dojo/store/Memory", "dijit/form/ComboBox"],
 function (ready, declare, connect, promiseAll, Deferred, event, array, lang, dom, query, domClass, domConstruct, domGeom, domStyle, date, number, win, on, topic, coreFx, i18n,
     EditSite, AdminView, AttrTable, SiteReport, AdminView, PrintTool, PrintWidget, ScaleSelector, DrawMeasure, DataExport, Dialog, HorizontalSlider, VerticalSlider, nlTraverse, nlManipulate,
     templateConfig, cookie, JSON, config, arcgisUtils, urlUtils, esriRequest, Query, QueryTask, GeometryService, BasemapGallery, HomeButton, LocateButton, Extent, Point, SpatialReference,
     PictureMarkerSymbol, Legend, Scalebar, Circle, webMercatorUtils, Graphic, GraphicsLayer, Geocoder, screenUtils, Popup, FeatureLayer, Measurement, IMB, kernel, Print,
-    PrintTemplate, InfoTemplate, Memory, ComboBox) {
+    PrintTemplate, InfoTemplate, esriConfig, Memory, ComboBox) {
     var Widget = declare("application.main", null, {
         constructor: function(options) {
             var _self = this;
@@ -2286,7 +2286,7 @@ get_browser_version: function(){
                     var layer, p, q, dCol = [];
                     //query each map layer
                     for (var i = 0, l = _self.map.graphicsLayerIds.length; i < l; i++) {
-                        if (_self.map.graphicsLayerIds[i].indexOf("ArchSites") > -1) {
+                        if (_self.map.graphicsLayerIds[i].indexOf("ArchSite") > -1) {
                             layer = _self.map.getLayer(_self.map.graphicsLayerIds[i]);
 
                             if (layer.visible === false) continue;
@@ -2298,7 +2298,7 @@ get_browser_version: function(){
                             q.where = "1=1";
                             var d = layer.queryFeatures(q);
 
-                            if (layer.id === "ArchSites_Prod_5009") {
+                            if (layer.id === "ArchSite_Prod_1215") {
                                 d.then(function (results) {
                                     var _layer = layer;
                                     for (var j = 0, _l = results.features.length; j < _l; j++) {
@@ -2554,7 +2554,7 @@ get_browser_version: function(){
  
             var token = {
                 "server": "http://www.arcgis.com/sharing/rest",
-                "userId": "kramerusc",
+                "userId": "ArchSiteAdmin",
                 "token": _self.options.token,
                 "ssl": false,
                 "expires": 86400
@@ -2689,7 +2689,10 @@ get_browser_version: function(){
         },
         init: function() {
             var _self = this;
-            //_self.setOptions();
+
+            //set esri config defaults
+            esriConfig.defaults.io.timeout = 180000;
+
             // add menus
             _self.addSlideMenus();
             // Create Map

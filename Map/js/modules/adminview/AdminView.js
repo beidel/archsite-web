@@ -1734,7 +1734,7 @@ function (declare, connect, arr, lang, event, xhr, query, domConstruct, domAttr,
                                 dataRecovArray = [];
                             }
 
-                            var attrs = { attributes: { SITEID: this.fcValues["SITEID"], NUMBEROFARTIFACTS: dijit.byId("av_dr_num_" + id).get("value"), MaterialsRecovered: dijit.byId("av_dr_txt_" + id).get("value"), RECORD_OWNER: "kramerusc", EDITED_DATE: this.getDateNow("-") } };
+                            var attrs = { attributes: { SITEID: this.fcValues["SITEID"], NUMBEROFARTIFACTS: dijit.byId("av_dr_num_" + id).get("value"), MaterialsRecovered: dijit.byId("av_dr_txt_" + id).get("value"), RECORD_OWNER: "ArchSiteAdmin", EDITED_DATE: this.getDateNow("-") } };
 
                             adds.push(attrs);
                             dataRecovArray.push(attrs);

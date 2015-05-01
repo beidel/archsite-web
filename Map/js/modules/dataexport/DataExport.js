@@ -558,8 +558,7 @@ function (
                 var _self = this;
                 console.log("checkdir");
 
-                // /sharing/rest/content/users/kramerusc
-                _self.buildRequest("http://www.arcgis.com/sharing/rest/content/users/kramerusc", _self.options.analysisGpToken)
+                _self.buildRequest("http://www.arcgis.com/sharing/rest/content/users/ArchSiteAdmin", _self.options.analysisGpToken)
                     .then(function (response) {
                         console.log("RESPONSE for directory", response);
 
