@@ -164,7 +164,9 @@
     <div class="announce space-top">
         
         <h2>Beta Review: Task 2</h2>
-            <p>Last updated 9 March 2015</p>
+            <p>Last updated 4 May 2015</p>
+            
+            <p>Archaeological data is current as of 27 April 2015.</p>
 
             <p>Scanned archaeological site forms are now available for viewing and downloading in the form of PDF documents to subscribers.</p>
 
