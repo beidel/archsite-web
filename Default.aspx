@@ -168,7 +168,7 @@
             
             <p>Archaeological data is current as of 27 April 2015.</p>
 
-            <p>Scanned archaeological site forms are now available for viewing and downloading in the form of PDF documents to subscribers.</p>
+            <p>Scanned archaeological site forms for most counties are now available for viewing and downloading in the form of PDF documents to subscribers. PDFs of site forms for the remaining counties will be uploaded as they are completed: Abbeville, Aiken, Allendale, Anderson, Bamberg, Barnwell, Beaufort, Berkeley, and Charleston.</p>
 
             <p>Please let us know if you encounter problems with ArchSite. Include the date on which you encountered the problem and versions of both the operating system and browser you used (e.g., Windows 7, Internet Explorer 9).</p>
             <p>Email this information to the <a href="mailto:archsite2problems@googlegroups.com">ArchSite team</a>.
