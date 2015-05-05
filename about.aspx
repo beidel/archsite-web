@@ -42,10 +42,14 @@
 
         </div><!-- close three -->
         <div class="grid-3">
-<%--            <div class="grid-6">--%>
+
                 <h3>The Development Team</h3>
 
-                <p>The team responsible for developing the new SC ArchSite brought together individuals from SCDAH and SCIAA, again under the auspices of the SCDOT. Members of the University of South Carolina's Department of Geography developed the technical concepts and implemented the solution in a cloud environment.</p>
+                <p>The team responsible for developing the new SC ArchSite brought together individuals from SCDAH, SCIAA, and USC-Geography, again under the auspices of the SCDOT. Members of the University of South Carolina's Department of Geography developed the technical concepts and implemented the solution in a cloud environment.</p>
+
+                <p>Last ArchSite Steering Committee Meeting:  February 10, 2015<br />
+                Next ArchSite Steering Committee Meeting:  ~May 15, 2015<br />
+                ArchSite II target release date: July 31, 2015</p>
 
                 <h4 class="h5 no-space-bottom">South Carolina Institute of Archaeology and Anthropology</h4>
                     <p class="no-space-top">Jonathan Leader<br />
@@ -65,11 +69,14 @@
 
                 <h4 class="h5 no-space-bottom">University of South Carolina Department of Geography</h4>
                     <p class="no-space-top">Michael E. Hodgson, <em>principal investigator</em><br />
-                    Ian Kramer, <em>principal programmer</em><br />
+                    Tommy Bramble, <em>principal programmer</em><br />
+                    Karen Beidel, <em>user experience</em><br />
+                    Silvia Piovan (Visiting Scholar, DISSGEA, U. Padova)<em>, website evaluation </em><br />
+                    Ian Kramer, <em>programmer</em><br />
                     Kevin Remington<br />
                     Wm. Lynn Shirley, <em>project manager</em>
                 </p>
-<%--            </div>--%>
+
         </div><!-- close three -->
 
 
