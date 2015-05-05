@@ -2301,13 +2301,19 @@ get_browser_version: function(){
                             if (layer.id === "ArchSite_Prod_1215") {
                                 d.then(function (results) {
                                     var _layer = layer;
+                                    var _data = [];
                                     for (var j = 0, _l = results.features.length; j < _l; j++) {
                                         var feature = results.features[j];
+
+                                        if (feature.attributes.ARCHIVE == "1") continue;
 
                                         //synchronous request to get pdf availability
                                         //can't figure out how to chain the deferred properly
                                         var pdfHtml = "No site files available.";
-                                        var url = _self.options.pdfLookupTableUrl + "/query?where=SITENUMBER+%3D+%27" + feature.attributes.SITENUMBER + "%27&objectIds=&time=&outFields=*&returnIdsOnly=false&returnCountOnly=false&returnZ=false&returnM=false&f=json"
+                                        var url = _self.options.pdfLookupTableUrl + "/query?where=SITENUMBER+%3D+%27" +
+                                            feature.attributes.SITENUMBER +
+                                            "%27&objectIds=&time=&outFields=*&returnIdsOnly=false&returnCountOnly=false" +
+                                            "&returnZ=false&returnM=false&f=json&token=" + _self.options.token
                                         $.ajax({
                                             url: url,
                                             dataType: "json",
@@ -2337,8 +2343,10 @@ get_browser_version: function(){
                                         var infoTemplate = new InfoTemplate("Archaeological Sites", html);
                                         feature.setInfoTemplate(infoTemplate);
 
-                                        results.features[j] = feature;
+                                        //results.features[j] = feature;
+                                        _data.push(feature);
                                     }
+                                    results.features = _data;
                                     return results;
                                 });
                             }
@@ -2351,7 +2359,11 @@ get_browser_version: function(){
                                         //synchronous request to get pdf availability
                                         //can't figure out how to chain the deferred properly
                                         var pdfHtml = "No site files available.";
-                                        var url = _self.options.pdfLookupTableUrl + "/query?where=SITENUMBER+%3D+%27" + feature.attributes.SITENUMBER + "%27&objectIds=&time=&outFields=*&returnIdsOnly=false&returnCountOnly=false&returnZ=false&returnM=false&f=json"
+                                        var url = _self.options.pdfLookupTableUrl +
+                                            "/query?where=SITENUMBER+%3D+%27" +
+                                            feature.attributes.SITENUMBER +
+                                            "%27&objectIds=&time=&outFields=*&returnIdsOnly=false&returnCountOnly=false" +
+                                            "&returnZ=false&returnM=false&f=json&token=" + _self.options.token;
                                         $.ajax({
                                             url: url,
                                             dataType: "json",
