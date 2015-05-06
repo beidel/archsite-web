@@ -372,7 +372,7 @@ function (
                     }
                     else {
                         var url = "https://www.arcgis.com/sharing/rest/content/items/" + _self.outputFiles[x].output.value.itemId + "/data?token=" + _self.options.token;
-                        html += "<tr><td><a download href=\"" + url + "\" target=\"_blank\">Download</a></td><td>" + _self.outputFiles[x].timestamp + "</td></tr>";
+                        html += "<tr><td><a href=\"" + url + "\" target=\"_blank\">Download</a></td><td>" + _self.outputFiles[x].timestamp + "</td></tr>";
                     }
                 }
                 html += "</table>";
@@ -405,7 +405,7 @@ function (
                     }
                     else {
                         var url = "https://www.arcgis.com/sharing/rest/content/items/" + _self.outputFiles[x].output.value.itemId + "/data?token=" + _self.options.token;
-                        html += "<tr><td><a download href=\"" + url + "\" target=\"_blank\">Download</a></td><td>" + _self.outputFiles[x].timestamp + "</td></tr>";
+                        html += "<tr><td><a href=\"" + url + "\" target=\"_blank\">Download</a></td><td>" + _self.outputFiles[x].timestamp + "</td></tr>";
                     }
                 }
                 html += "</table>";
