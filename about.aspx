@@ -50,6 +50,8 @@
                 <p>Last ArchSite Steering Committee Meeting:  February 10, 2015<br />
                 Next ArchSite Steering Committee Meeting:  ~May 15, 2015<br />
                 ArchSite II target release date: July 31, 2015</p>
+                
+                <p class="text-small text-center"><img src="Images/AS/steeringCommittee.png" alt="SC ArchSite Steering Committee">The SC ArchSite Development Team, May 2015</p>
 
                 <h4 class="h5 no-space-bottom">South Carolina Institute of Archaeology and Anthropology</h4>
                     <p class="no-space-top">Jonathan Leader<br />
