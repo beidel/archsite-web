@@ -1673,7 +1673,8 @@ get_browser_version: function(){
                     archSiteLayerTitle: _self.options.archsitename,
                     pdfBaseUrl: _self.options.pdfBaseUrl,
                     pdfLookupTblUrl: _self.options.pdfLookupTableUrl,
-                    searchTitle: _self.options.attrSearchTitle
+                    searchTitle: _self.options.attrSearchTitle,
+                    token: _self.options.token
                 });
 
                 dojo.place(this.options.attributeTableWidget.domNode, dom.byId('attributeContent'));

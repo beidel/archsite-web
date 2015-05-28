@@ -1129,7 +1129,7 @@ function (declare, connect, arr, lang, event, domConstruct, all, domAttr, query,
             //Only do this for Archaeological Site layer
             if (fl.name == _self.options.archSiteLayerTitle) {
                 $.ajax({
-                    url: _self.options.pdfLookupTblUrl + "/query?where=SITENUMBER+%3D+%27" + feat.attributes.SITENUMBER + "%27&objectIds=&time=&outFields=*&returnIdsOnly=false&returnCountOnly=false&returnZ=false&returnM=false&f=json",
+                    url: _self.options.pdfLookupTblUrl + "/query?token=" + _self.options.token + "&where=SITENUMBER+%3D+%27" + feat.attributes.SITENUMBER + "%27&objectIds=&time=&outFields=*&returnIdsOnly=false&returnCountOnly=false&returnZ=false&returnM=false&f=json",
                     dataType: "json",
                     async: false,
                     success: function (result) {
