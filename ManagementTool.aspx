@@ -38,8 +38,8 @@
                             <td style="width: 30%">
                                 <p>&nbsp;</p>
                                 <asp:RadioButtonList ID="rblSearchBy" runat="server">
-                                    <asp:ListItem Selected="True">Search All</asp:ListItem>
-                                    <asp:ListItem>Search By Criteria</asp:ListItem>
+                                    <asp:ListItem>Search All</asp:ListItem>
+                                    <asp:ListItem Selected="True">Search By Criteria</asp:ListItem>
                                 </asp:RadioButtonList>
                                 <br />
                             </td>
