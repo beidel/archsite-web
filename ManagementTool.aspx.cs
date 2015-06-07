@@ -85,6 +85,12 @@ public partial class ManagementTool : System.Web.UI.Page
         rblApprovalStatus.SelectedIndex = 0;
     }
 
+    protected string processInputString(string input)
+    {
+        if (string.IsNullOrEmpty(input)) return input;
+        else return "%" + input + "%";
+    }
+
     protected void btnSearch_Click(object sender, EventArgs e)
     {
         if (rblSearchBy.SelectedIndex == 0)//search all
@@ -98,13 +104,13 @@ public partial class ManagementTool : System.Web.UI.Page
         else//search by criteria
         {
             string[] strParas = new string[6];
-            strParas[0] = txtFirstName.Visible ? txtFirstName.Text.Trim() : ddlFirstName.SelectedItem.Value;//first
+            strParas[0] = txtFirstName.Visible ? processInputString(txtFirstName.Text.Trim()) : ddlFirstName.SelectedItem.Value;//first
             //if (strParas[0].Length < 1) strParas[0] = " ";
-            strParas[1] = txtLastName.Visible ? txtLastName.Text.Trim() : ddlLastName.SelectedItem.Value;//lastname
+            strParas[1] = txtLastName.Visible ? processInputString(txtLastName.Text.Trim()) : ddlLastName.SelectedItem.Value;//lastname
             //if (strParas[1].Length < 1) strParas[1] = " ";
-            strParas[2] = txtUserName.Visible ? txtUserName.Text.Trim() : ddlUserName.SelectedItem.Value;//username
+            strParas[2] = txtUserName.Visible ? processInputString(txtUserName.Text.Trim()) : ddlUserName.SelectedItem.Value;//username
             //if (strParas[2].Length < 1) strParas[2] = " ";
-            strParas[3] = txtOrganization.Visible ? txtOrganization.Text.Trim() : ddlOrganization.SelectedItem.Value;//organization
+            strParas[3] = txtOrganization.Visible ? processInputString(txtOrganization.Text.Trim()) : ddlOrganization.SelectedItem.Value;//organization
             //if (strParas[3].Length < 1) strParas[3] = " ";
             strParas[4] = ddlAccessLevel2.SelectedIndex > 0 ? ddlAccessLevel2.SelectedItem.Value : "";//accesslevel
             //if (strParas[4].Length < 1) strParas[4] = " ";
