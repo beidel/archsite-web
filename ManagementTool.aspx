@@ -50,19 +50,6 @@
                                         <td></td>
                                     </tr>
                                     <tr>
-                                        <td style="width: 30%">
-                                            <asp:Label ID="Label2" runat="server" Text="Approval Status: " CssClass="float-right"></asp:Label>
-                                        </td>
-                                        <td style="width: 60%">
-                                            <asp:DropDownList ID="ddlApprovalStatus" runat="server" Width="99%">
-                                                <asp:ListItem></asp:ListItem>
-                                                <asp:ListItem>Approved</asp:ListItem>
-                                                <asp:ListItem>Not Approved</asp:ListItem>
-                                            </asp:DropDownList>
-                                        </td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
                                         <td>
                                             <asp:Label ID="Label3" runat="server" Text="First Name: " CssClass="float-right"></asp:Label>
                                         </td>
@@ -106,6 +93,33 @@
                                     </tr>
                                     <tr>
                                         <td>
+                                            <asp:Label ID="Label7" runat="server" Text="User Name: " CssClass="float-right"></asp:Label>
+                                        </td>
+                                        <td>
+                                            <asp:TextBox ID="txtUserName" runat="server" Width="98%"></asp:TextBox>
+                                            <asp:DropDownList ID="ddlUserName" runat="server" DataSourceID="sqldsUserName" DataTextField="UserName"
+                                                DataValueField="UserName" Visible="False" Width="99%">
+                                            </asp:DropDownList>
+                                        </td>
+                                        <td>
+                                            <asp:LinkButton ID="lbUserName" runat="server" OnClick="lbUserName_Click">List</asp:LinkButton>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 30%">
+                                            <asp:Label ID="Label2" runat="server" Text="Approval Status: " CssClass="float-right"></asp:Label>
+                                        </td>
+                                        <td style="width: 60%">
+                                            <asp:DropDownList ID="ddlApprovalStatus" runat="server" Width="99%">
+                                                <asp:ListItem></asp:ListItem>
+                                                <asp:ListItem>Approved</asp:ListItem>
+                                                <asp:ListItem>Not Approved</asp:ListItem>
+                                            </asp:DropDownList>
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
                                             <asp:Label ID="Label6" runat="server" Text="Access Level: " CssClass="float-right"></asp:Label>
                                         </td>
                                         <td>
@@ -120,23 +134,9 @@
                                         <td></td>
                                     </tr>
                                     <tr>
-                                        <td>
-                                            <asp:Label ID="Label7" runat="server" Text="User Name: " CssClass="float-right"></asp:Label>
+                                        <td colspan="3">
+                                            <div style="height:10px;"></div>
                                         </td>
-                                        <td>
-                                            <asp:TextBox ID="txtUserName" runat="server" Width="98%"></asp:TextBox>
-                                            <asp:DropDownList ID="ddlUserName" runat="server" DataSourceID="sqldsUserName" DataTextField="UserName"
-                                                DataValueField="UserName" Visible="False" Width="99%">
-                                            </asp:DropDownList>
-                                        </td>
-                                        <td>
-                                            <asp:LinkButton ID="lbUserName" runat="server" OnClick="lbUserName_Click">List</asp:LinkButton>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
                                     </tr>
                                     <tr>
                                         <td></td>
@@ -145,16 +145,6 @@
                                             <asp:Button ID="btnSearch" runat="server" CssClass="btn" OnClick="btnSearch_Click" Text="Search"></asp:Button>
                                             <asp:Button ID="btnSearchAll" runat="server" CssClass="btn" OnClick="SearchAllUsers" Text="Return All Users" style="float:right;"></asp:Button>
                                             </div>
-                                        </td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="3"></td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td>
-                                            
                                         </td>
                                         <td></td>
                                     </tr>

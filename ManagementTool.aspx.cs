@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data;
+using System.Data.SqlClient;
 
 using Shufan.DB.StoreProcedureAccess;
 using System.Data;
@@ -106,8 +108,6 @@ public partial class ManagementTool : System.Web.UI.Page
 
     protected void btnSearch_Click(object sender, EventArgs e)
     {
-        clsStoreProcedureAccess clsSearchByCriteria;
-
         string[] strParas = new string[6];
         strParas[0] = txtFirstName.Visible ? processInputString(txtFirstName.Text.Trim()) : ddlFirstName.SelectedItem.Value;//first
         //if (strParas[0].Length < 1) strParas[0] = " ";
@@ -127,13 +127,11 @@ public partial class ManagementTool : System.Web.UI.Page
 
             strParas[4] = "";
 
-            clsSearchByCriteria = new clsStoreProcedureAccess("GetUserByCriteria_ApprovalStatus", strSQLConn);
         }
         else if (ddlAccessLevel.SelectedIndex > 0 && ddlApprovalStatus.SelectedIndex == 0)
         {
             strParas[4] = ddlAccessLevel.SelectedItem.Value;
             strParas[5] = "";
-            clsSearchByCriteria = new clsStoreProcedureAccess("GetUserByCriteria_AccessLevel", strSQLConn);
         }
         else if (ddlApprovalStatus.SelectedIndex > 0 && ddlAccessLevel.SelectedIndex > 0)
         {
@@ -143,20 +141,78 @@ public partial class ManagementTool : System.Web.UI.Page
                 strParas[5] = "No";
 
             strParas[4] = ddlAccessLevel.SelectedItem.Value;
-            clsSearchByCriteria = new clsStoreProcedureAccess("GetUserByCriteria_AccessApproval", strSQLConn);
         }
         else
         {
             strParas[4] = "";
             strParas[5] = "";
-            clsSearchByCriteria = new clsStoreProcedureAccess("GetUserByCriteria", strSQLConn);
         }
 
-        DataTable dtSearch = clsSearchByCriteria.fnExecuteSP2DataTable(strParas);
+        string sql = 
+            "SELECT ID, UserName, FirstName, LastName, PhoneNum, Email, Organization, AccessLevel, ApprovalStatus, ExportData,Convert(varchar(10),SignUpDate,1) as SignUpDate FROM UserAccountInfo ";
+            
+        if ((strParas[0] == "" && strParas[1] == "" && strParas[2] == "" && strParas[3] == "") && (strParas[4] != "" || strParas[5] != ""))
+        {
+            if (strParas[4] != "" && strParas[5] == "")
+            {
+                sql += "WHERE AccessLevel = '" + strParas[4] + "'";
+            }
+            else if (strParas[4] == "" && strParas[5] != "")
+            {
+                sql += "WHERE ApprovalStatus = '" + strParas[5] + "'";
+            }
+            else
+            {
+                sql += "WHERE AccessLevel = '" + strParas[4] + "' AND ApprovalStatus = '" + strParas[5] + "'";
+            }
+        }
+        else
+        {
+            sql += "WHERE (FirstName LIKE '" + strParas[0] + "' OR ";
+            sql += "LastName LIKE '" + strParas[1] + "' OR ";
+            sql += "UserName LIKE '" + strParas[2] + "' OR ";
+            sql += "Organization LIKE '" + strParas[3] + "')";
+           
+            if (strParas[4] != "" || strParas[5] != "")
+            {
+                sql += " AND (";
+                if (strParas[4] != "" && strParas[5] == "")
+                {
+                    sql += "AccessLevel = '" + strParas[4] + "')";
+                }
+                else if (strParas[4] == "" && strParas[5] != "")
+                {
+                    sql += "ApprovalStatus = '" + strParas[5] + "')";
+                }
+                else
+                {
+                    sql += "AccessLevel = '" + strParas[4] + "' AND ApprovalStatus = '" + strParas[5] + "')";
+                }
+            }
+        }
 
-        gvSearchResult.DataSource = dtSearch;
+        sql += " ORDER BY [ID]";
+
+        DataTable userTable;
+        using (SqlConnection conn = new SqlConnection(strSQLConn))
+        {
+            conn.Open();
+
+            SqlCommand cmd = conn.CreateCommand();
+            userTable = new DataTable();
+
+            //get aspnet_user datatable
+            cmd.CommandType = System.Data.CommandType.Text;
+            cmd.CommandText = sql;
+
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(userTable);
+            da.Dispose();
+        }
+
+        gvSearchResult.DataSource = userTable;
         gvSearchResult.DataBind();
-        lblMsg.Text = dtSearch.Rows.Count + " records found!";
+        lblMsg.Text = userTable.Rows.Count + " records found!";
     }
 
     //===========================================================================================================================Manage==============
