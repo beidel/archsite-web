@@ -66,15 +66,19 @@ public partial class ManagementTool : System.Web.UI.Page
     {
         ddlFirstName.Visible = false;
         txtFirstName.Visible = true;
+        txtFirstName.Text = "";
 
         ddlLastName.Visible = false;
         txtLastName.Visible = true;
+        txtLastName.Text = "";
 
         ddlOrganization.Visible = false;
         txtOrganization.Visible = true;
+        txtOrganization.Text = "";
 
         ddlUserName.Visible = false;
         txtUserName.Visible = true;
+        txtUserName.Text = "";
 
         gvSearchResult.DataSource = null;
         gvSearchResult.DataBind();
@@ -102,30 +106,57 @@ public partial class ManagementTool : System.Web.UI.Page
 
     protected void btnSearch_Click(object sender, EventArgs e)
     {
-            string[] strParas = new string[6];
-            strParas[0] = txtFirstName.Visible ? processInputString(txtFirstName.Text.Trim()) : ddlFirstName.SelectedItem.Value;//first
-            //if (strParas[0].Length < 1) strParas[0] = " ";
-            strParas[1] = txtLastName.Visible ? processInputString(txtLastName.Text.Trim()) : ddlLastName.SelectedItem.Value;//lastname
-            //if (strParas[1].Length < 1) strParas[1] = " ";
-            strParas[2] = txtUserName.Visible ? processInputString(txtUserName.Text.Trim()) : ddlUserName.SelectedItem.Value;//username
-            //if (strParas[2].Length < 1) strParas[2] = " ";
-            strParas[3] = txtOrganization.Visible ? processInputString(txtOrganization.Text.Trim()) : ddlOrganization.SelectedItem.Value;//organization
-            //if (strParas[3].Length < 1) strParas[3] = " ";
-            strParas[4] = ddlAccessLevel.SelectedIndex > 0 ? ddlAccessLevel.SelectedItem.Value : "";//accesslevel
-            //if (strParas[4].Length < 1) strParas[4] = " ";
+        clsStoreProcedureAccess clsSearchByCriteria;
 
-            if (ddlApprovalStatus.SelectedIndex == 0)
-                strParas[5] = "";
-            else if (ddlApprovalStatus.SelectedIndex == 1)
+        string[] strParas = new string[6];
+        strParas[0] = txtFirstName.Visible ? processInputString(txtFirstName.Text.Trim()) : ddlFirstName.SelectedItem.Value;//first
+        //if (strParas[0].Length < 1) strParas[0] = " ";
+        strParas[1] = txtLastName.Visible ? processInputString(txtLastName.Text.Trim()) : ddlLastName.SelectedItem.Value;//lastname
+        //if (strParas[1].Length < 1) strParas[1] = " ";
+        strParas[2] = txtUserName.Visible ? processInputString(txtUserName.Text.Trim()) : ddlUserName.SelectedItem.Value;//username
+        //if (strParas[2].Length < 1) strParas[2] = " ";
+        strParas[3] = txtOrganization.Visible ? processInputString(txtOrganization.Text.Trim()) : ddlOrganization.SelectedItem.Value;//organization
+        //if (strParas[3].Length < 1) strParas[3] = " ";
+
+        if (ddlApprovalStatus.SelectedIndex > 0 && ddlAccessLevel.SelectedIndex == 0)
+        {
+            if (ddlApprovalStatus.SelectedIndex == 1)
                 strParas[5] = "Yes";
             else
-                strParas[5] = "No";//approvalstatus;
-            clsStoreProcedureAccess clsSearchByCriteria = new clsStoreProcedureAccess("GetUserByCriteria", strSQLConn);
-            DataTable dtSearch = clsSearchByCriteria.fnExecuteSP2DataTable(strParas);
+                strParas[5] = "No";
 
-            gvSearchResult.DataSource = dtSearch;
-            gvSearchResult.DataBind();
-            lblMsg.Text = dtSearch.Rows.Count + " records found!";
+            strParas[4] = "";
+
+            clsSearchByCriteria = new clsStoreProcedureAccess("GetUserByCriteria_ApprovalStatus", strSQLConn);
+        }
+        else if (ddlAccessLevel.SelectedIndex > 0 && ddlApprovalStatus.SelectedIndex == 0)
+        {
+            strParas[4] = ddlAccessLevel.SelectedItem.Value;
+            strParas[5] = "";
+            clsSearchByCriteria = new clsStoreProcedureAccess("GetUserByCriteria_AccessLevel", strSQLConn);
+        }
+        else if (ddlApprovalStatus.SelectedIndex > 0 && ddlAccessLevel.SelectedIndex > 0)
+        {
+            if (ddlApprovalStatus.SelectedIndex == 1)
+                strParas[5] = "Yes";
+            else
+                strParas[5] = "No";
+
+            strParas[4] = ddlAccessLevel.SelectedItem.Value;
+            clsSearchByCriteria = new clsStoreProcedureAccess("GetUserByCriteria_AccessApproval", strSQLConn);
+        }
+        else
+        {
+            strParas[4] = "";
+            strParas[5] = "";
+            clsSearchByCriteria = new clsStoreProcedureAccess("GetUserByCriteria", strSQLConn);
+        }
+
+        DataTable dtSearch = clsSearchByCriteria.fnExecuteSP2DataTable(strParas);
+
+        gvSearchResult.DataSource = dtSearch;
+        gvSearchResult.DataBind();
+        lblMsg.Text = dtSearch.Rows.Count + " records found!";
     }
 
     //===========================================================================================================================Manage==============
