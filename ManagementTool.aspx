@@ -31,7 +31,7 @@
                                 <h3>Search for Users</h3>
                                 Use the search form to find a specific user or group of users.
                                 <div style="height: 10px;"></div>
-                                Click the Show All button to return a table of all users.
+                                Click the Show All Users button to return a table of all users.
                             </td>
                         </tr>
                         <tr>
@@ -143,7 +143,7 @@
                                         <td>
                                             <div style="width:99%">
                                             <asp:Button ID="btnSearch" runat="server" CssClass="btn" OnClick="btnSearch_Click" Text="Search"></asp:Button>
-                                            <asp:Button ID="btnSearchAll" runat="server" CssClass="btn" OnClick="SearchAllUsers" Text="Return All Users" style="float:right;"></asp:Button>
+                                            <asp:Button ID="btnSearchAll" runat="server" CssClass="btn" OnClick="SearchAllUsers" Text="Show All Users" style="float:right;"></asp:Button>
                                             </div>
                                         </td>
                                         <td></td>
