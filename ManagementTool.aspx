@@ -5,14 +5,14 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="Server">
 </asp:Content>
-<asp:Content ID="nav1" ContentPlaceHolderID="nav" runat="Server" >
+<asp:Content ID="nav1" ContentPlaceHolderID="nav" runat="Server">
 
-            <nav class="navAdmin-wrap navAdmin">
-		            <ul class="navAdmin">
-                        <li><a href="subscribermapredirect.aspx">Subscriber Map</a></li>
-                        <li><a href="default.aspx">Home</a></li>
-                    </ul>
-            </nav>
+    <nav class="navAdmin-wrap navAdmin">
+        <ul class="navAdmin">
+            <li><a href="subscribermapredirect.aspx">Subscriber Map</a></li>
+            <li><a href="default.aspx">Home</a></li>
+        </ul>
+    </nav>
 
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="Server">
@@ -27,105 +27,111 @@
                 <ContentTemplate>
                     <table style="width: 100%;">
                         <tr>
-                            <td style="width: 50%">
-                                <asp:Label ID="Label1" runat="server" Text="Search for users: The search below will provide a list of site users. To get a list of all users click the &lt;i&gt;Search All&lt;/i&gt; option and click the Search button. To customize the search click the Search By Criteria option and enter the criterion to filter by in the window that is displayed. Once the information has been entered click the Search Button to Searth for the users."
-                                    Width="100%"></asp:Label>
-</td>
-                            <td></td>
-                            <td></td>
+                            <td colspan="3">
+                                <h3>Search for Users</h3>
+                                Use the search form to find a specific user or group of users.
+                                <div style="height: 10px;"></div>
+                                Click the Show All button to return a table of all users.
+                            </td>
                         </tr>
                         <tr>
-                            <td style="width: 30%">
-                                <p>&nbsp;</p>
-                                <asp:RadioButtonList ID="rblSearchBy" runat="server">
-                                    <asp:ListItem>Search All</asp:ListItem>
-                                    <asp:ListItem Selected="True">Search By Criteria</asp:ListItem>
-                                </asp:RadioButtonList>
-                                <br />
+                            <td colspan="3">
+                                <div style="height: 30px;"></div>
                             </td>
-                            <td></td>
-                            <td></td>
                         </tr>
                         <tr>
                             <td>
                                 <table style="width: 100%;">
                                     <tr>
+                                        <td></td>
+                                        <td>
+                                            <asp:Button ID="btnResetForm" runat="server" CssClass="btn" OnClick="lbReset_Click" Text="Reset Search Form"></asp:Button>
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
                                         <td style="width: 30%">
                                             <asp:Label ID="Label2" runat="server" Text="Approval Status: " CssClass="float-right"></asp:Label>
-</td>
+                                        </td>
                                         <td style="width: 60%">
-                                            <asp:RadioButtonList ID="rblApprovalStatus" runat="server"><asp:ListItem Selected="True">N/A</asp:ListItem>
-<asp:ListItem>Approved</asp:ListItem>
-<asp:ListItem>Not Approved</asp:ListItem>
-</asp:RadioButtonList>
-</td>
+                                            <asp:DropDownList ID="ddlApprovalStatus" runat="server" Width="99%">
+                                                <asp:ListItem></asp:ListItem>
+                                                <asp:ListItem>Approved</asp:ListItem>
+                                                <asp:ListItem>Not Approved</asp:ListItem>
+                                            </asp:DropDownList>
+                                        </td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>
                                             <asp:Label ID="Label3" runat="server" Text="First Name: " CssClass="float-right"></asp:Label>
-</td>
+                                        </td>
                                         <td>
                                             <asp:TextBox ID="txtFirstName" runat="server" Width="98%"></asp:TextBox>
-<asp:DropDownList ID="ddlFirstName" runat="server" DataSourceID="sqldsFirstName"
-                                                DataTextField="FirstName" DataValueField="FirstName" Visible="False" Width="99%"></asp:DropDownList>
-</td>
+                                            <asp:DropDownList ID="ddlFirstName" runat="server" DataSourceID="sqldsFirstName"
+                                                DataTextField="FirstName" DataValueField="FirstName" Visible="False" Width="99%">
+                                            </asp:DropDownList>
+                                        </td>
                                         <td>
                                             <asp:LinkButton ID="lbListFirstName" runat="server" OnClick="lbListFirstName_Click">List</asp:LinkButton>
-</td>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>
                                             <asp:Label ID="Label4" runat="server" Text="Last Name: " CssClass="float-right"></asp:Label>
-</td>
+                                        </td>
                                         <td>
                                             <asp:TextBox ID="txtLastName" runat="server" Width="98%"></asp:TextBox>
-<asp:DropDownList ID="ddlLastName" runat="server" DataSourceID="sqldsLastName" DataTextField="LastName"
-                                                DataValueField="LastName" Visible="False" Width="99%"></asp:DropDownList>
-</td>
+                                            <asp:DropDownList ID="ddlLastName" runat="server" DataSourceID="sqldsLastName" DataTextField="LastName"
+                                                DataValueField="LastName" Visible="False" Width="99%">
+                                            </asp:DropDownList>
+                                        </td>
                                         <td>
                                             <asp:LinkButton ID="lbLastName" runat="server" OnClick="lbLastName_Click">List</asp:LinkButton>
-</td>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>
                                             <asp:Label ID="Label5" runat="server" Text="Organization: " CssClass="float-right"></asp:Label>
-</td>
+                                        </td>
                                         <td>
                                             <asp:TextBox ID="txtOrganization" runat="server" Width="98%"></asp:TextBox>
-<asp:DropDownList ID="ddlOrganization" runat="server" DataSourceID="sqldsOrganization"
-                                                DataTextField="Organization" DataValueField="Organization" Visible="False" Width="99%"></asp:DropDownList>
-</td>
+                                            <asp:DropDownList ID="ddlOrganization" runat="server" DataSourceID="sqldsOrganization"
+                                                DataTextField="Organization" DataValueField="Organization" Visible="False" Width="99%">
+                                            </asp:DropDownList>
+                                        </td>
                                         <td>
                                             <asp:LinkButton ID="lbOrganization" runat="server" OnClick="lbOrganization_Click">List</asp:LinkButton>
-</td>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>
                                             <asp:Label ID="Label6" runat="server" Text="Access Level: " CssClass="float-right"></asp:Label>
-</td>
+                                        </td>
                                         <td>
-                                            <asp:DropDownList ID="ddlAccessLevel" runat="server" Width="99%"><asp:ListItem Selected="True">N/A</asp:ListItem>
-<asp:ListItem>pending</asp:ListItem>
-<asp:ListItem>subscriber</asp:ListItem>
-<asp:ListItem>editor</asp:ListItem>
-<asp:ListItem>admin</asp:ListItem>
-</asp:DropDownList>
-</td>
+                                            <asp:DropDownList ID="ddlAccessLevel" runat="server" Width="99%">
+                                                <asp:ListItem></asp:ListItem>
+                                                <asp:ListItem>pending</asp:ListItem>
+                                                <asp:ListItem>subscriber</asp:ListItem>
+                                                <asp:ListItem>editor</asp:ListItem>
+                                                <asp:ListItem>admin</asp:ListItem>
+                                            </asp:DropDownList>
+                                        </td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>
                                             <asp:Label ID="Label7" runat="server" Text="User Name: " CssClass="float-right"></asp:Label>
-</td>
+                                        </td>
                                         <td>
                                             <asp:TextBox ID="txtUserName" runat="server" Width="98%"></asp:TextBox>
-<asp:DropDownList ID="ddlUserName" runat="server" DataSourceID="sqldsUserName" DataTextField="UserName"
-                                                DataValueField="UserName" Visible="False" Width="99%"></asp:DropDownList>
-</td>
+                                            <asp:DropDownList ID="ddlUserName" runat="server" DataSourceID="sqldsUserName" DataTextField="UserName"
+                                                DataValueField="UserName" Visible="False" Width="99%">
+                                            </asp:DropDownList>
+                                        </td>
                                         <td>
                                             <asp:LinkButton ID="lbUserName" runat="server" OnClick="lbUserName_Click">List</asp:LinkButton>
-</td>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td></td>
@@ -135,12 +141,22 @@
                                     <tr>
                                         <td></td>
                                         <td>
-                                            <asp:Button ID="btnSearch" runat="server" OnClick="btnSearch_Click" Text="Search"
-                                                Width="99%"></asp:Button>
-</td>
+                                            <div style="width:99%">
+                                            <asp:Button ID="btnSearch" runat="server" CssClass="btn" OnClick="btnSearch_Click" Text="Search"></asp:Button>
+                                            <asp:Button ID="btnSearchAll" runat="server" CssClass="btn" OnClick="SearchAllUsers" Text="Return All Users" style="float:right;"></asp:Button>
+                                            </div>
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3"></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
                                         <td>
-                                            <asp:LinkButton ID="lbReset" runat="server" OnClick="lbReset_Click">Reset</asp:LinkButton>
-</td>
+                                            
+                                        </td>
+                                        <td></td>
                                     </tr>
                                 </table>
                             </td>
@@ -163,7 +179,7 @@
                         <tr>
                             <td colspan="2">
                                 <asp:Label ID="lblMsg" runat="server" Font-Bold="True" CssClass="failureNotification"></asp:Label>
-</td>
+                            </td>
                             <td></td>
                         </tr>
                         <tr>
@@ -174,40 +190,40 @@
                     </table>
                     <asp:Panel ID="panelSearchResult" runat="server" ScrollBars="Auto" Width="100%" Font-Size="0.8125em">
                         <asp:GridView ID="gvSearchResult" runat="server" CellPadding="6" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" ForeColor="Black" GridLines="Vertical" Width="1000px">
-<AlternatingRowStyle BackColor="White" />
+                            <AlternatingRowStyle BackColor="White" />
 
-<FooterStyle BackColor="#CCCC99" />
+                            <FooterStyle BackColor="#CCCC99" />
 
-<HeaderStyle BackColor="#BB292D" Font-Bold="True" ForeColor="White" HorizontalAlign="Left" />
+                            <HeaderStyle BackColor="#BB292D" Font-Bold="True" ForeColor="White" HorizontalAlign="Left" />
 
-<PagerStyle BackColor="#F7F7DE" ForeColor="Black" HorizontalAlign="Right" />
+                            <PagerStyle BackColor="#F7F7DE" ForeColor="Black" HorizontalAlign="Right" />
 
-<RowStyle BackColor="#F2F2F2" />
+                            <RowStyle BackColor="#F2F2F2" />
 
-<SelectedRowStyle BackColor="#CE5D5A" Font-Bold="True" ForeColor="White" />
+                            <SelectedRowStyle BackColor="#CE5D5A" Font-Bold="True" ForeColor="White" />
 
-<SortedAscendingCellStyle BackColor="#FBFBF2" />
+                            <SortedAscendingCellStyle BackColor="#FBFBF2" />
 
-<SortedAscendingHeaderStyle BackColor="#848384" />
+                            <SortedAscendingHeaderStyle BackColor="#848384" />
 
-<SortedDescendingCellStyle BackColor="#EAEAD3" />
+                            <SortedDescendingCellStyle BackColor="#EAEAD3" />
 
-<SortedDescendingHeaderStyle BackColor="#575357" />
-</asp:GridView>
+                            <SortedDescendingHeaderStyle BackColor="#575357" />
+                        </asp:GridView>
 
                     </asp:Panel>
 
                     <p></p>
-                
-</ContentTemplate>
-            
-</AjaxControl:TabPanel>
+
+                </ContentTemplate>
+
+            </AjaxControl:TabPanel>
             <AjaxControl:TabPanel runat="server" HeaderText="Manage" ID="tpManage" Visible="true">
                 <HeaderTemplate>
-Manage
-</HeaderTemplate>
-                
-<ContentTemplate>
+                    Manage
+                </HeaderTemplate>
+
+                <ContentTemplate>
                     <table>
                         <tr>
                             <td style="width: 23%">
@@ -297,13 +313,14 @@ Manage
                                 <asp:Label ID="Label15" runat="server" Text="Access Level: " CssClass="float-right"></asp:Label></td>
                             <td>
                                 <div class="manage">
-                                <asp:DropDownList ID="ddlAccessLevel0" runat="server" Width="99%">
-                                    <asp:ListItem Selected="True">pending</asp:ListItem>
-                                    <asp:ListItem>subscriber</asp:ListItem>
-                                    <asp:ListItem>editor</asp:ListItem>
-                                    <asp:ListItem>admin</asp:ListItem>
-                                </asp:DropDownList></td>
-                                </div>
+                                    <asp:DropDownList ID="ddlAccessLevel0" runat="server" Width="99%">
+                                        <asp:ListItem Selected="True">pending</asp:ListItem>
+                                        <asp:ListItem>subscriber</asp:ListItem>
+                                        <asp:ListItem>editor</asp:ListItem>
+                                        <asp:ListItem>admin</asp:ListItem>
+                                    </asp:DropDownList>
+                            </td>
+                            </div>
                             <td></td>
                             <td></td>
                         </tr>
@@ -380,10 +397,10 @@ Manage
                         </tr>
                     </table>
                     <br />
-                
-</ContentTemplate>
-            
-</AjaxControl:TabPanel>
+
+                </ContentTemplate>
+
+            </AjaxControl:TabPanel>
             <AjaxControl:TabPanel runat="server" HeaderText="Report" ID="tpReport" Visible="true">
                 <ContentTemplate>
                     <table style="width: 100%;">
@@ -503,10 +520,10 @@ Manage
                         </asp:GridView>
                         <br />
                     </asp:Panel>
-                
-</ContentTemplate>
-            
-</AjaxControl:TabPanel>
+
+                </ContentTemplate>
+
+            </AjaxControl:TabPanel>
         </AjaxControl:TabContainer>
     </div>
 

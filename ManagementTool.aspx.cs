@@ -81,8 +81,8 @@ public partial class ManagementTool : System.Web.UI.Page
 
         lblMsg.Text = "";
 
-        rblSearchBy.SelectedIndex = 0;
-        rblApprovalStatus.SelectedIndex = 0;
+        ddlApprovalStatus.SelectedIndex = 0;
+        ddlAccessLevel.SelectedIndex = 0;
     }
 
     protected string processInputString(string input)
@@ -91,18 +91,17 @@ public partial class ManagementTool : System.Web.UI.Page
         else return "%" + input + "%";
     }
 
+    protected void SearchAllUsers(object sender, EventArgs e)
+    {
+        clsStoreProcedureAccess clsSearchAll = new clsStoreProcedureAccess("GetAllUser", strSQLConn);
+        DataTable dtAllUser = clsSearchAll.fnExecuteSP2DataTable();
+        gvSearchResult.DataSource = dtAllUser;
+        gvSearchResult.DataBind();
+        lblMsg.Text = dtAllUser.Rows.Count + " records found!";
+    }
+
     protected void btnSearch_Click(object sender, EventArgs e)
     {
-        if (rblSearchBy.SelectedIndex == 0)//search all
-        {
-            clsStoreProcedureAccess clsSearchAll = new clsStoreProcedureAccess("GetAllUser", strSQLConn);
-            DataTable dtAllUser = clsSearchAll.fnExecuteSP2DataTable();
-            gvSearchResult.DataSource = dtAllUser;
-            gvSearchResult.DataBind();
-            lblMsg.Text = dtAllUser.Rows.Count + " records found!";
-        }
-        else//search by criteria
-        {
             string[] strParas = new string[6];
             strParas[0] = txtFirstName.Visible ? processInputString(txtFirstName.Text.Trim()) : ddlFirstName.SelectedItem.Value;//first
             //if (strParas[0].Length < 1) strParas[0] = " ";
@@ -112,12 +111,12 @@ public partial class ManagementTool : System.Web.UI.Page
             //if (strParas[2].Length < 1) strParas[2] = " ";
             strParas[3] = txtOrganization.Visible ? processInputString(txtOrganization.Text.Trim()) : ddlOrganization.SelectedItem.Value;//organization
             //if (strParas[3].Length < 1) strParas[3] = " ";
-            strParas[4] = ddlAccessLevel2.SelectedIndex > 0 ? ddlAccessLevel2.SelectedItem.Value : "";//accesslevel
+            strParas[4] = ddlAccessLevel.SelectedIndex > 0 ? ddlAccessLevel.SelectedItem.Value : "";//accesslevel
             //if (strParas[4].Length < 1) strParas[4] = " ";
 
-            if (rblApprovalStatus.SelectedIndex == 0)
+            if (ddlApprovalStatus.SelectedIndex == 0)
                 strParas[5] = "";
-            else if (rblApprovalStatus.SelectedIndex == 1)
+            else if (ddlApprovalStatus.SelectedIndex == 1)
                 strParas[5] = "Yes";
             else
                 strParas[5] = "No";//approvalstatus;
@@ -127,7 +126,6 @@ public partial class ManagementTool : System.Web.UI.Page
             gvSearchResult.DataSource = dtSearch;
             gvSearchResult.DataBind();
             lblMsg.Text = dtSearch.Rows.Count + " records found!";
-        }
     }
 
     //===========================================================================================================================Manage==============
