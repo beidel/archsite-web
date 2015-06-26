@@ -22,16 +22,6 @@
 	    <!-- Favicon -->
 <%--        <link rel="shortcut icon" type="image/ico" href="">--%>
 
-        <!-- Apple Touch Icons -->
-<%--        <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-        <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72.png">
-        <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114.png">
-        <link rel="apple-touch-icon" sizes="144x144" href="images/apple-touch-icon-144.png">--%>
-
-        <!-- MS Homescreen Icons -->
-<%--        <meta name="msapplication-TileColor" content="#0088cc">
-        <meta name="msapplication-TileImage" content="images/ms-touch-icon.png">--%>
-
         <!-- stylesheet -->
         <link rel="stylesheet" href="Styles/kraken.css" type="text/css">
         <link rel="stylesheet" href="Styles/scarch5.css" type="text/css">
@@ -119,14 +109,14 @@
                 ArchSite Office: 803-777-9720<br />
                 Direct Line: 803-576-6583<br />
                 Fax: 803-254-1338<br />
-                <a href="mailto:TAWILSON@mailbox.sc.edu">Email the web administrator</a></span>
+                <a href="mailto:TAWILSON@mailbox.sc.edu">Email the ArchSite administrator</a></span>
                 </p>
             </div><!-- close 2 -->
 
             <div class="grid-2">
                 <p class="copyright">
                     SC ArchSite<br />
-                    &copy; 2004 &#8211; 2014<br />
+                    &copy; 2004 &#8211; 2015<br />
                     Maintained by the <a href="http://artsandsciences.sc.edu/sciaa/">South Carolina Institute of Archaeology and Anthropology</a>
                 </p>
             </div><!-- close 2 -->
