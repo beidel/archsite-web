@@ -442,13 +442,14 @@ h3 a, h3 a:hover {
 
 table#fees {
     width: 100%;
-	border-collapse: collapse;
-    text-align: left;
+    border-collapse: collapse;
+    text-align: center;
+    margin-bottom: 1.5em;
 }
 
 table#fees thead tr th {
     color: #777;
-    font-size: 1em;
+    font-size: .9375em;
     font-weight: bold;
     text-align: left;
     padding: .6250em .5em .50em .5em;
@@ -457,17 +458,17 @@ table#fees thead tr th {
 
 
 table#fees tbody tr th {
-    text-align: center;
+    text-align: left;
     font-style: italic;
     font-weight: 600;
     color: #444;
-    font-size: .9250em;
+    font-size: .875em;
     background-color: #eeeeee;
 }
 
 table#fees tbody tr td {
     color: #444;
-    font-size: .9250em;
+    font-size: .81250em;
     padding: 0 .5em 0 .6250em;
 }
 
