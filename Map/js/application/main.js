@@ -2337,8 +2337,22 @@ get_browser_version: function(){
                                             "<div style=\"height:10px;\"></div>";
                                         for (var i = 0, l = results.fields.length; i < l; i++) {
                                             if (results.fields[i].name != "OBJECTID") {
-                                                html += "<div><span class=\"archSiteFieldName\">" + results.fields[i].alias + ":</span>" +
-                                                    ((feature.attributes[results.fields[i].name] !== null) ? feature.attributes[results.fields[i].name] : "") + "</div>";
+                                                html += "<div><span class=\"archSiteFieldName\">" + results.fields[i].alias + ":</span>";
+                                                var fieldValue = feature.attributes[results.fields[i].name];
+                                                if (fieldValue == "N") fieldValue = "No";
+                                                else if (fieldValue == "Y") fieldValue = "Yes";
+
+                                                if (results.fields[i].name === "NRHP_ELIGIBLE" ||
+                                                    results.fields[i].name === "NRHP_NONELIGIBLE" ||
+                                                    results.fields[i].name === "NRHP_ADDWORK" ||
+                                                    results.fields[i].name === "DETERMINATION" ||
+                                                    results.fields[i].name === "ARCHIVE") {
+
+                                                    if (fieldValue == "0") fieldValue = "No";
+                                                    else if (fieldValue == "1") fieldValue = "Yes";
+                                                }
+
+                                                html += ((fieldValue !== null) ? fieldValue : "") + "</div>";
                                             }
                                         }
                                         var infoTemplate = new InfoTemplate("Archaeological Sites", html);
