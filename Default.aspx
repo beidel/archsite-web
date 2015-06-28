@@ -62,12 +62,12 @@
                         <li class="dropdown"><a href="#">Subscription Info</a>
                             <div class="dropdown-menu">
                                 <ul>
-                                    <li><a href="<%= ResolveUrl("~/overview.aspx") %>" ><span> &#8212 </span>Subscription Overview</a></li>
-                                    <li><a href="http://archsite.cas.sc.edu/sciaainfo/ArchSite%20Subscription%20Request%20Form%20&%20License%20Agreement2.pdf" target="_blank"><span> &#8212 </span>License Agreement</a></li>
-                                    <li><a href="<%= ResolveUrl("~/Account/register.aspx") %>" ><span> &#8212 </span>Create Account</a></li>
-                                    <li><a href="<%= ResolveUrl("~/Account/changePassword.aspx") %>" ><span> &#8212 </span>Change Password</a></li>
-                                    <li><a href="<%= ResolveUrl("~/ForgotPassword.aspx") %>" ><span> &#8212 </span>Forgot Password</a></li>
-                                    <li><a href="<%= ResolveUrl("~/userDoc.aspx") %>" ><span> &#8212 </span>User Documentation</a></li>
+                                    <li><a href="<%= ResolveUrl("~/overview.aspx") %>" ><span> &#8212; </span>Subscription Overview</a></li>
+                                    <li><a href="http://archsite.cas.sc.edu/sciaainfo/ArchSite%20Subscription%20Request%20Form%20&%20License%20Agreement2.pdf" target="_blank"><span> &#8212; </span>License Agreement</a></li>
+                                    <li><a href="<%= ResolveUrl("~/Account/register.aspx") %>" ><span> &#8212; </span>Create Account</a></li>
+                                    <li><a href="<%= ResolveUrl("~/Account/changePassword.aspx") %>" ><span> &#8212; </span>Change Password</a></li>
+                                    <li><a href="<%= ResolveUrl("~/ForgotPassword.aspx") %>" ><span> &#8212; </span>Forgot Password</a></li>
+                                    <li><a href="<%= ResolveUrl("~/userDoc.aspx") %>" ><span> &#8212; </span>User Documentation</a></li>
                                 </ul>
                             </div><!-- close dropdown-menu -->
                         </li>
@@ -163,10 +163,10 @@
 
     <div class="announce space-top">
         
-        <h2>Beta Review: Task 2</h2>
-            <p>Last updated 4 May 2015</p>
+        <h2>Welcome to the New ArchSite</h2>
+            <p>Last updated 26 June 2015.</p>
             
-            <p>Archaeological data is current as of 27 April 2015.</p>
+            <p>Archaeological data is updated weekly.</p>>
 
             <p>Scanned archaeological site forms for most counties are now available for viewing and downloading in the form of PDF documents to subscribers. PDFs of site forms for the remaining counties will be uploaded as they are completed: Abbeville, Aiken, Allendale, Anderson, Bamberg, Barnwell, Beaufort, Berkeley, and Charleston.</p>
 
@@ -198,14 +198,14 @@
                 ArchSite Office: 803-777-9720<br />
                 Direct Line: 803-576-6583<br />
                 Fax: 803-254-1338<br />
-                <a href="mailto:TAWILSON@mailbox.sc.edu">Email the web administrator</a></span>
+                <a href="mailto:TAWILSON@mailbox.sc.edu">Email the ArchSite administrator</a></span>
                 </p>
             </div><!-- close 2 -->
 
             <div class="grid-2">
                 <p class="copyright">
                     SC ArchSite<br />
-                    &copy; 2004 &#8211; 2014<br />
+                    &copy; 2004 &#8211; 2015<br />
                     Maintained by the <a href="http://artsandsciences.sc.edu/sciaa/">South Carolina Institute of Archaeology and Anthropology</a>
                 </p>
             </div><!-- close 2 -->
