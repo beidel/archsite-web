@@ -13,12 +13,12 @@
                 <li class="dropdown"><a href="#">Subscription Info</a>
                     <div class="dropdown-menu">
                         <ul>
-                            <li><a href="<%= ResolveUrl("~/overview.aspx") %>" id="current"><span> &#8212 </span>Subscription Overview</a></li>
-                            <li><a href="http://archsite.cas.sc.edu/sciaainfo/ArchSite%20Subscription%20Request%20Form%20&%20License%20Agreement2.pdf" target="_blank"><span> &#8212 </span>License Agreement</a></li>
-                            <li><a href="<%= ResolveUrl("~/Account/register.aspx") %>" ><span> &#8212 </span>Create Account</a></li>
-                            <li><a href="<%= ResolveUrl("~/Account/changePassword.aspx") %>" ><span> &#8212 </span>Change Password</a></li>
-                            <li><a href="<%= ResolveUrl("~/ForgotPassword.aspx") %>" ><span> &#8212 </span>Forgot Password</a></li>
-                            <li><a href="<%= ResolveUrl("~/userDoc.aspx") %>" ><span> &#8212 </span>User Documentation</a></li>
+                            <li><a href="<%= ResolveUrl("~/overview.aspx") %>" id="current"><span> &#8212; </span>Subscription Overview</a></li>
+                            <li><a href="http://archsite.cas.sc.edu/sciaainfo/ArchSite%20Subscription%20Request%20Form%20&%20License%20Agreement2.pdf" target="_blank"><span> &#8212; </span>License Agreement</a></li>
+                            <li><a href="<%= ResolveUrl("~/Account/register.aspx") %>" ><span> &#8212; </span>Create Account</a></li>
+                            <li><a href="<%= ResolveUrl("~/Account/changePassword.aspx") %>" ><span> &#8212; </span>Change Password</a></li>
+                            <li><a href="<%= ResolveUrl("~/ForgotPassword.aspx") %>" ><span> &#8212; </span>Forgot Password</a></li>
+                            <li><a href="<%= ResolveUrl("~/userDoc.aspx") %>" ><span> &#8212; </span>User Documentation</a></li>
                         </ul>
                     </div><!-- close dropdown-menu -->
                 </li>
@@ -77,73 +77,78 @@
             <h2 class="no-space-bottom">Fees</h2>
             <hr class="no-space-top" />
         </div><!-- close six -->
+        <div class="grid-4 offset-1 no-space-bottom">
+            <table id="fees">
+                <thead>
+                <tr>
+                    <th scope="col" class="text-left"">ArchSite Fee Schedule</th>
+                    <th scope="col">Annual</th>
+                    <th scope="col">Quarterly</th>
+                    <th scope="col">Weekly</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="rowgroup" colspan="4"><strong>For-profit entities</strong></th>
+                </tr>
+                    <tr>
+                        <td class="float-left">One office location</td>
+                        <td>$600</td>
+                        <td class="center">$200</td>
+                        <td>$50</td>
+                    </tr>
+                    <tr>
+                        <td class="float-left">Two or more office locations</td>
+                        <td>$1200</td>
+                        <td class="center">$400</td>
+                        <td>n/a</td>
+                    </tr>
+                </tbody>
+                <tbody>
+                <tr>
+                    <th scope="rowgroup" colspan="4"><strong>Non-profit entities *</strong></th>
+                </tr>
+                    <tr>
+                        <td class="float-left">One office location</td>
+                        <td>$300</td>
+                        <td>$100</td>
+                        <td>$30</td>
+                    </tr>
+                    <tr>
+                        <td class="float-left">Two or more office locations</td>
+                        <td>$600</td>
+                        <td>$200</td>
+                        <td>n/a</td>
+                    </tr>
+                <tr>
+                    <th scope="rowgroup" colspan="4"><strong>Free on-site access</strong></th>
+                </tr>
+                    <tr>
+                        <td></td>
+                        <td>n/a</td>
+                        <td>n/a</td>
+                        <td>n/a</td>
+                    </tr>
 
+                </tbody>
+            </table>
+        </div><!-- close four offset one -->
         <div class="grid-3">
             <p>In order to make ArchSite accessible to all interested persons, computers are available at SCDAH and SCIAA during business hours for use by both public viewers and subscribers free of charge. Off-site use by subscribers requires a subscription fee. The fee helps to offset administrative, personnel, and infrastructure costs. Organizations with more than one office location will be required to pay the subscription fee for each office. If an invoice is needed, please contact the ArchSite Administrator.</p>
-
         </div><!-- close three -->
-                <div class="grid-3">
-                    <div class="grid-6">
-                    <table id="fees">
-                      <thead>
-                        <tr>
-                          <th scope="col">ArchSite Fee Schedule</th>
-                          <th scope="col">Annual</th>
-                          <th scope="col">Weekly</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <th scope="rowgroup" colspan="3"><strong>For-profit entities</strong></th>
-                        </tr>
-                            <tr>
-                                <td>&nbsp;&nbsp;&nbsp;One office location</td>
-                                <td>$600</td>
-                                <td>$50</td>
-                            </tr>
-                            <tr>
-                                <td>&nbsp;&nbsp;&nbsp;Two or more office locations</td>
-                                <td>$1200</td>
-                                <td>n/a</td>
-                            </tr>
-                      </tbody>
-                      <tbody>
-                        <tr>
-                          <th scope="rowgroup" colspan="3"><strong>Non-profit entities *</strong></th>
-                        </tr>
-                            <tr>
-                                <td>&nbsp;&nbsp;&nbsp;One office location</td>
-                                <td>$300</td>
-                                <td>$30</td>
-                            </tr>
-                            <tr>
-                                <td>&nbsp;&nbsp;&nbsp;Two or more office locations</td>
-                                <td>$600</td>
-                                <td>n/a</td>
-                            </tr>
-                        <tr>
-                          <th scope="rowgroup" colspan="3"><strong>Free on-site access</strong></th>
-                        </tr>
-                            <tr>
-                                <td></td>
-                                <td>n/a</td>
-                                <td>n/a</td>
-                            </tr>
+        <div class="grid-3">
+            <h5 class="no-space-top">* Qualifying Non-profits</h5>
+                <ul class="footnote">
+                    <li>South Carolina state universities, colleges and other higher education or research institutes</li>
+                    <li>County governments engaged in land planning and/or stewardship</li>
+                    <li>South Carolina state agencies engaged in land planning and/or stewardship</li>
+                    <li>Cities and municipalities engaged in land planning and/or stewardship</li>
+                    <li>Certified Local Governments</li>
+                    <li>IRS recognized 501 c3 organizations</li>
+                </ul>               
+        </div><!-- close three -->
 
-                      </tbody>
-                    </table>
-                        <h5>* Qualifying Non-profits</h5>
-                            <ul class="footnote">
-                                <li>South Carolina state universities, colleges and other higher education or research institutes</li>
-                                <li>County governments engaged in land planning and/or stewardship</li>
-                                <li>South Carolina state agencies engaged in land planning and/or stewardship</li>
-                                <li>Cities and municipalities engaged in land planning and/or stewardship</li>
-                                <li>Certified Local Governments</li>
-                                <li>IRS recognized 501 c3 organizations</li>
-                            </ul>
 
-                    </div><!-- close six -->                  
-                </div><!-- close three -->
 
     <div class="grid-6">
         <hr />
