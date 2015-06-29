@@ -163,7 +163,7 @@
                         <span class="text-small">ArchSite Office: 803-777-9720<br />
                             Direct Line: 803-576-6583<br />
                             Fax: 803-254-1338<br />
-                            <a href="mailto:TAWILSON@mailbox.sc.edu">Email the web administrator</a></span>
+                            <a href="mailto:TAWILSON@mailbox.sc.edu">Email the ArchSite administrator</a></span>
                     </p>
                 </div>
                 <!-- close 2 -->
@@ -171,7 +171,7 @@
                 <div class="grid-2">
                     <p class="copyright">
                         SC ArchSite<br />
-                        &copy; 2004 &#8211; 2014<br />
+                        &copy; 2004 &#8211; 2015<br />
                         Maintained by the <a href="http://artsandsciences.sc.edu/sciaa/">South Carolina Institute of Archaeology and Anthropology</a>
                     </p>
                 </div>
