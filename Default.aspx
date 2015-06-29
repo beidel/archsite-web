@@ -166,7 +166,7 @@
         <h2>Welcome to the New ArchSite</h2>
             <p>Last updated 26 June 2015.</p>
             
-            <p>Archaeological data is updated weekly.</p>>
+            <p>Archaeological data is updated weekly.</p>
 
             <p>Scanned archaeological site forms for most counties are now available for viewing and downloading in the form of PDF documents to subscribers. PDFs of site forms for the remaining counties will be uploaded as they are completed: Abbeville, Aiken, Allendale, Anderson, Bamberg, Barnwell, Beaufort, Berkeley, and Charleston.</p>
 
